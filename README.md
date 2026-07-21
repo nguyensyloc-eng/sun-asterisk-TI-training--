@@ -7,16 +7,14 @@ Làm việc nhóm.
 Khôi phục phiên bản cũ.
 Đồng bộ code với GitHub/GitLab.
 📂 Git và GitHub khác nhau thế nào?
-Git	GitHub
+Git	                        GitHub
 Công cụ quản lý phiên bản	Nơi lưu repository trên Internet
-Chạy trên máy	Chạy trên cloud
-Không cần Internet	Cần Internet để đồng bộ
+Chạy trên máy	                Chạy trên cloud
+Không cần Internet	        Cần Internet để đồng bộ
 📁 Repository (Repo)
-
 Là thư mục được Git quản lý.
 
 Ví dụ:
-
 GitLearning/
 │
 ├── README.md
@@ -39,301 +37,146 @@ Local Repository
     git push
         ▼
 Remote Repository (GitHub)
+
 📌 Khởi tạo Git
 git init
-
 Tạo thư mục .git.
 
 Kiểm tra:
-
 git status
+
 📌 Kiểm tra trạng thái
 git status
-
 Hiển thị:
-
 file mới
 file đã sửa
 file đã stage
 branch hiện tại
+
 📌 Thêm file vào Staging
+Thêm 1 file: git add README.md
+Thêm tất cả: git add .
 
-Thêm 1 file
-
-git add README.md
-
-Thêm tất cả
-
-git add .
 📌 Commit
 git commit -m "Add README"
-
 Lưu snapshot của project.
 
 📌 Xem lịch sử commit
 git log
+Rút gọn: git log --oneline
 
-Rút gọn
-
-git log --oneline
 📌 Sửa commit gần nhất
+Chỉ sửa message: git commit --amend
+Sửa cả file đã thay đổi: git commit --amend -a
 
-Chỉ sửa message
-
-git commit --amend
-
-Sửa cả file đã thay đổi
-
-git commit --amend -a
 📌 Branch
+Xem branch: git branch
+Tạo branch: git branch feature/login
 
-Xem branch
+Chuyển branch: git switch feature/login
+Hoặc: git checkout feature/login
+Tạo và chuyển luôn: git switch -c feature/login
 
-git branch
-
-Tạo branch
-
-git branch feature/login
-
-Chuyển branch
-
-git switch feature/login
-
-Hoặc
-
-git checkout feature/login
-
-Tạo và chuyển luôn
-
-git switch -c feature/login
 📌 Merge
+Đứng ở branch main: git merge feature/login
 
-Đứng ở branch main
-
-git merge feature/login
 📌 Xóa branch
 git branch -d feature/login
+
 📌 Remote
+Xem remote: git remote -v
+Thêm remote: git remote add origin https://github.com/user/repo.git
+Đổi remote: git remote set-url origin https://github.com/user/repo.git
+Xóa remote: git remote remove origin
 
-Xem remote
-
-git remote -v
-
-Thêm remote
-
-git remote add origin https://github.com/user/repo.git
-
-Đổi remote
-
-git remote set-url origin https://github.com/user/repo.git
-
-Xóa remote
-
-git remote remove origin
 📌 Push
+Đẩy commit lên GitHub: git push origin main
+Lần đầu: git push -u origin main
 
-Đẩy commit lên GitHub
-
-git push origin main
-
-Lần đầu
-
-git push -u origin main
 📌 Fetch
+Lấy dữ liệu từ GitHub nhưng chưa merge: git fetch
 
-Lấy dữ liệu từ GitHub nhưng chưa merge
-
-git fetch
 📌 Pull
+Lấy dữ liệu và merge: git pull
+Thực chất:
+git fetch + git merge
 
-Lấy dữ liệu và merge
-
-git pull
-
-Thực chất
-
-git fetch
-+
-git merge
 📌 Clone
+Tải project từ GitHub: git clone https://github.com/user/project.git
 
-Tải project từ GitHub
-
-git clone https://github.com/user/project.git
 📌 Diff
+Xem thay đổi: git diff
+So sánh commit: git diff HEAD~1
 
-Xem thay đổi
-
-git diff
-
-So sánh commit
-
-git diff HEAD~1
 📌 Restore
+Bỏ thay đổi file: git restore file.txt
+Bỏ stage: git restore --staged file.txt
 
-Bỏ thay đổi file
-
-git restore file.txt
-
-Bỏ stage
-
-git restore --staged file.txt
 📌 Reset
+Quay commit, Giữ file: git reset --soft HEAD~1
+Giữ code nhưng bỏ stage: git reset --mixed HEAD~1
+Xóa luôn code: git reset --hard HEAD~1
 
-Quay commit
-
-Giữ file
-
-git reset --soft HEAD~1
-
-Giữ code nhưng bỏ stage
-
-git reset --mixed HEAD~1
-
-Xóa luôn code
-
-git reset --hard HEAD~1
 📌 Revert
-
-Tạo commit đảo ngược
-
-git revert HEAD
-
+Tạo commit đảo ngược: git revert HEAD
 Không làm mất lịch sử.
 
 📌 Stash
+Lưu tạm thay đổi: git stash
+Xem stash: git stash list
+Khôi phục: git stash pop
 
-Lưu tạm thay đổi
-
-git stash
-
-Xem stash
-
-git stash list
-
-Khôi phục
-
-git stash pop
-📌 Tag
-
-Tạo version
-
-git tag v1.0
-
-Push tag
-
-git push origin v1.0
-📌 README.md
-
-File giới thiệu project.
-
-Ví dụ
-
-# GitLearning
-
-## Giới thiệu
-
-Project học Git.
-
-## Nội dung
-
-- Git
-- GitHub
 📌 .gitignore
-
 Bỏ qua file
-
-Ví dụ
-
+Ví dụ:
 node_modules/
 *.log
 .env
+
 📌 SSH
+Tạo key: ssh-keygen -t ed25519 -C "email@gmail.com"
 
-Tạo key
+Kiểm tra: ssh -T git@github.com
 
-ssh-keygen -t ed25519 -C "email@gmail.com"
-
-Kiểm tra
-
-ssh -T git@github.com
 📌 HTTPS
-
-Remote
-
-https://github.com/user/project.git
-
+Remote: https://github.com/user/project.git
 Đăng nhập bằng GitHub + Personal Access Token (PAT) khi cần.
 
 📌 SSH
-
-Remote
-
-git@github.com:user/project.git
-
+Remote: git@github.com:user/project.git
 Xác thực bằng SSH key.
 
 📌 Các lệnh cấu hình
 
-Tên
+Tên: git config --global user.name "Nguyen Van A"
+Email: git config --global user.email "abc@gmail.com"
+Xem cấu hình: git config --list
 
-git config --global user.name "Nguyen Van A"
-
-Email
-
-git config --global user.email "abc@gmail.com"
-
-Xem cấu hình
-
-git config --list
 📌 Chu trình làm việc hằng ngày
 git pull
-
 ↓
-
 Sửa code
-
 ↓
-
 git status
-
 ↓
-
 git add .
-
 ↓
-
 git commit -m "..."
-
 ↓
-
 git push
+
 📌 Những lỗi thường gặp
-Permission denied
-
-Không có quyền push hoặc xác thực sai tài khoản GitHub.
-
-nothing to commit
-
-Không có thay đổi để commit.
-
-non-fast-forward
-
-Remote có commit mới.
-
-Giải quyết:
-
+Permission denied: Không có quyền push hoặc xác thực sai tài khoản GitHub.
+nothing to commit: Không có thay đổi để commit.
+non-fast-forward: Remote có commit mới. Giải quyết:
 git pull
 git push
 merge conflict
-
-Hai người sửa cùng một đoạn code.
-
-Giải quyết:
-
+Hai người sửa cùng một đoạn code. Giải quyết:
 Chỉnh file.
 git add
 git commit
+
 🎯 Bộ lệnh Git cơ bản cần nhớ
 git init
 git clone
