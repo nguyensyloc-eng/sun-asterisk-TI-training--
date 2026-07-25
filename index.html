@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang chủ - Sun* Inc. Tuyển Dụng | Digital Creative Studio</title>
+  <meta name="description" content="Là một Digital Creative Studio, Sun* luôn đề cao tinh thần làm chủ sản phẩm, tư duy sáng tạo trong mỗi dự án để mang đến những trải nghiệm 'Awesome' nhất cho end-user.">
+  <link rel="shortcut icon" href="https://sun-asterisk.vn/wp-content/uploads/2021/03/favicon.ico" type="image/x-icon">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Roboto & Open Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- Custom BEM Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER & NAVIGATION (.header)
+       ========================================== -->
+  <header class="header" id="main-header">
+    <div class="header__container">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="header__logo" aria-label="Sun Asterisk Home">
+        <img src="https://sun-asterisk.vn/wp-content/uploads/2020/10/logo-sun@2x.png" alt="Sun* Logo" class="header__logo-img">
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item">
+            <a href="#trang-chu" class="header__nav-link header__nav-link--active">Trang chủ</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="#ve-chung-toi" class="header__nav-link">Về chúng tôi</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="#du-an" class="header__nav-link">Dự án</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="#co-hoi-nghe-nghiep" class="header__nav-link">Cơ hội nghề nghiệp</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="#moi-truong-lam-viec" class="header__nav-link">Môi trường làm việc</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="#tin-tuc" class="header__nav-link">Tin tức</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Right Action Items -->
+      <div class="header__actions">
+        <!-- Language Switcher -->
+        <div class="header__lang-switcher">
+          <a href="#" class="header__lang-btn header__lang-btn--active">VI</a>
+          <a href="#" class="header__lang-btn">EN</a>
+        </div>
+
+        <!-- Mobile Drawer Toggle -->
+        <button class="header__toggle" id="menu-toggle" aria-label="Toggle Navigation Menu">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-overlay" class="fixed inset-0 bg-black/60 z-50 hidden transition-opacity"></div>
+  <aside id="mobile-drawer" class="fixed top-0 right-0 w-80 h-full bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col p-6 shadow-2xl">
+    <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+      <img src="https://sun-asterisk.vn/wp-content/uploads/2020/10/logo-sun@2x.png" alt="Sun* Logo" class="h-8">
+      <button id="close-drawer" class="text-gray-500 hover:text-gray-900 p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <ul class="flex flex-col gap-4 my-6">
+      <li><a href="#trang-chu" class="text-lg font-medium text-red-600 block">Trang chủ</a></li>
+      <li><a href="#ve-chung-toi" class="text-lg font-medium text-gray-800 hover:text-red-600 block">Về chúng tôi</a></li>
+      <li><a href="#du-an" class="text-lg font-medium text-gray-800 hover:text-red-600 block">Dự án</a></li>
+      <li><a href="#co-hoi-nghe-nghiep" class="text-lg font-medium text-gray-800 hover:text-red-600 block">Cơ hội nghề nghiệp</a></li>
+      <li><a href="#moi-truong-lam-viec" class="text-lg font-medium text-gray-800 hover:text-red-600 block">Môi trường làm việc</a></li>
+      <li><a href="#tin-tuc" class="text-lg font-medium text-gray-800 hover:text-red-600 block">Tin tức</a></li>
+    </ul>
+  </aside>
+
+  <!-- ==========================================
+       HERO SECTION BLOCK (.hero)
+       ========================================== -->
+  <section class="hero" id="trang-chu">
+    <div class="hero__video-wrapper">
+      <video class="hero__video" autoplay muted loop playsinline poster="https://sun-asterisk.vn/wp-content/uploads/2020/11/intro-business.png">
+        <source src="https://sun-asterisk.vn/wp-content/uploads/2020/11/mv-pc.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <span class="hero__badge">Digital Creative Studio</span>
+      <h1 class="hero__title">MAKE AWESOME THINGS THAT MATTER</h1>
+      <p class="hero__subtitle">Sun* là nơi kiến tạo những giải pháp công nghệ bứt phá, mang đến trải nghiệm tuyệt vời cho cộng đồng và xã hội.</p>
+      
+      <div class="hero__actions">
+        <a href="#du-an" class="button button--primary">
+          Khám phá dự án
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+        <a href="#co-hoi-nghe-nghiep" class="button button--white">Gia nhập Sun*</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       BUSINESS DOMAINS SECTION (.business)
+       ========================================== -->
+  <section class="business" id="ve-chung-toi">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="section-header">
+        <h2 class="section-header__title">Lĩnh vực kinh doanh</h2>
+      </div>
+
+      <div class="business__intro">
+        <div class="business__desc">
+          Là một <strong>Digital Creative Studio</strong>, Sun* luôn đề cao tinh thần làm chủ sản phẩm, tư duy sáng tạo trong mỗi dự án để mang đến những trải nghiệm "<strong>Awesome</strong>" nhất cho end-user.<br><br>
+          Với hai dòng dịch vụ chính là "<strong>Creative & Engineering</strong>" và "<strong>Talent Platform</strong>", Sun* đã và đang từng bước cùng công nghệ tạo ra những giá trị tốt đẹp cho xã hội.
+        </div>
+        <div class="business__image-wrapper">
+          <img src="https://sun-asterisk.vn/wp-content/uploads/2020/11/intro-business.png" alt="Sun* Business Intro" class="business__image">
+        </div>
+      </div>
+
+      <!-- Core Offerings Grid -->
+      <div class="business__grid">
+        
+        <!-- Card 1 -->
+        <div class="business-card business-card--dark business-card--active">
+          <div>
+            <div class="business-card__sub-title">Digital Creative Studio</div>
+            <h3 class="business-card__title">Creative &amp; Engineering</h3>
+            <p class="business-card__desc">Đội ngũ nhân lực dồi dào chuyên về công nghệ, thiết kế và kinh doanh sẵn sàng hiện thực hóa mọi ý tưởng đột phá.</p>
+          </div>
+          <a href="https://sun-asterisk.vn/creative-engineering/" target="_blank" class="business-card__btn">
+            Tìm hiểu thêm
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="business-card business-card--light">
+          <div>
+            <div class="business-card__sub-title">Digital Creative Studio</div>
+            <h3 class="business-card__title">Talent Platform</h3>
+            <p class="business-card__desc">Các giải pháp nguồn nhân lực công nghệ thông tin hỗ trợ tăng trưởng kinh doanh bền vững cho các doanh nghiệp toàn cầu.</p>
+          </div>
+          <a href="https://sun-asterisk.vn/talent-platform/" target="_blank" class="business-card__btn">
+            Tìm hiểu thêm
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PROJECTS & STATS SECTION (.projects & .stats)
+       ========================================== -->
+  <section class="projects" id="du-an">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="projects__layout">
+        
+        <!-- Left Side Stats -->
+        <div>
+          <div class="section-header">
+            <h2 class="section-header__title">Dự án của chúng tôi</h2>
+          </div>
+
+          <div class="stats">
+            <div class="stats__item">
+              <div class="stats__number-wrap">
+                <span class="stats__number" data-target="200">0</span>
+                <span class="stats__label">++</span>
+              </div>
+              <div class="stats__title">Đối tác tin cậy toàn cầu</div>
+            </div>
+
+            <div class="stats__item">
+              <div class="stats__number-wrap">
+                <span class="stats__number" data-target="300">0</span>
+                <span class="stats__label">++</span>
+              </div>
+              <div class="stats__title">Dịch vụ &amp; Sản phẩm được hỗ trợ</div>
+            </div>
+          </div>
+
+          <a href="https://sun-asterisk.vn/du-an/" target="_blank" class="button button--black mt-4">
+            Xem tất cả dự án
+            <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </a>
+        </div>
+
+        <!-- Right Side Projects Grid -->
+        <div class="projects__grid">
+          
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-card__image-wrapper">
+              <img src="https://sun-asterisk.vn/wp-content/uploads/2021/03/zenkigen_01.png" alt="Dự án HARUTAKA" class="project-card__image">
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__company">Công ty TNHH ZENKIGEN</span>
+              <h3 class="project-card__title">Dự án HARUTAKA</h3>
+              <p class="project-card__desc">“HARUTAKA” cho phép các công ty và người tìm việc có thể phỏng vấn trên web hoặc trong video bất kể thời gian hay địa điểm nào.</p>
+              <a href="https://sun-asterisk.vn/project/du-an-harutaka/" target="_blank" class="project-card__btn">
+                Xem chi tiết
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-card__image-wrapper">
+              <img src="https://sun-asterisk.vn/wp-content/uploads/2021/03/Kurashicom.png" alt="Dự án KURASHICOM" class="project-card__image">
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__company">Kurashicom Inc</span>
+              <h3 class="project-card__title">Dự án KURASHICOM</h3>
+              <p class="project-card__desc">Phát triển Ứng dụng di động giúp hiện thực hóa phong cách sống theo ý muốn và cá nhân hóa trải nghiệm mua sắm người dùng.</p>
+              <a href="https://sun-asterisk.vn/project/du-an-kurashicom/" target="_blank" class="project-card__btn">
+                Xem chi tiết
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="project-card__image-wrapper">
+              <img src="https://sun-asterisk.vn/wp-content/uploads/2021/03/Untitled-1-3.png" alt="Dự án SSK" class="project-card__image">
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__company">Công ty TNHH SSK</span>
+              <h3 class="project-card__title">Dự án SSK</h3>
+              <p class="project-card__desc">Thử thách ứng dụng Sports Data để tiếp thêm năng lượng cho mọi người và nâng tầm trải nghiệm thể thao cho xã hội.</p>
+              <a href="https://sun-asterisk.vn/project/giai-dau-thong-minh-saai-12/" target="_blank" class="project-card__btn">
+                Xem chi tiết
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CAREER OPPORTUNITIES SECTION (.career)
+       ========================================== -->
+  <section class="career" id="co-hoi-nghe-nghiep">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="career__banner">
+        <div class="career__sub-title">Sun* Asterisk</div>
+        <h2 class="career__title">Cơ hội nghề nghiệp</h2>
+        <div class="career__quote">"Join us &amp; MAKE AWESOME THINGS THAT MATTER."</div>
+        <p class="career__desc">
+          Sun* luôn tìm kiếm những con người đam mê thử thách, sáng tạo để tạo nên những giá trị "Awesome". Cùng trở thành một phần của Sun* ngay hôm nay!
+        </p>
+        <a href="https://sun-asterisk.vn/co-hoi-nghe-nghiep/" target="_blank" class="button button--white">
+          Gia nhập đội ngũ Sun*
+          <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       WORKING ENVIRONMENT SECTION (.environment)
+       ========================================== -->
+  <section class="environment" id="moi-truong-lam-viec">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="environment__grid">
+        
+        <div>
+          <div class="section-header">
+            <h2 class="section-header__title">Môi trường làm việc</h2>
+          </div>
+
+          <ul class="environment__list">
+            <li class="environment__item">
+              <div class="environment__icon">✓</div>
+              <div>
+                <h4 class="environment__title">#ActiveChallenge</h4>
+                <p class="text-gray-600 text-sm mt-1">Chủ động tạo ra công việc thử thách liên tục cho bản thân để phát triển tiềm năng tối đa.</p>
+              </div>
+            </li>
+
+            <li class="environment__item">
+              <div class="environment__icon">✓</div>
+              <div>
+                <h4 class="environment__title">#ActiveLearn</h4>
+                <p class="text-gray-600 text-sm mt-1">Học tập trong một tổ chức có đầy đủ các thành tố: môi trường học tập, cơ hội học tập và năng lực học tập.</p>
+              </div>
+            </li>
+
+            <li class="environment__item">
+              <div class="environment__icon">✓</div>
+              <div>
+                <h4 class="environment__title">#ActiveJoy</h4>
+                <p class="text-gray-600 text-sm mt-1">Sống trong môi trường văn hóa hướng tới giá trị nhân văn, sẻ chia và mang lại hạnh phúc cho mọi người.</p>
+              </div>
+            </li>
+          </ul>
+
+          <a href="https://sun-asterisk.vn/chinh-sach-phuc-loi/" target="_blank" class="button button--black mt-8">
+            Xem chi tiết phúc lợi
+            <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+
+        <div class="environment__banner-wrapper">
+          <img src="https://sun-asterisk.vn/wp-content/uploads/2023/09/human-centered.png" alt="Môi trường làm việc Sun*" class="environment__image">
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CULTURE & NEWS SECTION (.news)
+       ========================================== -->
+  <section class="news" id="tin-tuc">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="flex items-center justify-between mb-12">
+        <div class="section-header mb-0">
+          <h2 class="section-header__title">Văn hóa - Sự kiện</h2>
+        </div>
+        <a href="https://news.sun-asterisk.com/vi" target="_blank" class="hidden md:inline-flex items-center gap-2 text-red-600 font-semibold hover:underline">
+          Xem tất cả bài viết
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+
+      <div class="news__grid">
+        
+        <!-- News Card 1 -->
+        <article class="news-card">
+          <div class="news-card__image-wrapper">
+            <img src="https://news.sun-asterisk.com/images/440x248/0975f17b-89f3-4eab-a4fd-33b55df9d80d.jpg" alt="Insurance SaaS" class="news-card__image">
+          </div>
+          <div class="news-card__content">
+            <h3 class="news-card__title">Dự án Insurance SaaS Development Support: Golang, VueJS trở thành “chất xúc tác” để Sunner vượt giới hạn</h3>
+            <p class="news-card__preview">“Đề bài càng hóc búa, càng hấp dẫn để xông pha”, “Ngôn ngữ mới không phải rào cản, mà chính là cơ hội để chứng minh năng lực”...</p>
+            <a href="https://news.sun-asterisk.com/vi/p/du-an-insurance-saas-development-support-golang-vuejs-tro-thanh-chat-xuc-tac-de-sunner-vuot-gioi-han-2Z0ebeNq6om" target="_blank" class="news-card__btn">
+              Xem chi tiết
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- News Card 2 -->
+        <article class="news-card">
+          <div class="news-card__image-wrapper">
+            <img src="https://news.sun-asterisk.com/images/440x248/7d926be4-e8c6-4b1b-b4a8-e0ccf52f362b.png" alt="Học tập và thực hành" class="news-card__image">
+          </div>
+          <div class="news-card__content">
+            <h3 class="news-card__title">6 tháng cùng chiến lược “Toàn Sun* học tập và thực hành liên tục", chúng ta đã có những kết quả như thế nào?</h3>
+            <p class="news-card__preview">Để nuôi dưỡng và phát triển mạnh mẽ văn hóa học tập, từ đó trở thành "Tổ chức học tập" (Learning Organization), Sun* đã đạt được nhiều cột mốc ấn tượng.</p>
+            <a href="https://news.sun-asterisk.com/vi/p/6-thang-cung-chien-luoc-toan-sun-hoc-tap-va-thuc-hanh-lien-tuc-chung-ta-da-co-nhung-ket-qua-nhu-the-nao-KpVx5xvll8e" target="_blank" class="news-card__btn">
+              Xem chi tiết
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- News Card 3 (Hot) -->
+        <article class="news-card">
+          <div class="news-card__image-wrapper">
+            <img src="https://news.sun-asterisk.com/images/440x248/1f30a6d8-342c-4186-a9a0-d6190995cc81.png" alt="TechUp #2 AI" class="news-card__image">
+            <span class="news-card__badge">Tin nóng</span>
+          </div>
+          <div class="news-card__content">
+            <h3 class="news-card__title">Hé lộ bộ tài liệu độc quyền siêu HOT và giải đáp toàn bộ thắc mắc kỹ thuật sau TechUp #2</h3>
+            <p class="news-card__preview">Sự kiện công nghệ "Ứng dụng AI để cải tiến hiệu suất lập trình và tạo ra sản phẩm đột phá" mang lại nhiều giá trị ấn tượng cho cộng đồng dev.</p>
+            <a href="https://news.sun-asterisk.com/vi/p/he-lo-bo-tai-lieu-doc-quyen-sieu-hot-va-giai-dap-toan-bo-thac-mac-ky-thuat-sau-techup-2-pkAB0N2JwGr" target="_blank" class="news-card__btn">
+              Xem chi tiết
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER BLOCK (.footer)
+       ========================================== -->
+  <footer class="footer">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="footer__grid">
+        
+        <!-- Brand Info -->
+        <div>
+          <img src="https://sun-asterisk.vn/wp-content/uploads/2020/10/logo-sun@2x.png" alt="Sun* Logo Footer" class="footer__logo">
+          <p class="footer__motto">Digital Creative Studio mang đến những trải nghiệm "Awesome" cho xã hội.</p>
+        </div>
+
+        <!-- Col 1 -->
+        <div>
+          <h4 class="footer__title">Chúng tôi là ai?</h4>
+          <ul class="footer__list">
+            <li><a href="https://sun-asterisk.vn/ve-chung-toi/" target="_blank" class="footer__link">Tầm nhìn, sứ mệnh</a></li>
+            <li><a href="https://sun-asterisk.vn/ve-chung-toi/" target="_blank" class="footer__link">Giá trị cốt lõi</a></li>
+            <li><a href="https://sun-asterisk.vn/ve-chung-toi/" target="_blank" class="footer__link">Ý nghĩa tên Sun*</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2 -->
+        <div>
+          <h4 class="footer__title">Chúng tôi làm gì?</h4>
+          <ul class="footer__list">
+            <li><a href="https://sun-asterisk.vn/creative-engineering/" target="_blank" class="footer__link">Creative &amp; Engineering</a></li>
+            <li><a href="https://sun-asterisk.vn/talent-platform/" target="_blank" class="footer__link">Talent Platform</a></li>
+            <li><a href="https://sun-asterisk.vn/du-an/" target="_blank" class="footer__link">Dự án thành công</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div>
+          <h4 class="footer__title">Liên hệ &amp; Tin tức</h4>
+          <ul class="footer__list">
+            <li><a href="https://sun-asterisk.vn/van-hoa-su-kien/" target="_blank" class="footer__link">Văn hóa - Sự kiện</a></li>
+            <li><a href="https://sun-asterisk.vn/co-hoi-nghe-nghiep/" target="_blank" class="footer__link">Tuyển dụng Sunner</a></li>
+            <li class="text-sm text-gray-400 mt-2">SĐT: (+84) 24 3795 5417</li>
+            <li class="text-sm text-gray-400">Email: hr@sun-asterisk.com</li>
+          </ul>
+        </div>
+
+        <!-- Offices -->
+        <div>
+          <h4 class="footer__title">Văn phòng</h4>
+          
+          <div class="footer__office-item">
+            <div class="footer__office-city">Hà Nội</div>
+            <div class="footer__office-desc">Tầng 13, Keangnam Landmark 72, Nam Từ Liêm.</div>
+          </div>
+
+          <div class="footer__office-item">
+            <div class="footer__office-city">Đà Nẵng</div>
+            <div class="footer__office-desc">Tầng 4, 16 Lý Thường Kiệt, Q. Hải Châu.</div>
+          </div>
+
+          <div class="footer__office-item">
+            <div class="footer__office-city">TP. Hồ Chí Minh</div>
+            <div class="footer__office-desc">Tầng 9-10, L’Mak Long Tower, Bình Thạnh.</div>
+          </div>
+
+          <div class="footer__office-item">
+            <div class="footer__office-city">Quốc tế</div>
+            <div class="footer__office-desc">Tokyo (Nhật Bản) | Cebu (Philippines)</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer__bottom">
+        <div class="footer__copyright">
+          © 2026 Sun* Inc. All rights reserved. Designed with BEM &amp; Tailwind CSS.
+        </div>
+        <div class="footer__socials">
+          <a href="https://www.facebook.com/SunAsteriskVietnam" target="_blank" class="footer__social-icon" aria-label="Facebook">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/sun-asterisk" target="_blank" class="footer__social-icon" aria-label="LinkedIn">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-red-700 transition-all duration-300 opacity-0 pointer-events-none z-40" aria-label="Back to Top">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+  </button>
+
+  <!-- Interactive JavaScript -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "sun-asterisk-landing-page",
+  "version": "1.0.0",
+  "description": "Clone giao diện trang chủ Sun* Asterisk Vietnam sử dụng HTML5, Tailwind CSS và BEM CSS methodology.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "sun-asterisk",
+    "bem",
+    "tailwind",
+    "javascript",
+    "landing-page"
+  ],
+  "author": "Antigravity",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}

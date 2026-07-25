@@ -1,201 +1,80 @@
-📘 Git là gì?
+# Sun* Asterisk Vietnam Landing Page Clone 🚀
 
-Git là hệ thống quản lý phiên bản (Version Control System) giúp:  
+Dự án clone giao diện trang chủ **Sun* Asterisk Vietnam** ([https://sun-asterisk.vn/](https://sun-asterisk.vn/)) được xây dựng kết hợp **HTML5**, **Tailwind CSS**, **BEM CSS Methodology** và **JavaScript Vanilla**.
 
-Quản lý lịch sử thay đổi của source code.   
-Làm việc nhóm.  
-Khôi phục phiên bản cũ.   
-Đồng bộ code với GitHub/GitLab.   
-📂 Git và GitHub khác nhau thế nào?   
-Git	
-Công cụ quản lý phiên bản  
-Chạy trên máy    
-Không cần Internet  
-GitHub  
-Nơi lưu repository trên Internet  
-Chạy trên cloud  
-Cần Internet để đồng bộ     
-📁 Repository (Repo)  
-Là thư mục được Git quản lý.   
-Ví dụ:  
-GitLearning/   
-│   
-├── README.md   
-├── main.py   
-└── .git/   
+---
 
-Thư mục .git chứa toàn bộ lịch sử commit.   
+## 📌 Công nghệ sử dụng (Tech Stack)
 
-🔄 Vòng đời của file trong Git  
-Working Directory  
-        │  
-     git add  
-        ▼  
-Staging Area  
-        │  
-   git commit  
-        ▼       
-Local Repository  
-        │   
-    git push  
-        ▼                 
-Remote Repository (GitHub)   
- 
-📌 Khởi tạo Git  
-git init
-Tạo thư mục .git. 
-Kiểm tra:
-git status
+- **HTML5**: Cấu trúc ngữ nghĩa chuẩn SEO, responsive.
+- **Tailwind CSS**: Utility-first CSS framework hỗ trợ layout & responsive nhanh chóng.
+- **BEM Methodology**: Quy chuẩn đặt tên CSS (`Block__Element--Modifier`) giúp mã nguồn CSS rõ ràng, dễ bảo trì và phân cấu trúc vững chắc.
+- **JavaScript (Vanilla JS)**: Xử lý tương tác Client-side (Sticky navbar, Animated counter, Hover state, Mobile Drawer menu, Back-to-top).
+- **Vite**: Công cụ Dev Server thế hệ mới giúp khởi chạy và xem thay đổi tức thì (Hot Reload).
 
-📌 Kiểm tra trạng thái   
-git status  
-Hiển thị:  
-file mới  
-file đã sửa  
-file đã stage  
-branch hiện tại  
+---
 
-📌 Thêm file vào Staging  
-Thêm 1 file: git add README.md  
-Thêm tất cả: git add .  
+## 📂 Cấu trúc thư mục dự án
 
-📌 Commit  
-git commit -m "Add README"  
-Lưu snapshot của project. 
- 
-📌 Xem lịch sử commit  
-git log  
-Rút gọn: git log --oneline  
+```text
+d:\GitLearning\src
+├── index.html        # Trang HTML5 chính chứa toàn bộ bố cục trang web
+├── css/
+│   └── style.css     # File CSS tùy chỉnh tuân thủ nghiêm ngặt chuẩn BEM
+├── js/
+│   └── main.js        # File JavaScript chứa các xử lý tương tác giao diện
+├── package.json      # File cấu hình dự án & quản lý lệnh npm (npm run dev)
+├── .gitignore        # Cấu hình bỏ qua các thư mục node_modules, build... khi dùng Git
+└── README.md         # Tài liệu hướng dẫn cài đặt và sử dụng dự án
+```
 
-📌 Sửa commit gần nhất  
-Chỉ sửa message: git commit --amend  
-Sửa cả file đã thay đổi: git commit --amend -a  
+---
 
-📌 Branch  
-Xem branch: git branch  
-Tạo branch: git branch feature/login  
+## 🚀 Hướng dẫn khởi chạy dự án
 
-Chuyển branch: git switch feature/login  
-Hoặc: git checkout feature/login  
-Tạo và chuyển luôn: git switch -c feature/login  
+### 1. Cài đặt thư viện phụ trợ (Chỉ làm lần đầu)
+Mở cửa sổ dòng lệnh (Terminal/PowerShell) tại thư mục dự án và chạy:
+```bash
+npm install
+```
 
-📌 Merge  
-Đứng ở branch main: git merge feature/login    
-  
-📌 Xóa branch  
-git branch -d feature/login  
+### 2. Chạy môi trường phát triển (Dev Server)
+Để bắt đầu chạy dự án với tính năng tự động tải lại khi chỉnh sửa code:
+```bash
+npm run dev
+```
+Sau khi chạy lệnh, trình duyệt sẽ tự động mở hoặc bạn có thể truy cập địa chỉ: `http://localhost:5173`.
 
-📌 Remote
-Xem remote: git remote -v  
-Thêm remote: git remote add origin https://github.com/user/repo.git  
-Đổi remote: git remote set-url origin https://github.com/user/repo.git  
-Xóa remote: git remote remove origin  
+### 3. Đóng gói cho Production (Build)
+Khi muốn đóng gói website ra các file tĩnh hoàn chỉnh:
+```bash
+npm run build
+```
+Các file sau khi build sẽ nằm trong thư mục `dist/`.
 
-📌 Push  
-Đẩy commit lên GitHub: git push origin main  
-Lần đầu: git push -u origin main  
+---
 
-📌 Fetch  
-Lấy dữ liệu từ GitHub nhưng chưa merge: git fetch  
+## 🎨 Cấu trúc BEM CSS tiêu biểu trong dự án
 
-📌 Pull  
-Lấy dữ liệu và merge: git pull  
-Thực chất:  
-git fetch + git merge  
+Dự án được phân chia thành các Block BEM độc lập:
 
-📌 Clone  
-Tải project từ GitHub: git clone https://github.com/user/project.git  
+- **`.header`**: Thanh điều hướng chính
+  - `.header__logo`: Logo thương hiệu
+  - `.header__nav-list`: Danh sách liên kết điều hướng
+  - `.header__nav-link--active`: Trạng thái menu đang kích hoạt
+- **`.hero`**: Banner video đầu trang
+  - `.hero__video-wrapper`: Container video nền
+  - `.hero__title`: Tiêu đề chính
+- **`.business`**: Lĩnh vực kinh doanh
+  - `.business-card`: Thẻ bài viết dịch vụ
+  - `.business-card--dark` / `.business-card--light`: Modifier thay đổi màu thẻ
+- **`.stats`**: Khối thống kê con số
+  - `.stats__number`: Số đếm nhảy tự động khi cuộn tới
+- **`.project-card`**: Thẻ hiển thị dự án tiêu biểu
+- **`.news-card`**: Thẻ bài viết tin tức & sự kiện
+- **`.footer`**: Chân trang hệ thống văn phòng toàn cầu
 
-📌 Diff  
-Xem thay đổi: git diff  
-So sánh commit: git diff HEAD~1  
+---
 
-📌 Restore  
-Bỏ thay đổi file: git restore file.txt  
-Bỏ stage: git restore --staged file.txt  
-
-📌 Reset  
-Quay commit, Giữ file: git reset --soft HEAD~1  
-Giữ code nhưng bỏ stage: git reset --mixed HEAD~1  
-Xóa luôn code: git reset --hard HEAD~1  
-
-📌 Revert  
-Tạo commit đảo ngược: git revert HEAD  
-Không làm mất lịch sử.  
-
-📌 Stash  
-Lưu tạm thay đổi: git stash  
-Xem stash: git stash list  
-Khôi phục: git stash pop  
-
-📌 .gitignore  
-Bỏ qua file  
-Ví dụ:  
-node_modules/  
-*.log  
-.env  
- 
-📌 SSH   
-Tạo key: ssh-keygen -t ed25519 -C "email@gmail.com"    
-
-Kiểm tra: ssh -T git@github.com    
-
-📌 HTTPS  
-Remote: https://github.com/user/project.git    
-Đăng nhập bằng GitHub + Personal Access Token (PAT) khi cần.   
-
-📌 SSH  
-Remote: git@github.com:user/project.git   
-Xác thực bằng SSH key.  
-
-📌 Các lệnh cấu hình  
- 
-Tên: git config --global user.name "Nguyen Van A"   
-Email: git config --global user.email "abc@gmail.com"   
-Xem cấu hình: git config --list   
-
-📌 Chu trình làm việc hằng ngày   
-git pull 
-↓  
-Sửa code 
-↓  
-git status 
-↓  
-git add . 
-↓  
-git commit -m "..." 
-↓  
-git push 
-
-📌 Những lỗi thường gặp 
-Permission denied: Không có quyền push hoặc xác thực sai tài khoản GitHub.  
-nothing to commit: Không có thay đổi để commit.   
-non-fast-forward: Remote có commit mới. Giải quyết:    
-git pull   
-git push   
-merge conflict   
-Hai người sửa cùng một đoạn code. Giải quyết:   
-Chỉnh file.  
-git add  
-git commit   
-
-🎯 Bộ lệnh Git cơ bản cần nhớ 
-git init   
-git clone   
-git status   
-git add .   
-git commit -m "..."   
-git log --oneline   
-git branch   
-git switch   
-git merge   
-git remote -v   
-git pull   
-git push   
-git fetch   
-git diff   
-git restore   
-git reset   
-git revert   
-git stash   
-git tag  
+## 📝 Giấy phép (License)
+Dự án được tạo dựng cho mục đích học tập và tham khảo giao diện (Educational Purpose).
