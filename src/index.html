@@ -10,10 +10,10 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts: Roboto & Open Sans -->
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
   <!-- Custom BEM Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -108,7 +108,7 @@
 
     <div class="hero__content">
       <span class="hero__badge">Digital Creative Studio</span>
-      <h1 class="hero__title">MAKE AWESOME THINGS THAT MATTER</h1>
+      <h1 class="hero__title">MAKE <span class="text-gradient">AWESOME THINGS</span> THAT MATTER</h1>
       <p class="hero__subtitle">Sun* là nơi kiến tạo những giải pháp công nghệ bứt phá, mang đến trải nghiệm tuyệt vời cho cộng đồng và xã hội.</p>
       
       <div class="hero__actions">
@@ -117,6 +117,13 @@
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </a>
         <a href="#co-hoi-nghe-nghiep" class="button button--white">Gia nhập Sun*</a>
+      </div>
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <div class="hero__scroll-indicator">
+      <div class="mouse-icon">
+        <span class="wheel"></span>
       </div>
     </div>
   </section>
@@ -223,6 +230,11 @@
             </div>
             <div class="project-card__content">
               <span class="project-card__company">Công ty TNHH ZENKIGEN</span>
+              <div class="project-card__badge-wrapper">
+                <span class="project-card__badge project-card__badge--red">SaaS</span>
+                <span class="project-card__badge">Web Platform</span>
+                <span class="project-card__badge">AI HR</span>
+              </div>
               <h3 class="project-card__title">Dự án HARUTAKA</h3>
               <p class="project-card__desc">“HARUTAKA” cho phép các công ty và người tìm việc có thể phỏng vấn trên web hoặc trong video bất kể thời gian hay địa điểm nào.</p>
               <a href="https://sun-asterisk.vn/project/du-an-harutaka/" target="_blank" class="project-card__btn">
@@ -239,6 +251,11 @@
             </div>
             <div class="project-card__content">
               <span class="project-card__company">Kurashicom Inc</span>
+              <div class="project-card__badge-wrapper">
+                <span class="project-card__badge project-card__badge--red">Mobile App</span>
+                <span class="project-card__badge">E-Commerce</span>
+                <span class="project-card__badge">UX/UI</span>
+              </div>
               <h3 class="project-card__title">Dự án KURASHICOM</h3>
               <p class="project-card__desc">Phát triển Ứng dụng di động giúp hiện thực hóa phong cách sống theo ý muốn và cá nhân hóa trải nghiệm mua sắm người dùng.</p>
               <a href="https://sun-asterisk.vn/project/du-an-kurashicom/" target="_blank" class="project-card__btn">
@@ -255,6 +272,11 @@
             </div>
             <div class="project-card__content">
               <span class="project-card__company">Công ty TNHH SSK</span>
+              <div class="project-card__badge-wrapper">
+                <span class="project-card__badge project-card__badge--red">Sports Data</span>
+                <span class="project-card__badge">AI Analytics</span>
+                <span class="project-card__badge">IoT</span>
+              </div>
               <h3 class="project-card__title">Dự án SSK</h3>
               <p class="project-card__desc">Thử thách ứng dụng Sports Data để tiếp thêm năng lượng cho mọi người và nâng tầm trải nghiệm thể thao cho xã hội.</p>
               <a href="https://sun-asterisk.vn/project/giai-dau-thong-minh-saai-12/" target="_blank" class="project-card__btn">
@@ -306,7 +328,11 @@
 
           <ul class="environment__list">
             <li class="environment__item">
-              <div class="environment__icon">✓</div>
+              <div class="environment__icon">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
               <div>
                 <h4 class="environment__title">#ActiveChallenge</h4>
                 <p class="text-gray-600 text-sm mt-1">Chủ động tạo ra công việc thử thách liên tục cho bản thân để phát triển tiềm năng tối đa.</p>
@@ -314,7 +340,11 @@
             </li>
 
             <li class="environment__item">
-              <div class="environment__icon">✓</div>
+              <div class="environment__icon">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.58 0 5 1.253m0-13C13.82 5.477 15.406 5 17.17 5c1.753 0 3.339.477 4.5 1.253v13C20.485 18.477 18.9 18 17.17 18c-1.765 0-3.34.477-4.5 1.253"></path>
+                </svg>
+              </div>
               <div>
                 <h4 class="environment__title">#ActiveLearn</h4>
                 <p class="text-gray-600 text-sm mt-1">Học tập trong một tổ chức có đầy đủ các thành tố: môi trường học tập, cơ hội học tập và năng lực học tập.</p>
@@ -322,7 +352,11 @@
             </li>
 
             <li class="environment__item">
-              <div class="environment__icon">✓</div>
+              <div class="environment__icon">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
               <div>
                 <h4 class="environment__title">#ActiveJoy</h4>
                 <p class="text-gray-600 text-sm mt-1">Sống trong môi trường văn hóa hướng tới giá trị nhân văn, sẻ chia và mang lại hạnh phúc cho mọi người.</p>
