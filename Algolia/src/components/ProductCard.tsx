@@ -1,6 +1,5 @@
 import React from 'react';
-import { Star } from 'lucide-react';
-import { Product } from '../mockData';
+import type { Product } from '../mockData';
 
 interface ProductCardProps {
   product: Product;
@@ -8,28 +7,26 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <div className="flex flex-col sm:flex-row gap-4 p-4 border border-transparent hover:border-gray-200 hover:shadow-lg transition-all rounded-lg bg-white">
-      <div className="w-full sm:w-48 h-48 flex-shrink-0">
+    <div className="flex flex-col group h-full">
+      <div className="w-full h-40 sm:h-48 mb-4 relative flex items-center justify-center p-2">
         <img 
           src={product.image} 
           alt={product.name} 
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain mix-blend-multiply"
         />
       </div>
       
-      <div className="flex-grow flex flex-col justify-between">
-        <div>
-          <div className="text-xs text-gray-500 uppercase font-semibold mb-1 tracking-wider">{product.category}</div>
-          <h2 className="text-lg font-bold text-gray-900 mb-2 leading-tight hover:text-blue-600 cursor-pointer">{product.name}</h2>
-          <p className="text-sm text-gray-600 mb-4 line-clamp-2">{product.description}</p>
-        </div>
+      <div className="flex-grow flex flex-col">
+        <div className="text-[10px] text-gray-500 uppercase font-bold mb-1.5 tracking-wider">{product.category}</div>
+        <h2 className="text-[13px] font-bold text-gray-900 mb-1.5 leading-snug group-hover:text-blue-600 line-clamp-3 cursor-pointer">{product.name}</h2>
+        <p className="text-xs text-gray-600 mb-3 line-clamp-2">{product.description}</p>
         
-        <div className="flex items-end justify-between mt-4">
-          <div className="flex items-center gap-1 bg-gray-50 border border-yellow-400 text-yellow-600 px-2 py-0.5 rounded text-xs font-semibold">
-            <Star className="w-3 h-3 fill-current" />
+        <div className="mt-auto flex items-center gap-3">
+          <div className="text-sm font-bold text-gray-900">${product.price.toFixed(2)}</div>
+          <div className="flex items-center gap-1 border border-[#ffb400] text-[#ffb400] px-1.5 py-0.5 rounded text-[10px] font-bold">
+            <svg className="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <span>{product.rating}</span>
           </div>
-          <div className="text-xl font-bold text-gray-900">${product.price.toLocaleString()}</div>
         </div>
       </div>
     </div>

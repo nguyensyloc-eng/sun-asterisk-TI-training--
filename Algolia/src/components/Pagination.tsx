@@ -1,28 +1,44 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export const Pagination: React.FC = () => {
+interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}
+
+export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
   return (
-    <div className="flex justify-center items-center gap-2 mt-12 mb-16">
-      <button className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 disabled:opacity-50" disabled>
-        <ChevronLeft className="w-5 h-5" />
+    <div className="flex justify-center items-center gap-1.5 mt-12 mb-16">
+      <button 
+        className="w-8 h-8 rounded flex items-center justify-center text-gray-500 bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed text-lg font-medium" 
+        disabled={currentPage === 1}
+        onClick={() => onPageChange(currentPage - 1)}
+      >
+        &lsaquo;
       </button>
       
-      {[1, 2, 3, 4, 5, '...', 7].map((page, i) => (
+      {pages.map((page) => (
         <button 
-          key={i}
-          className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
-            page === 1 
-              ? 'bg-blue-600 text-white shadow-md' 
-              : 'text-gray-700 hover:bg-gray-100'
+          key={page}
+          onClick={() => onPageChange(page)}
+          className={`w-8 h-8 rounded flex items-center justify-center text-sm font-medium transition-colors ${
+            page === currentPage 
+              ? 'bg-[#ffb400] text-white' 
+              : 'text-gray-700 bg-gray-100 hover:bg-gray-200'
           }`}
         >
           {page}
         </button>
       ))}
 
-      <button className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100">
-        <ChevronRight className="w-5 h-5" />
+      <button 
+        className="w-8 h-8 rounded flex items-center justify-center text-gray-500 bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed text-lg font-medium"
+        disabled={currentPage === totalPages || totalPages === 0}
+        onClick={() => onPageChange(currentPage + 1)}
+      >
+        &rsaquo;
       </button>
     </div>
   );
