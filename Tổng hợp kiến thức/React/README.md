@@ -1,5 +1,5 @@
 
-## Phần 1. Getting Started with ReactJS
+## Phần 1. Giới thiệu về ReactJS
 
 ### 1. Introducing ReactJS
 ReactJS là một thư viện Javascript được phát triển bởi Facebook và Instagram. React sử dụng khái niệm **Virtual DOM** để tự động cập nhật và render lại các nhánh node (subtree) một cách chọn lọc dựa trên sự thay đổi của trạng thái (state).
