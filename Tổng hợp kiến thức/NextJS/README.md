@@ -1,5 +1,5 @@
 
-## 1. Next.js Fundamentals (Cơ bản về Next.js)
+## 1. Giới thiệu về Next.js
 
 ### 1.1. What is Next.js? (Next.js là gì?)
 - **Định nghĩa:** Next.js là một React Framework mạnh mẽ dùng để xây dựng các ứng dụng web full-stack (Full-web applications).
