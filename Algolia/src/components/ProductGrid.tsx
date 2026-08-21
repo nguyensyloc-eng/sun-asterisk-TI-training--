@@ -19,7 +19,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ currentPage, setCurren
   return (
     <div className="flex-grow flex flex-col min-h-full">
       {/* Top Controls */}
-      <div className="flex justify-end items-center mb-6 text-sm text-gray-600 border-b border-gray-100 pb-4">
+      <div className="flex justify-end items-center mb-6 text-sm text-gray-900 font-bold pb-2">
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-1 cursor-pointer hover:text-gray-900">
             <span className="whitespace-nowrap text-xs">Sort by featured</span>

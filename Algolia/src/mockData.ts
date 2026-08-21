@@ -19,7 +19,7 @@ const baseProducts: Product[] = [
     category: "SMART HOME",
     price: 49.99,
     rating: 4,
-    image: "https://images.unsplash.com/photo-1550505194-436f9a0c7760?auto=format&fit=crop&q=80&w=400",
+    image: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&q=80&w=400",
     freeShipping: true,
   },
   {
@@ -30,7 +30,7 @@ const baseProducts: Product[] = [
     category: "VIDEO GAMES",
     price: 20.00,
     rating: 4,
-    image: "https://images.unsplash.com/photo-1605901309584-818e25960b8f?auto=format&fit=crop&q=80&w=400",
+    image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&q=80&w=400",
     freeShipping: true,
   },
   {
@@ -152,15 +152,15 @@ export const mockProducts: Product[] = [
 ];
 
 export const mockCategories = [
-  { name: "Appliances", count: 40 },
-  { name: "Audio", count: 207 },
-  { name: "Cameras & Camcorders", count: 59 },
-  { name: "Car Electronics & GPS", count: 10 },
-  { name: "Cell Phones", count: 60 },
-  { name: "Computers & Tablets", count: 173 },
-  { name: "Health, Fitness & Beauty", count: 9 },
-  { name: "Office & School Supplies", count: 95 },
-  { name: "TV & Home Theater", count: 139 },
+  { name: "Appliances", count: 13768 },
+  { name: "Computers & Tablets", count: 9858 },
+  { name: "Cell Phones", count: 8952 },
+  { name: "Cameras & Camcorders", count: 4794 },
+  { name: "Audio", count: 4405 },
+  { name: "Car Electronics & GPS", count: 3508 },
+  { name: "TV & Home Theater", count: 3273 },
+  { name: "Health, Fitness & Beauty", count: 2271 },
+  { name: "Office & School Supplies", count: 1853 },
 ];
 
 export const mockBrands = [
