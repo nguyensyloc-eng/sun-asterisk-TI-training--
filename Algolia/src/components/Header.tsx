@@ -1,7 +1,12 @@
 import React from 'react';
 import { Search } from 'lucide-react';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ searchQuery, setSearchQuery }) => {
   return (
     <header className="bg-[#ffb400] py-16 px-4 sm:px-6 lg:px-8 text-white relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto relative z-10 flex flex-col items-center">
@@ -29,6 +34,8 @@ export const Header: React.FC = () => {
               type="text" 
               placeholder="Product, brand, color, ..." 
               className="flex-grow h-full px-2 text-gray-900 focus:outline-none text-[22px] font-light placeholder-gray-400"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
         </div>

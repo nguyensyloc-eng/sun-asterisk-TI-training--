@@ -7,14 +7,29 @@ interface ProductGridProps {
   currentPage: number;
   setCurrentPage: (page: number) => void;
   itemsPerPage: number;
+  searchQuery: string;
 }
 
-export const ProductGrid: React.FC<ProductGridProps> = ({ currentPage, setCurrentPage, itemsPerPage }) => {
-  const totalItems = mockProducts.length;
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
+export const ProductGrid: React.FC<ProductGridProps> = ({ currentPage, setCurrentPage, itemsPerPage, searchQuery }) => {
+  const filteredProducts = React.useMemo(() => {
+    if (!searchQuery.trim()) return mockProducts;
+    const query = searchQuery.toLowerCase();
+    return mockProducts.filter(p => 
+      p.name.toLowerCase().includes(query) ||
+      p.brand.toLowerCase().includes(query) ||
+      p.category.toLowerCase().includes(query)
+    );
+  }, [searchQuery]);
+
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, setCurrentPage]);
+
+  const totalItems = filteredProducts.length;
+  const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
   
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentProducts = mockProducts.slice(startIndex, startIndex + itemsPerPage);
+  const currentProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <div className="flex-grow flex flex-col min-h-full">
