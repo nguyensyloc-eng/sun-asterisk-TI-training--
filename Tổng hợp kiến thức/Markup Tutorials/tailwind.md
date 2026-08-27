@@ -1,1488 +1,882 @@
+## 01. Bootstrap là gì?
 
-## 1. Introduction to Bootstrap 4
-
-### 1.1. Definitions (Định nghĩa)
-- **Bootstrap** là một mã nguồn mở và là một framework hoàn toàn miễn phí dùng để xây dựng trang web và các ứng dụng web.
-- Đây là framework HTML, CSS và JavaScript phổ biến nhất hiện nay để phát triển các dự án web có giao diện thích ứng (**responsive**) và ưu tiên thiết bị di động (**mobile-first**).
-- **Triết lý:** *"One Framework, Every Device"* (Một Framework, Mọi Thiết Bị) - Giao diện tự động tối ưu hiển thị mượt mà trên tất cả các dòng thiết bị từ điện thoại di động, máy tính bảng cho đến máy tính để bàn.
-
-### 1.2. Why Use Bootstrap? (Tại sao nên sử dụng Bootstrap?)
-- **Dễ sử dụng (Easy to use):** Bất kỳ ai chỉ cần có kiến thức cơ bản về HTML và CSS đều có thể nhanh chóng làm quen và bắt đầu xây dựng giao diện với Bootstrap.
-- **Tính năng thích ứng vượt trội (Responsive features):** Hệ thống CSS responsive tích hợp sẵn tự động co giãn kích thước linh hoạt theo thiết bị của người dùng.
-- **Tiếp cận ưu tiên di động (Mobile-first approach):** Các lớp thiết kế mặc định tối ưu hóa cho màn hình di động trước tiên, sau đó mới mở rộng ra các màn hình lớn hơn.
-- **Tương thích trình duyệt rộng rãi (Browser compatibility):** Hỗ trợ hoạt động ổn định trên tất cả các trình duyệt hiện đại phổ biến bao gồm Chrome, Firefox, Internet Explorer (từ bản 10 trở lên), Safari, và Opera.
-
-### 1.3. Bootstrap 3 vs. Bootstrap 4 (So sánh phiên bản)
-- **Bootstrap 4** mang lại nhiều cải tiến vượt bậc so với phiên bản Bootstrap 3 tiền nhiệm:
-  - Cung cấp các thành phần giao diện mới (Components), biểu mẫu định kiểu nhanh hơn, nhẹ hơn và hỗ trợ responsive mượt mà hơn.
-  - Chuyển đổi từ hệ thống định vị phao nổi (Float) sang công nghệ Flexbox hiện đại để chia bố cục.
-- **Hỗ trợ trình duyệt:** Bootstrap 4 hỗ trợ các phiên bản phát hành ổn định mới nhất của tất cả trình duyệt và nền tảng lớn. 
-- *Lưu ý:* Kể từ phiên bản Bootstrap 4 trở đi, trình duyệt **Internet Explorer 9 trở xuống sẽ không còn được hỗ trợ**.
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Bootstrap là một **CSS/HTML/JS Framework** mã nguồn mở miễn phí, được thiết kế để đẩy nhanh quá trình phát triển web (Rapid Web Development). 
+*   **Mobile-First Approach:** Mọi thiết kế mặc định của Bootstrap đều ưu tiên cho thiết bị di động, sau đó mở rộng dần ra màn hình lớn.
+*   **Sẵn sàng Responsive:** Tự động co giãn mượt mà trên mọi thiết bị nhờ hệ thống Grid thông minh.
+*   **Tiết kiệm thời gian:** Cung cấp sẵn hàng trăm class tiện ích và component hoàn chỉnh giúp bạn không phải viết lại từ đầu.
 
 ---
 
-## 2. Bootstrap 4 Grid System
+## 02. Cách nhúng Bootstrap
 
-Hệ thống lưới (Grid System) là xương sống của Bootstrap giúp chia và sắp xếp bố cục trang web thành các hàng và cột linh hoạt.
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Có 2 cách chính để đưa Bootstrap vào dự án của bạn:
+1.  **CDN (Content Delivery Network - Khuyên dùng cho test & dự án nhỏ):** Nhúng trực tiếp đường dẫn file CSS và JavaScript từ máy chủ đám mây vào thẻ `<head>` và trước thẻ đóng `<body>`.
+2.  **Download / NPM:** Tải mã nguồn về hoặc cài đặt qua npm (`npm i bootstrap`) để tự chủ file khi làm dự án thực tế lớn.
 
-### 2.1. Khái quát về hệ thống lưới (Grid Overview)
-1. **Quy tắc 12 cột:** Hệ thống lưới của Bootstrap cho phép chia chiều rộng của trang web tối đa thành **12 cột** chạy dọc màn hình.
-2. **Khả năng thích ứng (Responsive):** Lưới của Bootstrap có tính năng thích ứng cao, các cột dữ liệu sẽ tự động sắp xếp lại hoặc xếp chồng lên nhau tùy thuộc vào kích thước màn hình thiết bị của người dùng.
-3. **Gộp cột linh hoạt:** Nếu bạn không muốn sử dụng 12 cột đơn lẻ riêng biệt, bạn có thể gộp nhiều cột lại với nhau để tạo ra các cột lớn hơn có chiều rộng mong muốn:
-   - Gộp đều nhau: 3 cột lớn có độ rộng bằng 4 cột đơn (`span 4` + `span 4` + `span 4` = 12).
-   - Gộp bất đối xứng: 1 cột nhỏ độ rộng 4 cột đơn và 1 cột lớn độ rộng 8 cột đơn (`span 4` + `span 8` = 12).
-   - Chia đôi: 2 cột lớn có độ rộng bằng 6 cột đơn (`span 6` + `span 6` = 12).
+**💻 Code mẫu khung HTML chuẩn với CDN:**
+```html
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Starter Template</title>
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css)" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Xin chào Bootstrap!</h1>
 
----
+    <!-- Bootstrap 5 JS Bundle CDN (Bắt buộc cho Modal, Dropdown...) -->
+    <script src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js)"></script>
+  </body>
+</html>
+```
+## 03. Container & Layout - Khung chứa & Bố cục
 
-### 2.2. Grid Classes (Các lớp phân loại lưới)
-Hệ thống lưới của Bootstrap 4 sử dụng **5 lớp tiền tố (class prefixes)** đại diện cho 5 kích thước màn hình thiết bị khác nhau:
-- **`.col-`**: Dành cho thiết bị cực nhỏ (Extra small devices - chiều rộng màn hình **dưới 576px** như điện thoại màn hình dọc).
-- **`.col-sm-`**: Dành cho thiết bị nhỏ (Small devices - chiều rộng màn hình **từ 576px trở lên** như điện thoại màn hình ngang).
-- **`.col-md-`**: Dành cho thiết bị trung bình (Medium devices - chiều rộng màn hình **từ 768px trở lên** như máy tính bảng).
-- **`.col-lg-`**: Dành cho thiết bị lớn (Large devices - chiều rộng màn hình **từ 992px trở lên** như máy tính xách tay).
-- **`.col-xl-`**: Dành cho thiết bị cực lớn (Extra large devices - chiều rộng màn hình **từ 1200px trở lên** như máy tính để bàn).
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Container là thành phần nền tảng bắt buộc phải có trong Bootstrap. Chúng đóng vai trò là chiếc "khung chứa" có nhiệm vụ bao bọc, tạo khoảng đệm (padding) hai bên và căn giữa toàn bộ nội dung của trang web trên màn hình.
 
-> [!TIP]
-> Bạn có thể kết hợp linh hoạt nhiều lớp tiền tố trên cùng một phần tử (Ví dụ: `class="col-12 col-md-6 col-lg-4"`) để tạo ra các bố cục co giãn thích ứng động cực kỳ linh hoạt trên từng loại thiết bị.
+Bootstrap cung cấp 3 loại Container chính để bạn linh hoạt lựa chọn tùy theo mục đích thiết kế:
 
----
+1.  **`.container` (Responsive Fixed-Width Container):**
+    *   Đây là loại container phổ biến nhất. Nó có chiều rộng tối đa (max-width) thay đổi linh hoạt theo từng điểm gãy (breakpoint) của màn hình.
+    *   Ví dụ: Trên màn hình máy tính lớn, nó sẽ giữ nội dung cố định ở một độ rộng vừa phải (ví dụ 1140px hoặc 1320px) và tự động căn giữa, giúp văn bản không bị trải dài quá rộng khó đọc. Trên điện thoại, nó sẽ tự động co lại chiếm 100% chiều rộng (trừ một khoảng padding nhỏ hai bên).
 
-### 2.3. Grid System Rules (Các nguyên tắc của hệ thống lưới)
-Để hệ thống lưới hoạt động chính xác và không bị lỗi hiển thị, lập trình viên cần tuân thủ các quy tắc cốt lõi sau:
-- **Container bắt buộc:** Các hàng (`.row`) phải được đặt bên trong một lớp `.container` (độ rộng cố định theo từng breakpoint) hoặc `.container-fluid` (độ rộng 100% toàn màn hình) để được căn lề và đệm khoảng cách (padding) chính xác.
-- **Tạo hàng:** Sử dụng các thẻ chứa lớp `.row` để tạo ra các hàng ngang nhóm các cột lại với nhau.
-- **Vị trí của cột:** Nội dung của trang web bắt buộc phải đặt trong các cột, và **chỉ các cột mới được là con trực tiếp** của hàng (`.row`).
-- **Lớp định sẵn:** Các lớp dựng sẵn như `.row` và `.col-sm-4` giúp bạn nhanh chóng thiết lập bố cục lưới mà không cần viết code CSS tùy chỉnh.
-- **Rãnh phân tách (Gutters):** Các cột tạo ra các khoảng trống ranh giới (gutters) thông qua thuộc tính đệm `padding`. Khoảng đệm này được bù trừ (offset) ở cột đầu tiên và cột cuối cùng trong hàng nhờ vào thuộc tính lề âm (`negative margin`) trên lớp `.row`.
-- **Thiết lập cột:** Độ rộng của cột được xác định bằng cách khai báo số lượng cột đơn (trong tổng số 12 cột khả dụng) mà cột đó chiếm dụng. Ví dụ: Để tạo 3 cột bằng nhau trên màn hình nhỏ, ta sử dụng ba phần tử chứa lớp `.col-sm-4`.
-- **Đơn vị phần trăm:** Chiều rộng của cột được tính theo tỷ lệ phần trăm (%), vì vậy chúng luôn co giãn linh hoạt và có kích thước tương đối so với phần tử cha trực tiếp của chúng.
+2.  **`.container-fluid` (Full-Width Container):**
+    *   Chiếm trọn **100% chiều rộng** của màn hình ở mọi thiết bị (từ điện thoại nhỏ nhất cho đến màn hình 4K).
+    *   Thường được dùng khi bạn muốn làm các phần giao diện tràn viền (Full-width sections) như thanh Header, Hero Banner lớn, hoặc Footer.
 
----
+3.  **`.container-{breakpoint}` (Responsive Containers):**
+    *   Cho phép container chiếm 100% chiều rộng cho đến khi đạt được một điểm gãy cụ thể, sau đó nó sẽ chuyển sang trạng thái cố định (fixed-width).
+    *   Các biến thể gồm: `.container-sm`, `.container-md`, `.container-lg`, `.container-xl`, `.container-xxl`.
 
-### 2.4. Basic Grid Structure (Cấu trúc lưới cơ bản)
-Dưới đây là ví dụ minh họa về cách phân chia tỷ lệ hàng cột và cách các cột tự động xếp chồng (stack) lên nhau khi thu nhỏ màn hình xuống dưới breakpoint chỉ định (dưới 576px):
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Luôn đặt nội dung bên trong Container:** Không bao giờ đặt các hàng (`.row`) hoặc nội dung thuần túy trơ trọi ngay bên trong thẻ `<body>` mà không có Container bao ngoài.
+*   **Không lồng các Container vào nhau:** Việc lồng container này vào container khác thường tạo ra các khoảng đệm thừa thãi không cần thiết và làm hỏng hệ thống lưới (Grid System).
+*   **Kết hợp Container và Grid:** Cấu trúc chuẩn xác nhất trong Bootstrap luôn là: `Container` $\rightarrow$ `Row` $\rightarrow$ `Col`.
+
+**💻 Code minh họa chuyên sâu:**
 
 ```html
-<div class="container">
-  <!-- Hàng 1: Chia đôi (50% / 50%) -->
-  <div class="row">
-    <div class="col-sm-6">50%</div>
-    <div class="col-sm-6">50%</div>
-  </div>
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví dụ Container Bootstrap</title>
+    <link href="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css)" rel="stylesheet">
+  </head>
+  <body>
 
-  <!-- Hàng 2: Chia ba (33.33% / 33.33% / 33.33%) -->
-  <div class="row">
-    <div class="col-sm-4">33.33%</div>
-    <div class="col-sm-4">33.33%</div>
-    <div class="col-sm-4">33.33%</div>
-  </div>
+    <!-- 1. CONTAINER CỐ ĐỊNH (Responsive Fixed-Width) -->
+    <!-- Nội dung bên trong sẽ được căn giữa và giới hạn độ rộng tối đa trên màn hình lớn -->
+    <div class="container my-4 bg-light p-4 rounded">
+      <h2>Đây là .container tiêu chuẩn</h2>
+      <p>Nội dung sẽ không bị trải quá dài, giúp người đọc dễ theo dõi.</p>
+    </div>
 
-  <!-- Hàng 3: Chia tư (25% / 25% / 25% / 25%) -->
-  <div class="row">
-    <div class="col-sm-3">25%</div>
-    <div class="col-sm-3">25%</div>
-    <div class="col-sm-3">25%</div>
-    <div class="col-sm-3">25%</div>
-  </div>
-</div>
+    <!-- 2. CONTAINER TRÀN VIỀN (Full-Width 100%) -->
+    <!-- Thường dùng cho các khối banner hoặc footer kéo dài hết màn hình -->
+    <div class="container-fluid bg-dark text-white py-5">
+      <div class="container">
+        <!-- Mẹo: Bạn hoàn toàn có thể lồng một .container chuẩn bên trong .container-fluid 
+             để giữ cho chữ căn giữa thẳng hàng với các phần khác của trang -->
+        <h3>Đây là .container-fluid tràn viền</h3>
+        <p>Phần nền màu tối chiếm trọn 100% màn hình, nhưng nội dung bên trong vẫn thẳng hàng.</p>
+      </div>
+    </div>
+
+    <!-- 3. CONTAINER THEO ĐIỂM GÃY (.container-md) -->
+    <!-- Sẽ chiếm 100% width khi ở điện thoại/tablet nhỏ, và cố định width khi từ màn hình md (768px) trở lên -->
+    <div class="container-md bg-warning p-3 my-4">
+      <p>Container này sẽ co giãn 100% cho đến khi đạt kích thước Medium (768px).</p>
+    </div>
+
+    <script src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js)"></script>
+  </body>
+</html>
 ```
+## 04. Grid System - Hệ thống lưới 12 cột
 
----
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Hệ thống lưới (Grid System) của Bootstrap được xây dựng dựa trên mô hình **Flexbox**, cho phép bạn tạo ra các bố cục dạng hàng và cột một cách cực kỳ linh hoạt và mượt mà.
 
-### 2.5. Grid Sizes Summary (Bảng thông số chi tiết hệ thống lưới)
+Cơ chế hoạt động cốt lõi của Grid System dựa trên nguyên tắc **12 cột**:
+*   Toàn bộ chiều rộng của một hàng (`.row`) được chia đều thành **12 phần bằng nhau**.
+*   Khi bạn định nghĩa các lớp cột (ví dụ: `.col-4`), bạn đang ra lệnh cho trình duyệt: *"Hãy cho phần tử này chiếm đúng 4 phần trong tổng số 12 phần (tương đương 1/3 chiều rộng của hàng)"*.
+*   Nếu tổng số cột trong một hàng vượt quá 12 (ví dụ: `8 + 5 = 13`), phần cột thừa ra sẽ tự động bị đẩy xuống hàng tiếp theo (wrapping).
 
-| Đặc trưng | Extra small (`<576px`) | Small (`>=576px`) | Medium (`>=768px`) | Large (`>=992px`) | Extra Large (`>=1200px`) |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Tiền tố Class** | `.col-` | `.col-sm-` | `.col-md-` | `.col-lg-` | `.col-xl-` |
-| **Độ rộng Container** | Tự động (`auto`) | `540px` | `720px` | `960px` | `1140px` |
-| **Thiết bị phù hợp** | Điện thoại đứng | Điện thoại nằm ngang | Máy tính bảng | Máy tính xách tay | Máy tính để bàn |
-| **Số lượng cột** | 12 cột | 12 cột | 12 cột | 12 cột | 12 cột |
-| **Độ rộng rãnh (Gutter)** | 30px (15px mỗi bên) | 30px (15px mỗi bên) | 30px (15px mỗi bên) | 30px (15px mỗi bên) | 30px (15px mỗi bên) |
-| **Khả năng lồng nhau** | Có hỗ trợ | Có hỗ trợ | Có hỗ trợ | Có hỗ trợ | Có hỗ trợ |
-| **Cột bù (Offsets)** | Có hỗ trợ | Có hỗ trợ | Có hỗ trợ | Có hỗ trợ | Có hỗ trợ |
-| **Thứ tự cột** | Có hỗ trợ | Có hỗ trợ | Có hỗ trợ | Có hỗ trợ | Có hỗ trợ |
+Cấu trúc phân cấp bắt buộc của Grid System:
+1.  **Container** (`.container` hoặc `.container-fluid`) -> Tạo khung chứa tổng thể.
+2.  **Row** (`.row`) -> Tạo một hàng ngang, có nhiệm vụ chứa các cột và tự động bù trừ khoảng cách âm (negative margin) ở hai bên để căn chỉnh thẳng hàng.
+3.  **Column** (`.col-*`) -> Các cột đặt bên trong `.row`, nơi chứa nội dung thực tế của bạn.
 
----
+**Các biến thể cột phổ biến:**
+*   `.col`: Tự động chia đều không gian cho tất cả các cột trong hàng (ví dụ: 3 cột có class `.col` thì mỗi cột sẽ chiếm 33.33%).
+*   `.col-{number}`: Cố định tỷ lệ phần trăm cụ thể (từ `.col-1` đến `.col-12`).
 
-## 3. Bootstrap Component
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Không bao giờ để `.col` đứng một mình:** Luôn bọc các cột bên trong một `.row`, và luôn bọc `.row` bên trong một `.container`.
+*   **Quản lý khoảng cách (Gutters):** Sử dụng các class tiện ích khoảng cách lưới như `gx-*` (khoảng cách ngang giữa các cột) hoặc `gy-*` (khoảng cách dọc khi xuống hàng) thay vì tự viết margin thủ công.
+*   **Lồng lưới (Nesting):** Bạn hoàn toàn có thể đặt một `.row` hoàn chỉnh nằm bên trong một `.col` nếu muốn chia nhỏ bố cục sâu hơn nữa.
 
-### 3.1. What are Components? (Thành phần giao diện dựng sẵn)
-- **Khái niệm:** Bootstrap cung cấp hàng chục thành phần giao diện (components) được thiết kế và lập trình sẵn, có khả năng tái sử dụng cực kỳ cao.
-- **Vai trò:** Giúp lập trình viên nhanh chóng lắp ghép giao diện trang web hoàn chỉnh mà không cần mất công viết lại các thành phần tương tác phức tạp từ đầu.
-- **Các thành phần tiêu biểu:**
-  - **Dropdowns**: Menu thả xuống.
-  - **Button groups / Button dropdowns**: Các nhóm nút bấm và nút kèm menu thả xuống.
-  - **Navs / Navbar**: Thanh điều hướng và menu đầu trang thích ứng.
-  - **Breadcrumbs**: Thanh điều hướng phân cấp (đường dẫn liên kết thư mục).
-  - **Pagination**: Phân trang dữ liệu.
-  - **Labels and Badges**: Nhãn dán và huy hiệu thông tin.
-  - **Typography**: Căn chỉnh font chữ và văn bản.
-  - **Alerts**: Hộp cảnh báo, thông báo.
-  - **Progress bars**: Thanh trạng thái tiến trình.
+**💻 Code minh họa chuyên sâu:**
 
----
-
-## 4. Add Bootstrap to project
-
-### 4.1. Where to Get Bootstrap? (Cách tích hợp Bootstrap)
-Có 2 phương pháp chính để tích hợp và bắt đầu sử dụng Bootstrap 4 trên trang web của bạn:
-1. **Download Bootstrap 4:** Tải các file nguồn của Bootstrap 4 trực tiếp từ trang chủ [getbootstrap.com](https://getbootstrap.com) và lưu trữ cục bộ (self-host) trên máy chủ của dự án.
-2. **Include Bootstrap 4 from a CDN:** Tích hợp trực tiếp các liên kết Bootstrap 4 từ mạng phân phối nội dung (CDN) trực tuyến.
-
----
-
-### 4.2. Downloading Bootstrap 4 (Tải trực tiếp)
-- Nếu bạn muốn tải và lưu trữ trực tiếp các file CSS, JS của Bootstrap trong dự án của mình:
-  1. Truy cập trang chủ [getbootstrap.com](https://getbootstrap.com).
-  2. Click chọn nút **Download** để tải gói nén.
-  3. Giải nén và liên kết các file `bootstrap.min.css` và `bootstrap.min.js` vào tài liệu HTML của bạn theo đúng hướng dẫn trên trang tài liệu.
-
----
-
-### 4.3. Bootstrap 4 CDN (Sử dụng liên kết trực tuyến)
-Nếu không muốn tải trực tiếp mã nguồn về dự án, bạn có thể nhúng Bootstrap 4 thông qua các đường dẫn CDN (Content Delivery Network). Mạng phân phối MaxCDN sẽ hỗ trợ truyền tải trực tiếp tệp CSS và JavaScript của Bootstrap đến trình duyệt người dùng với tốc độ tối ưu nhất.
-
-> [!IMPORTANT]
-> Khi sử dụng JavaScript của Bootstrap, bạn bắt buộc phải nhúng thêm thư viện **jQuery** và **Popper.js** trước khi nhúng file JS của Bootstrap để các thành phần tương tác động (như dropdowns, modals, popovers...) hoạt động chính xác.
-
-- **Các liên kết nhúng CDN đầy đủ:**
-  ```html
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  <!-- Popper JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cloudflare/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-  ```
-
----
-
-## 5. First Project with Bootstrap
-
-### 5.1. Steps for project with Bootstrap 4 (Các bước thiết lập dự án)
-Quy trình xây dựng một dự án sử dụng Bootstrap 4 cục bộ bao gồm 5 bước cơ bản sau:
-1. **Create a project in IDE:** Tạo một thư mục dự án mới trong môi trường phát triển (IDE) của bạn (ví dụ như Dreamweaver, VS Code, NetBeans...).
-2. **Download Bootstrap 4:** Truy cập vào trang chủ [getbootstrap.com](https://getbootstrap.com) và tải gói nén chứa các file CSS, JS đã được biên dịch sẵn.
-3. **Unzip file zip:** Tiến hành giải nén file zip vừa tải về máy tính.
-4. **Copy directory:** Sao chép thư mục Bootstrap 4 đã giải nén vào thư mục gốc của trang web (root website directory).
-5. **Create First Web Page With Bootstrap 4:** Tạo tệp tin HTML đầu tiên và liên kết các file CSS, JS để bắt đầu lập trình.
-
----
-
-### 5.2. Create First Web Page (Dựng trang web Bootstrap 4 đầu tiên)
-Bootstrap 4 yêu cầu một phần tử bao bọc bên ngoài (container) để định vị toàn bộ nội dung. Bạn có hai sự lựa chọn tùy theo mục đích thiết kế:
-
-#### A. Cách 1: Thiết lập trang với Hộp nội dung cố định thích ứng (`.container`)
-- **Đặc trưng:** Lớp `.container` tạo ra một hộp nội dung có chiều rộng cố định thích ứng (responsive fixed width container), tự động căn giữa trang và co giãn chiều rộng theo từng thiết bị (breakpoint).
-- **Mã nguồn mẫu:**
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
+```html
+<!DOCTYPE html>
+<html lang="vi">
   <head>
-    <title>Bootstrap 4 Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cloudflare/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví dụ Bootstrap Grid System</title>
+    <link href="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css)" rel="stylesheet">
   </head>
   <body>
 
-    <!-- Sử dụng lớp .container để tạo hộp nội dung căn giữa thích ứng -->
-    <div class="container">
-      <h1>My First Bootstrap Page</h1>
-      <p>This is some text.</p>
+    <div class="container my-4">
+      
+      <!-- 1. CHIA ĐỀU CỘT TỰ ĐỘNG (.col) -->
+      <h3 class="mb-3">1. Chia đều tự động</h3>
+      <div class="row mb-4 text-center">
+        <div class="col bg-light border p-3">Cột tự động 1</div>
+        <div class="col bg-secondary text-white border p-3">Cột tự động 2</div>
+        <div class="col bg-light border p-3">Cột tự động 3</div>
+      </div>
+
+      <!-- 2. HỆ THỐNG LƯỚI TỔNG 12 CỘT CỐ ĐỊNH -->
+      <h3 class="mb-3">2. Phân chia tỷ lệ theo 12 cột</h3>
+      <div class="row mb-4 text-center">
+        <!-- 4 phần / 12 (chiếm 1/3 màn hình) -->
+        <div class="col-4 bg-primary text-white p-3">.col-4 (4 phần)</div>
+        <!-- 8 phần / 12 (chiếm 2/3 màn hình) -->
+        <div class="col-8 bg-success text-white p-3">.col-8 (8 phần)</div>
+      </div>
+
+      <!-- 3. LƯỚI 3 CỘT ĐỀU NHAU (4 + 4 + 4 = 12) -->
+      <div class="row mb-4 text-center">
+        <div class="col-4 bg-light border p-3">Cột 4 phần</div>
+        <div class="col-4 bg-light border p-3">Cột 4 phần</div>
+        <div class="col-4 bg-light border p-3">Cột 4 phần</div>
+      </div>
+
+      <!-- 4. LỒNG LƯỚI (NESTING) -->
+      <h3 class="mb-3">4. Lồng các hàng và cột bên trong nhau</h3>
+      <div class="row">
+        <div class="col-8 bg-warning p-3">
+          Cột chính (col-8)
+          <div class="row mt-2">
+            <div class="col-6 bg-white text-dark p-2 border">Sub-col 6</div>
+            <div class="col-6 bg-white text-dark p-2 border">Sub-col 6</div>
+          </div>
+        </div>
+        <div class="col-4 bg-info text-white p-3">Cột phụ (col-4)</div>
+      </div>
+
     </div>
 
+    <script src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js)"></script>
   </body>
-  </html>
-  ```
+</html>
+```
+## 05. Responsive Breakpoints - Các điểm gãy thích ứng
 
----
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Breakpoints (Điểm gãy) là các ngưỡng chiều rộng màn hình mà tại đó bố cục của trang web sẽ thay đổi để thích ứng tốt hơn với thiết bị của người dùng. Bootstrap được xây dựng dựa trên tư duy **Mobile-First (Ưu tiên di động)**, nghĩa là các đoạn mã CSS cơ bản áp dụng cho màn hình nhỏ nhất, sau đó mở rộng dần ra các màn hình lớn hơn thông qua các tiền tố điểm gãy.
 
-#### B. Cách 2: Thiết lập trang với Hộp nội dung phủ toàn bộ màn hình (`.container-fluid`)
-- **Đặc trưng:** Lớp `.container-fluid` tạo ra một hộp nội dung có chiều rộng tối đa (full width container), luôn luôn kéo giãn 100% chiều rộng của màn hình trình duyệt ở mọi kích thước thiết bị.
-- **Mã nguồn mẫu:**
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
+Bootstrap 5 cung cấp 6 tầng điểm gãy mặc định dựa trên pixel (px):
+
+| Tiền tố | Kích thước màn hình (Min-width) | Đối tượng thiết bị phổ biến |
+| :--- | :--- | :--- |
+| **None** (`.col-*`) | `< 576px` | Điện thoại di động siêu nhỏ (Mặc định) |
+| **`sm`** (`.col-sm-*`) | `≥ 576px` | Điện thoại di động khổ lớn / Phablet |
+| **`md`** (`.col-md-*`) | `≥ 768px` | Máy tính bảng (Tablet) |
+| **`lg`** (`.col-lg-*`) | `≥ 992px` | Máy tính xách tay (Laptop nhỏ) |
+| **`xl`** (`.col-xl-*`) | `≥ 1200px` | Máy tính để bàn / Laptop lớn |
+| **`xxl`** (`.col-xxl-*`) | `≥ 1400px` | Màn hình máy tính độ phân giải cực cao (Desktop lớn) |
+
+**Nguyên lý hoạt động:**
+Khi bạn viết các lớp kết hợp như `col-md-6 col-lg-4`, Bootstrap hiểu rằng:
+*   Mặc định trên điện thoại nhỏ, phần tử này sẽ chiếm 100% chiều rộng (`col-12`).
+*   Từ màn hình Tablet (`md` $\ge$ 768px) trở lên, nó sẽ chiếm 6 phần (2 cột trên 1 hàng).
+*   Từ màn hình Laptop (`lg` $\ge$ 992px) trở lên, nó sẽ tự động thu nhỏ lại chiếm 4 phần (3 cột trên 1 hàng).
+
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Luôn tư duy theo hướng Mobile-First:** Hãy bắt đầu thiết kế bố cục cho điện thoại trước (dùng class cơ bản không có tiền tố hoặc tiền tố nhỏ), sau đó mới viết thêm các lớp lớn hơn (`md`, `lg`) để mở rộng không gian trên màn hình lớn.
+*   **Kiểm tra thực tế:** Luôn sử dụng công cụ Toggle Device Toolbar (F12 $\rightarrow$ biểu tượng điện thoại/máy tính bảng) trên trình duyệt để kiểm tra sự chuyển dịch mượt mà giữa các điểm gãy.
+
+**💻 Code minh họa chuyên sâu:**
+
+```html
+<!DOCTYPE html>
+<html lang="vi">
   <head>
-    <title>Bootstrap 4 Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cloudflare/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví dụ Responsive Breakpoints Bootstrap</title>
+    <link href="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css)" rel="stylesheet">
   </head>
   <body>
 
-    <!-- Sử dụng lớp .container-fluid để nội dung kéo giãn 100% màn hình -->
-    <div class="container-fluid">
-      <h1>My First Bootstrap Page</h1>
-      <p>This is some text.</p>
-    </div>
-
-  </body>
-  </html>
-  ```
-
----
-
-## 6. Working with Layout
-
-Chương này tập trung vào các kỹ thuật xây dựng và kiểm soát bố cục trang web (Layout) bằng cách kết hợp container, hàng (rows) và cột (columns) trong Bootstrap.
-
-### 6.1. Working with containers (Làm việc với hộp chứa)
-
-#### 6.1.1. Hai loại hộp chứa chính trong Bootstrap
-Để thiết lập bố cục trang web, bạn bắt buộc phải sử dụng một lớp hộp chứa bao bọc bên ngoài. Có hai loại container bạn có thể lựa chọn:
-- Lớp **`.container-fluid`**: Hộp chứa có độ rộng tràn viền (100% màn hình).
-- Lớp **`.container`**: Hộp chứa có độ rộng cố định thích ứng (fixed-width) co giãn theo từng kích thước màn hình.
-
----
-
-#### 6.1.2. Fixed Container class (Hộp chứa có độ rộng cố định)
-Lớp `.container` cơ bản sẽ tự động thiết lập một chiều rộng cố định thích ứng (fixed width) dựa trên kích thước khung nhìn (`viewport`) của thiết bị. 
-
-Bootstrap hỗ trợ **5 kích thước chiều rộng cố định** tương ứng với các khoảng màn hình của thiết bị:
-- **Extra small (Cực nhỏ):** Kích thước màn hình `<544px`.
-- **Small (Nhỏ):** Kích thước màn hình `>544px`.
-- **Medium (Trung bình):** Kích thước màn hình `>768px`.
-- **Large (Lớn):** Kích thước màn hình `>992px`.
-- **Extra large (Cực lớn):** Kích thước màn hình `>1140px`.
-
----
-
-#### 6.1.3. Fluid Container (Hộp chứa tràn màn hình)
-Lớp `.container-fluid` tạo ra một hộp chứa có độ rộng kéo giãn hoàn toàn 100% chiều ngang của cửa sổ trình duyệt (full-width box).
-- **Đặc trưng:** Bootstrap tự động thêm một khoảng đệm nhỏ ở hai bên trái và phải (`left and right padding`) để ngăn nội dung hiển thị bị dính sát vào mép viền của màn hình trình duyệt.
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="container-fluid">
-    <!-- Nội dung hiển thị tràn viền ở đây -->
-  </div>
-  ```
-
----
-
-### 6.2. Inserting rows into your layout (Chèn hàng vào bố cục)
-
-#### 6.2.1. Cấu trúc lồng hàng cơ bản (Single Row Example)
-Để thiết lập cấu trúc bố cục lưới, bạn phải khai báo hàng (`.row`) bên trong hộp chứa (`.container` hoặc `.container-fluid`) trước khi chèn các cột vào trong.
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="container">
-    <div class="row">
-      <!-- chèn code khai báo cột vào đây (insert column code here) -->
-    </div>
-  </div>
-  ```
-
-#### 6.2.2. Cấu trúc nhiều hàng (Many rows within a container)
-
-Một hộp chứa đơn lẻ có thể bao bọc nhiều hàng (`.row`) xếp chồng lên nhau theo chiều dọc màn hình để tạo nên các khối nội dung phân tầng.
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="container">
-    <div class="row">
-      <!-- chèn code khai báo cột cho hàng 1 // -->
-    </div>
-    <div class="row">
-      <!-- chèn code khai báo cột cho hàng 2 // -->
-    </div>
-    <div class="row">
-      <!-- chèn code khai báo cột cho hàng 3 // -->
-    </div>
-    <div class="row">
-      <!-- chèn code khai báo cột cho hàng 4 // -->
-    </div>
-    <div class="row">
-      <!-- chèn code khai báo cột cho hàng 5 // -->
-    </div>
-  </div>
-  ```
-
----
-
-### 6.3. Adding columns to your layout (Thêm cột vào bố cục)
-
-#### 6.3.1. Column class widths (Độ rộng của lớp cột)
-Để xác định độ rộng cột trên các thiết bị, bạn sử dụng ký hiệu đặt tên theo cấu trúc: `.[prefix]-[độ_rộng_cột]`, trong đó độ rộng cột chạy từ `1` đến `12`.
-- **Extra small (Thiết bị cực nhỏ):** Sử dụng tiền tố `.col-xs-#` (trong Bootstrap 3) hoặc `.col-#` (trong Bootstrap 4) với `#` chạy từ 1 đến 12.
-- **Small (Thiết bị nhỏ):** Sử dụng cú pháp `.col-sm-#`.
-- **Medium (Thiết bị trung bình):** Sử dụng cú pháp `.col-md-#`.
-- **Large (Thiết bị lớn):** Sử dụng cú pháp `.col-lg-#`.
-- **Extra large (Thiết bị cực lớn):** Sử dụng cú pháp `.col-xl-#`.
-
----
-
-#### 6.3.2. Choosing a column class (Lựa chọn lớp cột phù hợp)
-Việc lựa chọn lớp tiền tố nào phụ thuộc hoàn toàn vào đối tượng người dùng mục tiêu và thiết bị truy cập chính của ứng dụng web:
-- **Ứng dụng di động (Mobile App):** Nên tập trung sử dụng các lớp cột dành cho thiết bị cực nhỏ (`extra small`) hoặc nhỏ (`small`).
-- **Máy tính bảng (Tablets):** Thường sử dụng các lớp cột trung bình (`medium`).
-- **Máy tính để bàn (Desktops / Laptops):** Sử dụng các lớp cột lớn (`large`) hoặc cực lớn (`extra large`).
-
----
-
-### 6.4. Creating a simple three-column layout (Tạo bố cục 3 cột đơn giản)
-Giả định chúng ta cần xây dựng một bố cục thích ứng đơn giản chia đều giao diện thành 3 cột bằng nhau trên màn hình máy tính bảng trở lên (mỗi cột chiếm 4 phần trong tổng số 12 phần):
-
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <!-- Nội dung cột 1 (column 1) -->
-      </div>
-      <div class="col-md-4">
-        <!-- Nội dung cột 2 (column 2) -->
-      </div>
-      <div class="col-md-4">
-        <!-- Nội dung cột 3 (column 3) -->
-      </div>
-    </div>
-  </div>
-  ```
-
----
-
-### 6.5. Mixing column classes for different devices (Kết hợp các lớp cột cho nhiều loại thiết bị)
-Bằng cách gán thêm nhiều lớp cột khác nhau trên cùng một thẻ div, bạn có thể thay đổi cách bố cục phân chia trên từng loại thiết bị màn hình.
-
-- **Bài toán thực tế:** Thiết lập bố cục 3 cột sao cho:
-  - Trên màn hình lớn, 2 cột đầu tiên chiếm 50% mỗi cột (độ rộng 6), cột thứ ba chiếm 100% độ rộng (độ rộng 12) và tự động rớt xuống dưới.
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="container">
-    <div class="row">
-      <!-- Cột 1 và 2 chiếm 50% độ rộng của hàng -->
-      <div class="col-sm-6">
-        <!-- Cột 1 -->
-      </div>
-      <div class="col-sm-6">
-        <!-- Cột 2 -->
-      </div>
-      <!-- Cột 3 chiếm 100% độ rộng của hàng và đẩy xuống dưới -->
-      <div class="col-sm-12">
-        <!-- Cột 3 -->
-      </div>
-    </div>
-  </div>
-  ```
-
----
-
-### 6.6. Using responsive utility classes (Sử dụng các lớp tiện ích thích ứng)
-Bootstrap 4 cung cấp các lớp tiện ích giúp ẩn/hiển thị linh hoạt các phần tử trên từng kích thước màn hình cụ thể:
-- **Tiện ích hiển thị (`display`):** Sử dụng cấu trúc `.d-[value]` cho tất cả màn hình, hoặc `.d-[breakpoint]-[value]` cho từng màn hình cụ thể (Ví dụ: `d-none` để ẩn, `d-sm-block` để hiển thị dạng block từ màn hình nhỏ trở lên).
-- **Mục đích:** Giúp tinh chỉnh nội dung hiển thị tinh gọn trên điện thoại di động nhưng hiển thị đầy đủ trên màn hình lớn.
-
----
-
-### 6.7. Color and text align (Màu sắc và Căn lề văn bản)
-
-#### 6.7.1. Text color (Màu chữ ngữ cảnh)
-Bootstrap 4 cung cấp các lớp màu chữ theo ngữ cảnh (contextual classes) để truyền tải ý nghĩa thông qua màu sắc:
-- `.text-muted`: Chữ màu xám nhạt (dùng cho chú thích).
-- `.text-primary`: Chữ màu xanh dương (thông tin chính, quan trọng).
-- `.text-success`: Chữ màu xanh lá (biểu thị thành công).
-- `.text-info`: Chữ màu xanh ngọc (biểu thị thông tin bổ sung).
-- `.text-warning`: Chữ màu vàng (cảnh báo).
-- `.text-danger`: Chữ màu đỏ (cảnh báo nguy hiểm, lỗi).
-- `.text-secondary`: Chữ màu xám phụ.
-- `.text-white`: Chữ màu trắng.
-- `.text-dark`: Chữ màu xám tối.
-- `.text-light`: Chữ màu xám cực sáng.
-
----
-
-#### 6.7.2. Background Color (Màu nền ngữ cảnh)
-Tương tự màu chữ, các lớp màu nền ngữ cảnh giúp làm nổi bật một khối nội dung:
-- `.bg-primary`: Nền màu xanh dương.
-- `.bg-success`: Nền màu xanh lá.
-- `.bg-info`: Nền màu xanh ngọc.
-- `.bg-warning`: Nền màu vàng.
-- `.bg-danger`: Nền màu đỏ.
-- `.bg-secondary`: Nền màu xám phụ.
-- `.bg-dark`: Nền màu xám tối.
-- `.bg-light`: Nền màu xám sáng.
-
----
-
-#### 6.7.3. Text Alignment (Căn lề văn bản thích ứng)
-Bootstrap 4 hỗ trợ căn lề văn bản tĩnh hoặc thay đổi thích ứng theo chiều rộng viewport:
-- **Căn lề tĩnh (áp dụng cho mọi kích thước màn hình):**
-  ```html
-  <p class="text-left">Căn lề trái trên mọi màn hình.</p>
-  <p class="text-center">Căn lề giữa trên mọi màn hình.</p>
-  <p class="text-right">Căn lề phải trên mọi màn hình.</p>
-  ```
-- **Căn lề thích ứng (Responsive Text Alignment):** Căn lề chỉ có hiệu lực từ kích thước breakpoint chỉ định trở lên:
-  ```html
-  <p class="text-sm-left">Căn lề trái từ màn hình SM trở lên.</p>
-  <p class="text-md-left">Căn lề trái từ màn hình MD trở lên.</p>
-  <p class="text-lg-left">Căn lề trái từ màn hình LG trở lên.</p>
-  <p class="text-xl-left">Căn lề trái từ màn hình XL trở lên.</p>
-  ```
-
----
-
-### 6.8. Coding the blog home page (Xây dựng bố cục trang chủ Blog)
-Để dựng một trang chủ Blog hoàn chỉnh sử dụng hệ thống lưới của Bootstrap 4 (như ảnh minh họa trong slide), ta chia bố cục thành các phần chính:
-1. **Navbar (Thanh điều hướng tiêu đề):** Cố định ở đầu trang, chứa logo và liên kết điều hướng.
-2. **Main Layout Container (`.container`):** Chứa hai cột lớn chính:
-   - **Cột nội dung chính (Main Content - 8 cột: `.col-md-8`):** Chứa tiêu đề trang, danh sách bài viết kèm hình ảnh minh họa bài viết, nội dung tóm tắt và nút "Read More".
-   - **Cột bên (Sidebar - 4 cột: `.col-md-4`):** Chứa các hộp tiện ích (Widgets) như:
-     - *Search Widget*: Hộp tìm kiếm bài viết.
-     - *Categories Widget*: Danh mục các bài viết khác nhau.
-     - *Side Widget*: Hộp giới thiệu thông tin bổ sung.
-
-- **Cơ cấu mã nguồn khung:**
-  ```html
-  <!-- Navigation Header -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
-      <!-- Navigation Links... -->
-    </div>
-  </nav>
-
-  <!-- Page Content Container -->
-  <div class="container mt-4">
-    <div class="row">
-      <!-- Blog Entries Column (8 cols) -->
-      <div class="col-md-8">
-        <h1 class="my-4">Page Heading <small>Secondary Text</small></h1>
+    <div class="container my-4">
+      <h2 class="mb-4 text-center">Hệ thống thẻ bài Responsive linh hoạt</h2>
+      
+      <!-- Hàng chứa các card tự động co giãn theo kích thước màn hình -->
+      <div class="row g-4"> <!-- g-4 tạo khoảng cách (gap) đều giữa các cột -->
         
-        <!-- Blog Post Card -->
-        <div class="card mb-4">
-          <img class="card-img-top" src="image_750x300.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">Post Title</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <a href="#" class="btn btn-primary">Read More →</a>
+        <!-- Cột 1 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="p-4 bg-light border rounded shadow-sm h-100">
+            <h4>Thẻ sản phẩm 1</h4>
+            <p>Điện thoại: 1 cột (12/12)<br>Tablet: 2 cột (6/12)<br>Laptop: 3 cột (4/12)</p>
+          </div>
+        </div>
+
+        <!-- Cột 2 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="p-4 bg-light border rounded shadow-sm h-100">
+            <h4>Thẻ sản phẩm 2</h4>
+            <p>Điện thoại: 1 cột (12/12)<br>Tablet: 2 cột (6/12)<br>Laptop: 3 cột (4/12)</p>
+          </div>
+        </div>
+
+        <!-- Cột 3 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="p-4 bg-light border rounded shadow-sm h-100">
+            <h4>Thẻ sản phẩm 3</h4>
+            <p>Điện thoại: 1 cột (12/12)<br>Tablet: 2 cột (6/12)<br>Laptop: 3 cột (4/12)</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js)"></script>
+  </body>
+</html>
+```
+## 06. Utilities - Các lớp tiện ích
+
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Utilities (Các lớp tiện ích) là một kho tàng các class CSS ngắn gọn, có tính năng duy nhất (single-purpose) giúp bạn nhanh chóng định dạng giao diện trực tiếp trên file HTML mà không cần mở file CSS riêng. 
+
+Các nhóm tiện ích cốt lõi bao gồm:
+
+1.  **Spacing (Khoảng cách - Margin & Padding):**
+    Cú pháp đặt tên: `{property}{sides}-{size}` hoặc có thêm điểm gãy `{property}{sides}-{breakpoint}-{size}`.
+    *   `{property}`: `m` (margin) hoặc `p` (padding).
+    *   `{sides}`: 
+        *   `t`: top (trên)
+        *   `b`: bottom (dưới)
+        *   `s`: start (trái - theo hướng đọc LTR)
+        *   `e`: end (phải - theo hướng đọc LTR)
+        *   `x`: theo chiều ngang (cả trái và phải)
+        *   `y`: theo chiều dọc (cả trên và dưới)
+        *   (bỏ trống): áp dụng cho cả 4 phía.
+    *   `{size}`: Từ `0` đến `5` (mỗi cấp tương ứng với bội số của khoảng cách mặc định, ví dụ `3` thường là `1rem`), hoặc `auto` (chỉ dùng cho margin).
+    *   *Ví dụ:* `mt-3` (margin-top), `px-4` (padding trái và phải).
+
+2.  **Colors & Backgrounds (Màu sắc & Nền):**
+    *   *Màu chữ (Text Colors):* `text-primary`, `text-secondary`, `text-success`, `text-danger`, `text-warning`, `text-info`, `text-light`, `text-dark`, `text-muted`, `text-white`.
+    *   *Màu nền (Background Colors):* `bg-primary`, `bg-success`, `bg-light`, `bg-dark`, `bg-body-tertiary`, kèm theo hiệu ứng chuyển sắc `bg-gradient`.
+
+3.  **Display & Visibility (Kiểu hiển thị & Ẩn hiện):**
+    *   `d-none`, `d-block`, `d-flex`, `d-inline`, `d-inline-block`.
+    *   Kết hợp điểm gãy cực kỳ mạnh mẽ để ẩn/hiện theo màn hình: `d-none d-md-block` (Ẩn trên điện thoại, hiển thị dạng block từ màn hình tablet `md` trở lên).
+
+4.  **Sizing & Alignment (Kích thước & Căn chỉnh):**
+    *   `w-25`, `w-50`, `w-75`, `w-100`, `w-auto` (chiếm phần trăm chiều rộng).
+    *   `h-100` (chiếm 100% chiều cao).
+    *   `text-start`, `text-center`, `text-end` (căn lề văn bản).
+    *   `mx-auto` (căn giữa khối hộp theo chiều ngang, yêu cầu phần tử phải có định nghĩa `width`).
+
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Tận dụng tối đa Spacing Utilities:** Thay vì viết file CSS riêng chỉ để chỉnh vài khoảng margin/padding nhỏ, hãy dùng hệ thống `m-*` và `p-*` của Bootstrap để giữ code đồng nhất.
+*   **Responsive Display ẩn hiện thông minh:** Sử dụng tổ hợp `d-none d-lg-block` để làm các menu hoặc sidebar ẩn trên điện thoại nhưng tự động hiện ra trên máy tính, giúp tối ưu trải nghiệm người dùng di động.
+
+**💻 Code minh họa chuyên sâu:**
+
+```html
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví dụ Bootstrap Utilities</title>
+    <link href="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css)" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="container my-5">
+      
+      <!-- 1. VÍ DỤ VỀ SPACING (MARGIN & PADDING) -->
+      <!-- pt-4: padding-top; mb-5: margin-bottom; px-3: padding ngang -->
+      <div class="bg-light border p-4 mb-4 rounded shadow-sm">
+        <h3 class="text-primary mb-3">1. Tiện ích khoảng cách (Spacing)</h3>
+        <p class="bg-white p-3 border rounded">Đoạn văn này được bọc padding bên trong và cách lề dưới bằng utilities.</p>
+      </div>
+
+      <!-- 2. VÍ DỤ VỀ MÀU SẮC & NỀN -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <div class="p-4 bg-primary text-white rounded">
+            Nền xanh dương chủ đạo (.bg-primary .text-white)
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-4 bg-warning text-dark rounded bg-gradient">
+            Nền vàng kèm hiệu ứng chuyển sắc (.bg-warning .bg-gradient)
           </div>
         </div>
       </div>
 
-      <!-- Sidebar Widgets Column (4 cols) -->
-      <div class="col-md-4">
-        <!-- Search Widget -->
-        <div class="card my-4">
-          <h5 class="card-header">Search</h5>
-          <div class="card-body">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Go!</button>
-              </span>
+      <!-- 3. VÍ DỤ VỀ DISPLAY & RESPONSIVE HIDING -->
+      <div class="p-3 bg-secondary text-white rounded text-center">
+        <!-- Thông báo thay đổi theo kích thước màn hình -->
+        <span class="d-inline d-md-none">📱 Bạn đang xem trên Màn hình NHỎ (Điện thoại)</span>
+        <span class="d-none d-md-inline">💻 Bạn đang xem trên Màn hình LỚN (Tablet hoặc Desktop)</span>
+      </div>
+
+    </div>
+
+    <script src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js)"></script>
+  </body>
+</html>
+```
+## 07. Content - Typography & Images - Kiểu chữ & Hình ảnh
+
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Bootstrap cung cấp hệ thống định dạng nội dung sẵn có giúp các khối văn bản (Typography) và hình ảnh (Images) hiển thị đồng nhất, sắc nét và tự động responsive trên mọi thiết bị.
+
+1.  **Typography (Kiểu chữ văn bản):**
+    *   *Headings:* Mặc định các thẻ từ `<h1>` đến `<h6>` được thiết kế lại tỉ mỉ. Bạn cũng có thể dùng các lớp `.h1` đến `.h6` để biến bất kỳ thẻ nào thành tiêu đề.
+    *   *Display Headings:* Các lớp `.display-1` đến `.display-6` tạo ra các tiêu đề siêu lớn, cực kỳ thích hợp cho các Hero Banner hoặc Landing Page cần gây ấn tượng mạnh.
+    *   *Lead Paragraph:* Thêm class `.lead` vào thẻ đoạn văn (`<p>`) để làm nổi bật đoạn mở đầu bài viết (chữ to hơn và thoáng hơn một chút).
+    *   *Inline Text Elements:* Các lớp định dạng nhanh như `.fw-bold` (chữ đậm), `.fw-normal`, `.fst-italic` (in nghiêng), `.text-decoration-underline` (gạch chân).
+
+2.  **Images (Hình ảnh thích ứng):**
+    *   *Responsive Images:* Thêm class `.img-fluid` vào thẻ `<img>` để biến ảnh thành dạng responsive (tự động co giãn theo chiều rộng của khung chứa, không bao giờ bị tràn viền hay vỡ khung).
+    *   *Image Shapes (Hình dáng ảnh):*
+        *   `.rounded`: Bo tròn nhẹ các góc.
+        *   `.rounded-circle`: Biến hình ảnh thành hình tròn hoàn hảo (thường dùng cho ảnh đại diện - avatar).
+        *   `.img-thumbnail`: Tạo khung viền mỏng dạng tem nhãn xung quanh ảnh.
+    *   *Image Alignment:* Dùng các lớp căn lề như `.float-start`, `.float-end` hoặc biến ảnh thành khối riêng biệt căn giữa bằng tổ hợp `.mx-auto .d-block`.
+
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Luôn dùng `.img-fluid` cho ảnh nội dung:** Để tránh việc ảnh có kích thước gốc quá lớn làm vỡ bố cục giao diện trên điện thoại di động, hãy tập thói quen luôn gắn class `.img-fluid` cho mọi thẻ `<img>`.
+*   **Sử dụng Display Headings có tiết chế:** Các tiêu đề `.display-*` tạo hiệu ứng thị giác rất tốt ở phần đầu trang, nhưng không nên lạm dụng quá nhiều trong nội dung bài viết chi tiết bên dưới.
+
+**💻 Code minh họa chuyên sâu:**
+
+```html
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví dụ Typography & Images Bootstrap</title>
+    <link href="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css)" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="container my-5">
+      
+      <!-- 1. VÍ DỤ VỀ TYPOGRAPHY -->
+      <div class="mb-5">
+        <!-- Display Heading siêu lớn -->
+        <h1 class="display-4 fw-bold text-primary">Tiêu đề Display lớn</h1>
+        
+        <!-- Đoạn văn mở đầu nổi bật (.lead) -->
+        <p class="lead text-secondary">
+          Đây là đoạn văn dẫn dắt mở đầu bài viết với kích thước chữ được phóng to hơn bình thường để thu hút sự chú ý của người đọc ngay từ cái nhìn đầu tiên.
+        </p>
+        
+        <p>Đoạn văn bản thông thường sử dụng phông chữ và khoảng cách dòng chuẩn được tinh chỉnh sẵn bởi Bootstrap.</p>
+      </div>
+
+      <hr class="my-4">
+
+      <!-- 2. VÍ DỤ VỀ HÌNH ẢNH (IMAGES) -->
+      <div>
+        <h3 class="mb-3">Hình ảnh Responsive & Bo tròn</h3>
+        <div class="row g-4">
+          
+          <!-- Ảnh responsive bình thường (.img-fluid) -->
+          <div class="col-md-6">
+            <h5>Ảnh Responsive tiêu chuẩn</h5>
+            <img src="[https://picsum.photos/id/1015/600/300](https://picsum.photos/id/1015/600/300)" class="img-fluid rounded shadow-sm" alt="Sample Image">
+          </div>
+
+          <!-- Ảnh đại diện hình tròn (.rounded-circle) -->
+          <div class="col-md-6 text-center">
+            <h5>Ảnh đại diện (Avatar)</h5>
+            <img src="[https://picsum.photos/id/64/200/200](https://picsum.photos/id/64/200/200)" class="rounded-circle img-thumbnail" alt="Avatar">
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <script src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js)"></script>
+  </body>
+</html>
+```
+## 08. Tables - Bảng dữ liệu
+
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Hiển thị dữ liệu dạng bảng (Table) là một nhu cầu cực kỳ phổ biến trong các trang quản trị (Admin Dashboard). Bootstrap biến các thẻ `<table>` thô sơ trở nên tinh tế, hiện đại chỉ với vài class tiện ích:
+
+1.  **Lớp cơ bản (`.table`):**
+    *   Thêm class `.table` vào thẻ `<table>` để kích hoạt giao diện mặc định của Bootstrap: tạo khoảng đệm (padding) thoáng đãng, đường viền nhẹ nhàng giữa các hàng và căn chỉnh tiêu đề chuẩn xác.
+
+2.  **Các biến thể làm đẹp bảng:**
+    *   **`.table-striped`:** Tạo hiệu ứng sọc bàn cờ (xen kẽ màu nền giữa các hàng chẵn và lẻ), giúp người dùng dễ dàng theo dõi các hàng dữ liệu dài mà không bị rối mắt.
+    *   **`.table-hover`:** Kích hoạt hiệu ứng đổi màu nền khi con trỏ chuột di chuyển (hover) qua từng hàng dữ liệu.
+    *   **`.table-bordered` / `.table-borderless`:** Thêm toàn bộ đường viền bao quanh các ô hoặc xóa sạch mọi đường viền.
+    *   **Màu sắc trạng thái (`.table-primary`, `.table-success`, `.table-danger`...):** Dùng để tô màu riêng cho một hàng hoặc một ô cụ thể nhằm biểu thị trạng thái (ví dụ: hàng màu đỏ báo hiệu đơn hàng bị hủy).
+
+3.  **Bảng thích ứng (`.table-responsive`):**
+    *   Khi bảng có quá nhiều cột dữ liệu mà hiển thị trên màn hình điện thoại di động, nó rất dễ làm vỡ bố cục tổng thể của trang web. Bọc bảng bên trong một thẻ `<div>` có class `.table-responsive` sẽ tự động tạo ra một thanh cuộn ngang mượt mà khi màn hình quá hẹp.
+
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Luôn bọc bảng trong `.table-responsive`:** Đây là thói quen sống còn để đảm bảo giao diện trang web không bao giờ bị tràn viền (overflow) khi người dùng truy cập bằng điện thoại di động.
+*   **Tuân thủ cấu trúc Semantic HTML:** Luôn phân chia rõ ràng phần đầu bảng bằng `<thead>` (chứa các thẻ `<th>`) và phần thân bảng bằng `<tbody>` (chứa các thẻ `<td>`) để trình duyệt và các công cụ hỗ trợ đọc màn hình (accessibility) hiểu chính xác cấu trúc dữ liệu.
+
+**💻 Code minh họa chuyên sâu:**
+
+```html
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví dụ Tables Bootstrap</title>
+    <link href="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css)" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="container my-5">
+      <h3 class="mb-4">Danh sách đơn hàng (Bảng dữ liệu Responsive)</h3>
+
+      <!-- Bọc bảng trong .table-responsive để tự động có thanh cuộn trên mobile -->
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle shadow-sm rounded overflow-hidden">
+          
+          <!-- Phần đầu bảng -->
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">#ID</th>
+              <th scope="col">Khách hàng</th>
+              <th scope="col">Sản phẩm</th>
+              <th scope="col">Trạng thái</th>
+              <th scope="col">Tổng tiền</th>
+            </tr>
+          </thead>
+
+          <!-- Phần thân bảng -->
+          <tbody>
+            <tr>
+              <th scope="row">1001</th>
+              <td>Nguyễn Văn A</td>
+              <td>Áo thun thể thao Nam</td>
+              <td><span class="badge bg-success">Đã giao</span></td>
+              <td>350.000 đ</td>
+            </tr>
+            <tr>
+              <th scope="row">1002</th>
+              <td>Trần Thị B</td>
+              <td>Giày chạy bộ Sneaker</td>
+              <td><span class="badge bg-warning text-dark">Đang vận chuyển</span></td>
+              <td>1.250.000 đ</td>
+            </tr>
+            <!-- Hàng tô màu cảnh báo trạng thái đặc biệt -->
+            <tr class="table-danger">
+              <th scope="row">1003</th>
+              <td>Lê Văn C</td>
+              <td>Balo Laptop chống nước</td>
+              <td><span class="badge bg-danger">Đã hủy</span></td>
+              <td>590.000 đ</td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+
+    <script src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js)"></script>
+  </body>
+</html>
+```
+## 09. Forms - Biểu mẫu
+
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Biểu mẫu (Forms) là thành phần không thể thiếu để tương tác với người dùng (đăng nhập, đăng ký, tìm kiếm, gửi liên hệ). Bootstrap định dạng lại toàn bộ các thẻ nhập liệu HTML nguyên bản giúp chúng đồng bộ, đẹp mắt và dễ dàng tùy biến giao diện:
+
+1.  **Các lớp điều khiển cốt lõi:**
+    *   **`.form-label`:** Dùng cho nhãn (`<label>`) để tạo khoảng cách và kiểu chữ tiêu chuẩn phía trên ô nhập liệu.
+    *   **`.form-control`:** Áp dụng cho các thẻ `<input>`, `<textarea>`, và `<select>` cơ bản. Lớp này làm cho các trường nhập liệu tự động giãn rộng 100% chiều rộng khung chứa (`width: 100%`), bo góc mềm mại và tạo hiệu ứng phát sáng (focus ring) hiện đại khi người dùng click vào.
+    *   **`.form-select`:** Dành riêng cho thẻ danh sách thả xuống (`<select>`), tạo icon mũi tên chỉ xuống tùy chỉnh đẹp mắt.
+    *   **`.form-check`:** Lớp bọc dùng cho các ô Checkbox và Radio button, giúp căn chỉnh khoảng cách và bố cục chuẩn xác.
+
+2.  **Floating Labels (Nhãn nổi hiện đại):**
+    *   Bằng cách bọc `<input>` và `<label>` trong một thẻ `<div>` có class `.form-floating`, nhãn tên sẽ tự động dịch chuyển thành hiệu ứng nổi lên phía trên mượt mà khi người dùng nhập dữ liệu vào ô input.
+
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Luôn ghép nối `.form-label` và `.form-control`:** Mỗi ô input bắt buộc phải đi kèm một label có gắn class tương ứng để đảm bảo tính năng trợ năng (Accessibility - cho người khiếm thị dùng trình đọc màn hình).
+*   **Sử dụng `.mb-3` tạo khoảng cách giữa các trường:** Luôn đặt các trường form vào trong một khối div bọc có thêm khoảng cách dưới (ví dụ `class="mb-3"`) để form không bị dính sát vào nhau.
+
+**💻 Code minh họa chuyên sâu:**
+
+```html
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví dụ Forms Bootstrap</title>
+    <link href="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css)" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="container my-5" style="max-width: 600px;">
+      <div class="card shadow-sm p-4">
+        <h3 class="mb-4 text-center">Form Đăng Ký Tài Khoản</h3>
+        
+        <form>
+          <!-- 1. Ô Nhập liệu Text tiêu chuẩn -->
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Họ và tên</label>
+            <input type="text" class="form-control" id="fullName" placeholder="Nhập họ tên của bạn...">
+          </div>
+
+          <!-- 2. Ô Nhập liệu Email kèm Floating Label hiện đại -->
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
+            <label for="floatingEmail">Địa chỉ Email</label>
+          </div>
+
+          <!-- 3. Thẻ Chọn (Select Dropdown) -->
+          <div class="mb-3">
+            <label for="citySelect" class="form-label">Tỉnh / Thành phố</label>
+            <select class="form-select" id="citySelect">
+              <option selected>Chọn tỉnh thành...</option>
+              <option value="HN">Hà Nội</option>
+              <option value="HCM">TP. Hồ Chí Minh</option>
+              <option value="DN">Đà Nẵng</option>
+            </select>
+          </div>
+
+          <!-- 4. Textarea (Khung nhập văn bản lớn) -->
+          <div class="mb-3">
+            <label for="userMessage" class="form-label">Lời nhắn / Góp ý</label>
+            <textarea class="form-control" id="userMessage" rows="3" placeholder="Nhập nội dung..."></textarea>
+          </div>
+
+          <!-- 5. Checkbox (Đồng ý điều khoản) -->
+          <div class="form-check mb-4">
+            <input class="form-check-input" type="checkbox" value="" id="termsCheck">
+            <label class="form-check-label" for="termsCheck">
+              Tôi đồng ý với các điều khoản và chính sách bảo mật
+            </label>
+          </div>
+
+          <!-- 6. Nút Gửi (Submit Button) -->
+          <button type="submit" class="btn btn-primary w-100 py-2">Đăng Ký Ngay</button>
+        </form>
+
+      </div>
+    </div>
+
+    <script src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js)"></script>
+  </body>
+</html>
+```
+## 10. Components - Nút bấm, Thẻ bài & Menu thả xuống
+
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Bootstrap cung cấp sẵn rất nhiều thành phần giao diện (Components) hoàn thiện từ kiểu dáng cho đến trạng thái tương tác. Ba thành phần phổ biến và quan trọng nhất bao gồm:
+
+1.  **Buttons (Nút bấm):**
+    *   Để biến một thẻ bất kỳ thành nút bấm chuẩn của Bootstrap, bạn cần kết hợp lớp cơ bản **`.btn`** cùng với các biến thể màu sắc thương hiệu như `.btn-primary`, `.btn-secondary`, `.btn-success`, `.btn-danger`, `.btn-warning`, `.btn-info`, `.btn-light`, `.btn-dark`.
+    *   *Biến thể viền (Outline Buttons):* Dùng `.btn-outline-*` để tạo nút có đường viền màu và trong suốt nền, hiện màu khi di chuột vào.
+    *   *Kích thước:* `.btn-lg` (lớn) hoặc `.btn-sm` (nhỏ).
+
+2.  **Cards (Thẻ bài nội dung):**
+    *   Card là khối chứa cực kỳ linh hoạt để hiển thị thông tin dạng thẻ bài (ví dụ: sản phẩm, bài viết blog, hồ sơ cá nhân).
+    *   Cấu trúc chuẩn của một Card bao gồm:
+        *   `.card`: Thẻ bao ngoài cùng, tạo khung viền và bo góc.
+        *   `.card-img-top`: Đặt hình ảnh lên vị trí trên cùng của thẻ.
+        *   `.card-body`: Vùng chứa phần chữ bên trong (tiêu đề `.card-title`, đoạn văn `.card-text`).
+        *   `.card-footer`: Khu vực chân thẻ (thường dùng để đặt nút bấm hoặc ngày tháng).
+
+3.  **Dropdowns (Menu thả xuống):**
+    *   Thành phần cho phép người dùng mở một danh sách các lựa chọn khi click vào nút.
+    *   Yêu cầu cấu trúc có thẻ bọc `.dropdown`, nút kích hoạt `.dropdown-toggle` (đi kèm thuộc tính `data-bs-toggle="dropdown"`) và danh sách menu bên trong `.dropdown-menu`.
+
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Dùng đúng thẻ HTML cho Buttons:** Nên dùng thẻ `<button type="button">` cho các hành động gửi form/xử lý JavaScript, và dùng thẻ `<a>` (kèm class `.btn`) khi muốn điều hướng sang trang khác.
+*   **Card Grid:** Khi hiển thị danh sách nhiều card sản phẩm, hãy đặt chúng bên trong hệ thống lưới (`.row` và `.col-*`) để chúng tự động căn chỉnh khoảng cách đều đặn.
+
+**💻 Code minh họa chuyên sâu:**
+
+```html
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví dụ Components Bootstrap</title>
+    <link href="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css)" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="container my-5">
+      <h3 class="mb-4">1. Các biến thể Nút bấm (Buttons)</h3>
+      <div class="mb-5">
+        <button type="button" class="btn btn-primary">Primary Button</button>
+        <button type="button" class="btn btn-outline-success">Outline Success</button>
+        <button type="button" class="btn btn-danger btn-lg">Nút Lớn (Danger)</button>
+      </div>
+
+      <h3 class="mb-4">2. Menu thả xuống (Dropdown)</h3>
+      <div class="dropdown mb-5">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Tùy chọn tài khoản
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Hồ sơ cá nhân</a></li>
+          <li><a class="dropdown-item" href="#">Cài đặt hệ thống</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="#">Đăng xuất</a></li>
+        </ul>
+      </div>
+
+      <h3 class="mb-4">3. Thẻ bài sản phẩm (Card Component)</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card shadow-sm h-100">
+            <img src="[https://picsum.photos/id/20/400/200](https://picsum.photos/id/20/400/200)" class="card-img-top" alt="Product Image">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Máy ảnh kỹ thuật số</h5>
+              <p class="card-text text-secondary">Thiết kế nhỏ gọn, chụp ảnh sắc nét, phù hợp cho người mới bắt đầu.</p>
+              <a href="#" class="btn btn-primary mt-auto">Xem chi tiết</a>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Categories Widget -->
-        <div class="card my-4">
-          <h5 class="card-header">Categories</h5>
-          <!-- Category List... -->
+    </div>
+
+    <!-- Bắt buộc phải có file JS Bundle để Dropdown hoạt động -->
+    <script src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js)"></script>
+  </body>
+</html>
+```
+## 11. Navigation - Điều hướng & Navbar
+
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Hệ thống điều hướng giúp người dùng di chuyển mượt mà giữa các trang web. Bootstrap cung cấp từ các danh sách liên kết đơn giản (Navs) cho đến thanh điều hướng tổng thể hoàn chỉnh (Navbar):
+
+1.  **Navs (Danh sách liên kết điều hướng cơ bản):**
+    *   Sử dụng cho menu phụ, tab nội dung hoặc footer.
+    *   `.nav`: Khớp với thẻ `<ul>`, kết hợp cùng các thẻ `<li>` có class `.nav-item` và thẻ `<a>` có class `.nav-link`.
+    *   *Biến thể:* `.nav-pills` (tạo nút bấm bo tròn cho từng link) hoặc `.nav-tabs` (tạo dạng thẻ tab chuyển đổi nội dung).
+
+2.  **Navbar (Thanh điều hướng đỉnh trang):**
+    *   Navbar là một khối điều hướng phức tạp, đầy đủ tính năng, thường nằm ở đỉnh của trang web.
+    *   Cấu trúc cốt lõi của một Navbar Bootstrap 5:
+        *   `.navbar`: Khớp với thẻ `<nav>`, kết hợp với màu nền (`bg-body-tertiary` hoặc `bg-dark text-white`) và chế độ sáng/tối (`navbar-light` / `navbar-dark`).
+        *   `.navbar-expand-{breakpoint}` (ví dụ: `navbar-expand-lg`): Quyết định điểm gãy màn hình mà tại đó menu sẽ bung rộng ra thay vì bị thu gọn lại.
+        *   `.container` (hoặc `.container-fluid`): Đặt bên trong navbar để canh lề nội dung.
+        *   `.navbar-brand`: Logo hoặc tên thương hiệu ở góc trái.
+        *   `.navbar-toggler`: Nút bấm hình hamburger (3 gạch ngang) xuất hiện trên điện thoại di động để ẩn/hiện menu.
+        *   `.collapse.navbar-collapse`: Khối bọc danh sách menu (`.navbar-nav`), sẽ tự động thu gọn lại trên mobile và bung ra trên máy tính.
+
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Luôn cấu hình `navbar-expand-*` đúng cách:** Nếu bạn muốn menu tự động thu gọn trên điện thoại và bung ra từ màn hình Laptop (`≥ 992px`) trở lên, hãy sử dụng class `.navbar-expand-lg`.
+*   **Kiểm tra tính tương thích JavaScript của Navbar Toggle:** Để nút hamburger trên điện thoại có thể bấm mở/đóng menu, bạn **bắt buộc** phải có đầy đủ các thuộc tính `data-bs-toggle="collapse"` và `data-bs-target="#id_cua_menu"` trùng khớp với ID của khối `.collapse`.
+
+**💻 Code minh họa chuyên sâu:**
+
+```html
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví dụ Navbar Bootstrap</title>
+    <link href="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css)" rel="stylesheet">
+  </head>
+  <body>
+
+    <!-- THANH ĐIỀU HƯỚNG NAVBAR RESPONSIVE -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+      <div class="container">
+        
+        <!-- 1. Logo hoặc Thương hiệu -->
+        <a class="navbar-brand fw-bold text-primary" href="#">BrandLogo</a>
+
+        <!-- 2. Nút Hamburger Toggle (Hiển thị trên điện thoại khi màn hình nhỏ hơn lg) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- 3. Khối menu chính (Sẽ tự động collapse trên mobile) -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          
+          <!-- Danh sách link điều hướng căn bên trái -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sản phẩm</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Danh mục
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Thiết bị điện tử</a></li>
+                <li><a class="dropdown-item" href="#">Thời trang nam nữ</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Liên hệ</a>
+            </li>
+          </ul>
+
+          <!-- Ô tìm kiếm và nút hành động bên phải -->
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+            <button class="btn btn-outline-primary" type="submit">Tìm</button>
+          </form>
+
         </div>
+      </div>
+    </nav>
 
-        <!-- Side Widget -->
-        <div class="card my-4">
-          <h5 class="card-header">Side Widget</h5>
-          <div class="card-body">
-            You can put anything you want inside of these side widgets!
+    <!-- Nội dung minh họa trang -->
+    <div class="container my-5">
+      <h1>Nội dung trang web chính</h1>
+      <p class="lead">Thu nhỏ kích thước trình duyệt dưới 992px để kiểm tra tính năng thu gọn của Navbar Bootstrap.</p>
+    </div>
+
+    <!-- Bắt buộc phải có file JS Bundle để nút Toggle Menu hoạt động -->
+    <script src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js)"></script>
+  </body>
+</html>
+```
+## 12. JavaScript Components - Tương tác nâng cao (Modal, Carousel, Collapse)
+
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Bên cạnh các lớp CSS tĩnh, Bootstrap tích hợp sẵn một hệ thống **JavaScript Plugins** mạnh mẽ giúp bạn tạo ra các thành phần tương tác động phức tạp mà không cần viết một dòng code JavaScript thủ công nào.
+
+Các thành phần tương tác JS cốt lõi bao gồm:
+1.  **Modal (Hộp thoại Popup):**
+    *   Cửa sổ bật lên đè lên trên nội dung trang chính, dùng để hiển thị thông báo, form đăng nhập, hoặc chi tiết sản phẩm.
+    *   Yêu cầu kết nối thuộc tính `data-bs-toggle="modal"` và `data-bs-target="#modalId"` trên nút kích hoạt.
+
+2.  **Carousel (Trình chiếu Slide ảnh):**
+    *   Thành phần slider trình chiếu hình ảnh hoặc banner quảng cáo tự động chạy xoay vòng, kèm theo các nút mũi tên điều hướng trái/phải và các chấm tròn chỉ mục (indicators).
+
+3.  **Collapse & Accordion (Hiển thị / Ẩn nội dung):**
+    *   Cho phép thu gọn hoặc mở rộng một khối nội dung khi người dùng click vào nút (thường dùng làm danh sách câu hỏi thường gặp - FAQ).
+
+4.  **Tooltip & Popover (Hộp chú thích khi rê chuột):**
+    *   Hiển thị một khung nhỏ chứa đoạn văn bản chú thích khi người dùng di chuột vào phần tử. *(Lưu ý: Tooltip yêu cầu phải được kích hoạt khởi tạo bằng JavaScript thủ công).*
+
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Bắt buộc nhúng file JS Bundle:** Tất cả các tính năng JavaScript của Bootstrap đều phụ thuộc vào file `bootstrap.bundle.min.js`. Nếu quên nhúng file này hoặc đặt sai vị trí (trước thẻ `<body>`), các tính năng như Modal hay Dropdown sẽ hoàn toàn không hoạt động.
+*   **Khởi tạo Tooltip/Popover nếu dùng:** Không giống như Modal hay Carousel tự chạy qua thuộc tính data, Tooltip và Popover yêu cầu một đoạn mã JavaScript ngắn để kích hoạt (`new bootstrap.Tooltip(...)`).
+
+**💻 Code minh họa chuyên sâu (Modal & Carousel):**
+
+```html
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví dụ JS Components Bootstrap</title>
+    <link href="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css)" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="container my-5">
+      
+      <!-- ==========================================
+         1. NÚT KÍCH HOẠT MODAL (POPUP)
+      =========================================== -->
+      <h3 class="mb-3">1. Hộp thoại Popup (Modal)</h3>
+      <button type="button" class="btn btn-primary mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Mở Hộp Thoại Modal
+      </button>
+
+      <!-- Cấu trúc Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Tiêu đề thông báo</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Nội dung chi tiết thông báo hiển thị bên trong hộp thoại modal popup.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+              <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  ```
 
----
 
-## 7. Working with Contents
+      <!-- ==========================================
+         2. TRÌNH CHIẾU SLIDE ẢNH (CAROUSEL)
+      =========================================== -->
+      <h3 class="mb-3">2. Trình chiếu Slide ảnh (Carousel)</h3>
+      <div id="carouselExample" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+        
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="[https://picsum.photos/id/10/800/300](https://picsum.photos/id/10/800/300)" class="d-block w-100" alt="Slide 1">
+          </div>
+          <div class="carousel-item">
+            <img src="[https://picsum.photos/id/20/800/300](https://picsum.photos/id/20/800/300)" class="d-block w-100" alt="Slide 2">
+          </div>
+          <div class="carousel-item">
+            <img src="[https://picsum.photos/id/30/800/300](https://picsum.photos/id/30/800/300)" class="d-block w-100" alt="Slide 3">
+          </div>
+        </div>
+
+        <!-- Nút chuyển slide trái / phải -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
 
-Chương này tập trung vào các thiết lập mặc định và phương pháp định dạng nội dung (văn bản, hình ảnh, danh sách, bảng biểu) bằng Bootstrap 4.
-
-### 7.1. Reboot defaults and basics (Thiết lập mặc định & Khởi tạo Reboot)
-Bootstrap 4 sử dụng **Reboot** (dựa trên Normalize.css) để chuẩn hóa và thiết lập phong cách mặc định thống nhất trên mọi trình duyệt:
-- **Đơn vị rem:** Một trong những thay đổi lớn nhất về cấu phần nội dung trong Bootstrap 4 là chuyển từ đơn vị `em` sang `rem` (Root em). Khác với `em` (phụ thuộc kích thước chữ của phần tử cha), đơn vị `rem` hoàn toàn độc lập và chỉ tính tương đối so với phần tử gốc `<html>`.
-- **Mô hình hộp:** Thuộc tính `box-sizing` được thiết lập toàn cục là `border-box` trên mọi phần tử.
-- **Cỡ chữ nền tảng:** Cỡ chữ cơ bản mặc định là **16px** khai báo trên thẻ `<html>`. Trên thẻ `<body>`, cỡ chữ được thiết lập là `1rem` để dễ dàng thích ứng co giãn (`responsive type-scaling`) khi kết hợp với Media Queries.
-- **Tính nhất quán:** Các giá trị toàn cục về font chữ (`font-family`) và chiều cao dòng (`line-height`) được định nghĩa trực tiếp trên thẻ `<body>`. Màu nền mặc định của `<body>` được đặt là màu trắng (`#fff`).
-- **Lề ngoài (Margins):** Tất cả thẻ tiêu đề (`<h1>` - `<h6>`) đều được loại bỏ lề trên (`top-margin`) và có lề dưới (`margin-bottom`) là `0.5rem`. Các đoạn văn (`<p>`) có lề dưới là `1rem`.
-- **Danh sách (Lists):** Có 3 dạng danh sách mặc định là `<ul>`, `<ol>`, và `<dl>`. Cả 3 loại đều được loại bỏ lề trên và có lề dưới là `1rem`.
-- **Bảng biểu (Tables):** Được điều chỉnh nhẹ để đảm bảo việc căn lề văn bản nhất quán trong tất cả các ô. Thẻ mô tả bảng `<caption>` cũng được tối ưu hóa để tăng khả năng đọc.
-- **Biểu mẫu (Forms):** Biểu mẫu trong Bootstrap 4 được tinh giản tối đa. Hầu hết định dạng mặc định phức tạp đã bị loại bỏ giúp nhà phát triển dễ dàng tùy biến giao diện riêng.
-
----
-
-### 7.2. Learning to use typography (Thiết kế kiểu chữ & Văn bản)
-- **Thẻ tiêu đề thông thường:** Các thẻ tiêu đề chuẩn (`<h1>` đến `<h6>`) giúp tạo tính phân cấp nội dung mạch lạc cho bài viết.
-- **Lớp định dạng tiêu đề:** Bootstrap 4 hỗ trợ các lớp tương ứng từ `.h1` đến `.h6` cho phép hiển thị một đoạn văn bản nội dòng (inline text) có kiểu dáng giống hệt các thẻ tiêu đề tương ứng mà không làm thay đổi ngữ nghĩa thẻ HTML gốc.
-- **Display headings (Tiêu đề hiển thị nổi bật):** Được thiết kế để có cỡ chữ lớn và nét mảnh hơn tiêu đề thông thường nhằm tạo điểm nhấn mạnh mẽ. Có 4 cấp độ từ lớn đến nhỏ:
-  - Lớp `.display-1` (lớn nhất)
-  - Lớp `.display-2`
-  - Lớp `.display-3`
-  - Lớp `.display-4` (nhỏ nhất)
-
----
-
-### 7.3. Working with lists (Làm việc với danh sách)
-
-#### 7.3.1. Basic List Groups (Nhóm danh sách cơ bản)
-Để tạo một nhóm danh sách tiêu chuẩn, ta áp dụng lớp `.list-group` cho thẻ `<ul>` và lớp `.list-group-item` cho các thẻ `<li>` con bên trong.
-- **Mã nguồn mẫu:**
-  ```html
-  <ul class="list-group">
-    <li class="list-group-item">Coffee</li>
-    <li class="list-group-item">Tea</li>
-    <li class="list-group-item">Milk</li>
-  </ul>
-  ```
-
-#### 7.3.2. Trạng thái phần tử danh sách (Active & Disabled States)
-- **Trạng thái kích hoạt:** Thêm lớp `.active` vào phần tử mục để tô sáng mục đó.
-- **Trạng thái vô hiệu hóa:** Thêm lớp `.disabled` để làm mờ và chặn tương tác trên mục đó.
-- **Mã nguồn mẫu:**
-  ```html
-  <ul class="list-group">
-    <li class="list-group-item active">Coffee (Đang chọn)</li>
-    <li class="list-group-item">Tea</li>
-    <li class="list-group-item disabled">Milk (Vô hiệu hóa)</li>
-  </ul>
-  ```
-
-#### 7.3.3. Màu sắc danh sách theo ngữ cảnh (Contextual Classes)
-Có thể tô màu nền cho các mục danh sách để thể hiện trạng thái thông tin thông qua các lớp ngữ cảnh sau:
-- `.list-group-item-success`: Màu xanh lá (Thành công).
-- `.list-group-item-info`: Màu xanh ngọc (Thông tin).
-- `.list-group-item-warning`: Màu vàng (Cảnh báo).
-- `.list-group-item-danger`: Màu đỏ (Lỗi, Nguy hiểm).
-- `.list-group-item-secondary`: Màu xám phụ.
-- `.list-group-item-dark`: Màu xám tối.
-- `.list-group-item-light`: Màu xám cực sáng.
-
----
-
-### 7.4. How to style images (Thiết lập kiểu dáng hình ảnh)
-
-#### 7.4.1. Responsive Images (Hình ảnh tự động thích ứng)
-- **Giải pháp:** Bootstrap 4 hỗ trợ lớp `.img-fluid` cực kỳ hữu dụng.
-- **Cơ chế:** Khi áp dụng lớp `.img-fluid` cho thẻ `<img>`, hình ảnh sẽ tự động được gán thuộc tính `max-width: 100%` và `height: auto` giúp hình ảnh tự co giãn vừa vặn trong phần tử cha chứa nó mà không bị vỡ tỷ lệ ảnh.
-- **Mã nguồn mẫu:**
-  ```html
-  <img src="myimage.jpg" class="img-fluid" alt="Responsive Image">
-  ```
-
-#### 7.4.2. Image Shapes (Bo khung hình ảnh)
-Bootstrap cung cấp 3 lớp tiện ích để định hình nhanh kiểu dáng hiển thị cho hình ảnh:
-- `.rounded`: Bo tròn nhẹ 4 góc ảnh.
-- `.rounded-circle`: Bo tròn hoàn toàn ảnh (tạo hình tròn/oval).
-- `.img-thumbnail`: Tạo viền khung viền bao quanh ảnh kèm góc bo nhẹ (dạng ảnh thu nhỏ xem trước).
-
-- **Mã nguồn mẫu:**
-  ```html
-  <img src="myimage.jpg" class="rounded" alt="Bo góc">
-  <img src="myimage.jpg" class="rounded-circle" alt="Hình tròn">
-  <img src="myimage.jpg" class="img-thumbnail" alt="Ảnh thu nhỏ thumbnail">
-  ```
-
----
-
-### 7.5. Coding tables (Xây dựng bảng dữ liệu)
-
-#### 7.5.1. Basic Table (Thiết lập bảng cơ bản)
-Một bảng cơ bản trong Bootstrap tận dụng đầy đủ các thẻ HTML tiêu chuẩn của bảng như `<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, và `<td>` với khoảng đệm padding nhẹ nhàng và đường kẻ phân cách tinh tế.
-- **Cú pháp nền tảng:**
-  ```html
-  <table class="table">
-    <!-- Nội dung bảng... -->
-  </table>
-  ```
-
-#### 7.5.2. Inverse Table (Bảng màu đảo ngược)
-- **Đặc trưng:** Lớp `.table-inverse` (hoặc `.table-dark` trong bản chính thức) giúp đảo ngược hoàn toàn tông màu của bảng sang nền màu tối và chữ màu sáng.
-- **Mã nguồn mẫu:**
-  ```html
-  <table class="table table-inverse">
-    <!-- Bảng nền tối chữ sáng -->
-  </table>
-  ```
-
-#### 7.5.3. Inverse Table Header (Đảo ngược màu tiêu đề bảng)
-- **Đặc trưng:** Nếu chỉ muốn đảo ngược tông màu của riêng hàng tiêu đề trên cùng, bạn có thể áp dụng lớp `.thead-inverse` (hoặc `.thead-dark`) trực tiếp trên thẻ `<thead>`.
-- **Mã nguồn mẫu:**
-  ```html
-  <table class="table">
-    <thead class="thead-inverse">
-      <!-- Tiêu đề nền tối chữ sáng, thân bảng nền trắng chữ tối -->
-    </thead>
-  </table>
-  ```
-
-#### 7.5.4. Striped Rows (Bảng sọc ngựa vằn)
-- **Đặc trưng:** Lớp `.table-striped` tự động áp dụng dải sọc xám nhạt (zebra-striping) xen kẽ lên các hàng có số thứ tự lẻ (`odd`) trong phần thân bảng (`<tbody>`).
-- **Mã nguồn mẫu:**
-  ```html
-  <table class="table table-striped">
-    <!-- Các hàng xen kẽ màu nền -->
-  </table>
-  ```
-
-#### 7.5.5. Hover State on Rows (Hiệu ứng di chuột trên hàng)
-- **Đặc trưng:** Lớp `.table-hover` tự động tạo hiệu ứng đổi màu nền sáng lên khi người dùng di con trỏ chuột qua các hàng của bảng.
-- **Mã nguồn mẫu:**
-  ```html
-  <table class="table table-hover">
-    <!-- Hiệu ứng hover nổi bật -->
-  </table>
-  ```
-
-#### 7.5.6. Contextual Classes for Rows (Tô màu hàng/ô theo ngữ cảnh)
-Bạn có thể thiết lập màu nền cho từng hàng (`<tr>`) hoặc từng ô cụ thể (`<td>`, `<th>`) bằng các lớp ngữ cảnh:
-- `.table-primary`: Màu xanh dương.
-- `.table-success`: Màu xanh lá.
-- `.table-info`: Màu xanh ngọc.
-- `.table-warning`: Màu vàng.
-- `.table-danger`: Màu đỏ.
-
-- **Mã nguồn mẫu:**
-  ```html
-  <tr class="table-success">
-    <td>Dữ liệu thành công</td>
-  </tr>
-  ```
-
-#### 7.5.7. Responsive Tables (Bảng thích ứng màn hình di động)
-- **Đặc trưng:** Việc thiết lập bảng responsive rất đơn giản trong Bootstrap 4 bằng cách bao bọc thẻ `<table>` bên trong một thẻ `<div>` chứa lớp `.table-responsive`.
-- **Cơ chế:** Khi xem bảng trên các màn hình thiết bị có chiều rộng **nhỏ hơn 768px**, bảng sẽ tự động xuất hiện thanh cuộn ngang để người dùng kéo xem đầy đủ dữ liệu mà không làm bể bố cục trang web.
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="table-responsive">
-    <table class="table">
-      <!-- Toàn bộ nội dung bảng -->
-    </table>
-  </div>
-  ```
-
----
-
-## 8. Playing with components
-
-Chương này đi sâu vào tìm hiểu các thành phần giao diện (components) tương tác nâng cao của Bootstrap 4, bắt đầu bằng các nút bấm (Buttons) và nhóm nút (Button groups).
-
-### 8.1. Using the button component (Làm việc với nút bấm)
-Nút bấm là một trong những thành phần được sử dụng nhiều nhất trên trang web. Bootstrap 4 mang tới các lựa chọn đa dạng bao gồm nút bấm viền ngoài (`outline`), nút bấm giữ trạng thái (`toggle state`), và các nhóm nút (`button groups`).
-
-#### 8.1.1. Basic button examples (Các ví dụ nút bấm cơ bản)
-Bootstrap 4 cung cấp sẵn 6 tùy chọn màu sắc ngữ cảnh cho nút bấm:
-- **Primary:** Nút bấm hành động chính trên trang web, mặc định là màu xanh dương.
-- **Secondary:** Nút bấm phụ hoặc thay thế, mặc định là màu trắng/xám phụ.
-- **Success:** Dành cho các hành động mang tính tích cực (như đồng ý, lưu...), mặc định là màu xanh lá.
-- **Info:** Dành cho các nút cung cấp thông tin chung, mặc định là màu xanh ngọc.
-- **Warning:** Dành cho các cảnh báo, mặc định là màu vàng.
-- **Danger:** Dành cho các hành động nguy hiểm hoặc báo lỗi (như xóa dữ liệu...), mặc định là màu đỏ.
-
-- **Mã nguồn mẫu:**
-  ```html
-  <button type="button" class="btn btn-primary">Primary</button>
-  <button type="button" class="btn btn-secondary">Secondary</button>
-  <button type="button" class="btn btn-success">Success</button>
-  <button type="button" class="btn btn-info">Info</button>
-  <button type="button" class="btn btn-warning">Warning</button>
-  <button type="button" class="btn btn-danger">Danger</button>
-  <button type="button" class="btn btn-link">Link</button>
-  ```
-
----
-
-#### 8.1.2. Creating outlined buttons (Nút bấm dạng viền)
-Để tạo nút bấm dạng chỉ có viền ngoài và đổi màu nền khi di chuột qua, bạn chỉ cần thay đổi tên lớp nút cơ bản bằng cách thêm hậu tố `-outline`:
-- *Cú pháp theo slide gốc:* `.btn-[color]-outline` (Ví dụ: `btn-primary-outline`).
-
-> [!NOTE]
-> Trong các phiên bản Bootstrap 4 thử nghiệm ban đầu (Beta), cú pháp đặt tên là `.btn-[color]-outline`. Tuy nhiên, trong phiên bản phát hành chính thức ổn định, cú pháp này đã được chuẩn hóa lại thành `.btn-outline-[color]` (Ví dụ: `.btn-outline-primary`, `.btn-outline-secondary`...).
-
-- **Mã nguồn mẫu:**
-  ```html
-  <button type="button" class="btn btn-primary-outline">Primary</button>
-  <button type="button" class="btn btn-secondary-outline">Secondary</button>
-  <button type="button" class="btn btn-success-outline">Success</button>
-  <button type="button" class="btn btn-info-outline">Info</button>
-  <button type="button" class="btn btn-warning-outline">Warning</button>
-  <button type="button" class="btn btn-danger-outline">Danger</button>
-  ```
-
----
-
-#### 8.1.3. Using button groups (Sử dụng nhóm nút ngang)
-Nhóm nút (Button groups) cho phép kết hợp nhiều nút bấm đứng liền kề nhau theo chiều ngang hoặc chiều dọc để tạo thành một khối thành phần thống nhất.
-- **Mã nguồn mẫu (Hàng ngang):**
-  ```html
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary">Left</button>
-    <button type="button" class="btn btn-secondary">Middle</button>
-    <button type="button" class="btn btn-secondary">Right</button>
-  </div>
-  ```
-
----
-
-#### 8.1.4. Creating vertical button groups (Tạo nhóm nút dọc)
-Để xếp chồng các nút trong nhóm theo chiều dọc thay vì chiều ngang, bạn chỉ cần thay đổi lớp bọc `.btn-group` của thẻ `<div>` ngoài cùng thành `.btn-group-vertical` mà không cần sửa đổi bất kỳ code nào bên trong các thẻ `<button>` con.
-- **Mã nguồn mẫu (Hàng dọc):**
-  ```html
-  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-    <button type="button" class="btn btn-secondary">Left</button>
-    <button type="button" class="btn btn-secondary">Middle</button>
-    <button type="button" class="btn btn-secondary">Right</button>
-  </div>
-  ```
-
----
-
-#### 8.1.5. Coding a button dropdown (Nút bấm kèm Menu thả xuống)
-Để tạo một nút bấm tích hợp trình đơn thả xuống (dropdown) khi click chọn, bạn kết hợp lớp `.dropdown-toggle` cùng thuộc tính dữ liệu `data-toggle="dropdown"`. Các đường liên kết con được bọc trong một container lớp `.dropdown-menu`.
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="btn-group">
-    <!-- Nút kích hoạt Dropdown -->
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Dropdown
-    </button>
-    <!-- Trình đơn hiển thị các liên kết -->
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Link</a>
-      <a class="dropdown-item" href="#">Link Two</a>
-      <a class="dropdown-item" href="#">Link Three</a>
-      <!-- Đường phân tách giữa các nhóm link -->
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Link Four</a>
-    </div>
-  </div>
-  ```
-
----
-
-#### 8.1.6. Creating a pop-up menu (Nút bấm Menu đẩy lên trên - Dropup)
-Trong nhiều tình huống giao diện, bạn muốn trình đơn bật lên phía trên nút bấm thay vì rớt xuống dưới. Để làm điều này, bạn chỉ cần gán thêm lớp `.dropup` vào thẻ bao ngoài cùng `.btn-group`.
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="btn-group dropup">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Dropdown
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Link</a>
-      <a class="dropdown-item" href="#">Link Two</a>
-      <a class="dropdown-item" href="#">Link Three</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Link Four</a>
-    </div>
-  </div>
-  ```
-
----
-
-### 8.2. Coding forms in Bootstrap 4 (Thiết lập biểu mẫu Form)
-
-#### 8.2.1. Setting up a form (Thiết lập Form cơ bản)
-Một form cơ bản trong Bootstrap 4 sử dụng cấu trúc nhóm bằng thẻ `<fieldset>` (hoặc thẻ `<div>`) kết hợp lớp `.form-group` nhằm tạo khoảng cách hợp lý giữa các dòng. Các phần tử nhập liệu (`<input>`) được gán lớp `.form-control` để tự động kéo giãn 100% chiều ngang và bo góc nhẹ nhàng.
-- **Mã nguồn mẫu:**
-  ```html
-  <form>
-    <fieldset class="form-group">
-      <label>Text Label</label>
-      <input type="text" class="form-control" placeholder="Enter Text">
-      <!-- Văn bản hướng dẫn nhỏ dưới input -->
-      <small class="text-muted">This is some help text.</small>
-    </fieldset>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  ```
-
----
-
-#### 8.2.2. Adding a select dropdown (Thêm menu chọn thả xuống)
-Để chèn danh sách lựa chọn thả xuống bên trong form, bạn áp dụng lớp `.form-control` trực tiếp lên thẻ `<select>` tiêu chuẩn của HTML.
-- **Mã nguồn mẫu:**
-  ```html
-  <form>
-    <!-- Các input khác... -->
-    
-    <fieldset class="form-group">
-      <label>Select dropdown</label>
-      <select class="form-control">
-        <option>one</option>
-        <option>two</option>
-        <option>three</option>
-        <option>four</option>
-        <option>five</option>
-      </select>
-    </fieldset>
-    
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  ```
-
----
-
-#### 8.2.3. Inserting a textarea tag into your form (Thêm vùng nhập văn bản đa dòng)
-Để chèn một khung nhập văn bản dài nhiều dòng (textarea), bạn chỉ cần gán lớp `.form-control` cho thẻ `<textarea>` tương ứng và thiết lập thuộc tính số dòng hiển thị thông qua `rows`.
-- **Mã nguồn mẫu:**
-  ```html
-  <form>
-    <!-- Các input khác... -->
-    
-    <fieldset class="form-group">
-      <label>Textarea</label>
-      <textarea class="form-control" rows="3"></textarea>
-    </fieldset>
-    
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  ```
-
----
-
-#### 8.2.4. Adding a file input form field (Trường tải tệp tin)
-Để tạo một trường tải tệp tin lên máy chủ, bạn áp dụng lớp `.form-control-file` trực tiếp cho thẻ `<input type="file">`.
-- **Mã nguồn mẫu:**
-  ```html
-  <fieldset class="form-group">
-    <label>File input</label>
-    <input type="file" class="form-control-file">
-    <small class="text-muted">This is some help text. Supported file types are: .png</small>
-  </fieldset>
-  ```
-
----
-
-#### 8.2.5. Inserting radio buttons and checkboxes to a form (Nút chọn duy nhất và Nút tích chọn)
-Để hiển thị radio buttons hoặc checkboxes theo bố cục chuẩn của Bootstrap 4, bạn bọc thẻ nhập liệu cùng thẻ `<label>` bên trong một thẻ `<div>` có lớp `.radio` hoặc `.checkbox`.
-- **Mã nguồn mẫu:**
-  ```html
-  <!-- Lựa chọn Radio 1 -->
-  <div class="radio">
-    <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-      Option 1
-    </label>
-  </div>
-  <!-- Lựa chọn Radio 2 -->
-  <div class="radio">
-    <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-      Option 2
-    </label>
-  </div>
-  <!-- Hộp tích chọn Checkbox -->
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Checkbox
-    </label>
-  </div>
-  ```
-
----
-
-#### 8.2.6. Creating an inline form (Dựng biểu mẫu hàng ngang)
-Khi cần thiết lập form hiển thị trên một hàng ngang (thường dùng cho thanh tìm kiếm đầu trang hoặc form đăng nhập nhỏ gọn), bạn bổ sung lớp `.form-inline` trực tiếp vào thẻ `<form>`. Các nhóm phần tử con `.form-group` sẽ tự động hiển thị hàng ngang sát nhau.
-- **Mã nguồn mẫu:**
-  ```html
-  <form class="form-inline">
-    <div class="form-group">
-      <label>Name</label>
-      <input type="text" class="form-control" placeholder="Mike Smith">
-    </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" class="form-control" placeholder="mike@gmail.com">
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-  </form>
-  ```
-
----
-
-#### 8.2.7. Hiding the labels in an inline form (Ẩn nhãn trong form hàng ngang)
-Trong thiết kế form hàng ngang, việc giữ lại thẻ `<label>` đôi khi gây vỡ bố cục hoặc thừa thông tin. Tuy nhiên, ta không nên xóa bỏ hoàn toàn thẻ này khỏi code HTML vì lý do hỗ trợ các thiết bị hỗ trợ đọc màn hình (Accessibility/Screen Readers). Thay vào đó, bạn ẩn thẻ này trực quan trên màn hình bằng cách gán lớp `.sr-only`.
-- **Mã nguồn mẫu:**
-  ```html
-  <label class="sr-only">Name</label>
-  ```
-
----
-
-#### 8.2.8. Adding inline checkboxes and radio buttons (Tích chọn và Chọn một hàng ngang)
-Để chèn checkbox hoặc radio button xếp chồng hàng ngang bên trong inline form thay vì xếp dòng thẳng đứng, bạn chỉ cần gán lớp `.checkbox-inline` hoặc `.radio-inline` trực tiếp cho thẻ `<label>` bọc bên ngoài.
-- **Mã nguồn mẫu Checkbox:**
-  ```html
-  <label class="checkbox-inline">
-    <input type="checkbox" value="option1"> Remember me?
-  </label>
-  ```
-- **Mã nguồn mẫu Radio:**
-  ```html
-  <label class="radio-inline">
-    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Yes
-  </label>
-  <label class="radio-inline">
-    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> No
-  </label>
-  ```
-
----
-
-#### 8.2.9. Changing the size of inputs (Thay đổi kích thước trường nhập)
-Bootstrap 4 cung cấp các lớp tiện ích kích thước giúp bạn co giãn chiều cao của các trường nhập liệu lớn hơn hoặc nhỏ hơn so với cỡ mặc định:
-- Lớp `.form-control-lg`: Dành cho các trường nhập liệu kích thước lớn.
-- Lớp `.form-control-sm`: Dành cho các trường nhập liệu kích thước nhỏ.
-- Mặc định (Default): Không cần gắn thêm lớp kích thước.
-
-- **Mã nguồn mẫu:**
-  ```html
-  <!-- Khung nhập lớn -->
-  <input class="form-control form-control-lg" type="text" placeholder="form-control-lg">
-  <!-- Khung nhập mặc định -->
-  <input class="form-control" type="text" placeholder="Default input, No class required">
-  <!-- Khung nhập nhỏ -->
-  <input class="form-control form-control-sm" type="text" placeholder="form-control-sm">
-  ```
-
----
-
-#### 8.2.10. Controlling the width of form fields (Kiểm soát chiều rộng trường nhập bằng Grid)
-Mặc định, các thẻ đầu vào chứa lớp `.form-control` sẽ kéo giãn hết 100% chiều ngang phần tử chứa nó. Bạn có thể dễ dàng kiểm soát độ rộng mong muốn bằng cách bọc chúng trong hệ thống lưới Grid (`.col-*`):
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="row">
-    <!-- Khung nhập chiếm 100% độ rộng của hàng -->
-    <div class="col-md-12">
-      <input type="text" class="form-control" placeholder="full width">
-    </div>
-    <!-- Khung nhập chiếm 50% độ rộng của hàng trên màn hình trung bình trở lên -->
-    <div class="col-md-6 mt-3">
-      <input type="text" class="form-control" placeholder="half width">
-    </div>
-  </div>
-  ```
-
----
-
-#### 8.2.11. Adding validation to inputs (Trạng thái xác thực dữ liệu)
-Bootstrap 4 hỗ trợ các kiểu dáng xác thực trực quan rất mạnh mẽ giúp thông báo trạng thái dữ liệu (thành công, cảnh báo, lỗi) ngay khi người dùng thao tác nhập liệu:
-- **Nguyên lý:**
-  - Ở lớp bọc nhóm `.form-group`, bạn gán các trạng thái màu sắc viền/chữ: `.has-success` (xanh lá), `.has-warning` (vàng), hoặc `.has-danger` (đỏ).
-  - Ở thẻ `<label>`, bạn gán lớp `.form-control-label`.
-  - Ở thẻ `<input>`, bạn gán kèm các lớp trạng thái: `.form-control-success`, `.form-control-warning`, hoặc `.form-control-danger`.
-- **Mã nguồn mẫu:**
-  ```html
-  <!-- Trạng thái Thành công (Success) -->
-  <div class="form-group has-success">
-    <label class="form-control-label">Input with success</label>
-    <input type="text" class="form-control form-control-success">
-  </div>
-
-  <!-- Trạng thái Cảnh báo (Warning) -->
-  <div class="form-group has-warning">
-    <label class="form-control-label">Input with warning</label>
-    <input type="text" class="form-control form-control-warning">
-  </div>
-
-  <!-- Trạng thái Lỗi / Nguy hiểm (Danger / Error) -->
-  <div class="form-group has-danger">
-    <label class="form-control-label">Input with danger</label>
-    <input type="text" class="form-control form-control-danger">
-  </div>
-  ```
-
----
-
-### 8.3. Using the Jumbotron component (Thành phần Jumbotron nổi bật)
-Jumbotron là thành phần được sử dụng để làm nổi bật một khối nội dung tiêu điểm của trang web (thường đặt ở đầu trang chủ, ngay dưới thanh điều hướng). 
-
-#### 8.3.1. Standard Jumbotron (Jumbotron tiêu chuẩn)
-- **Đặc trưng:** Tạo ra một khối màu xám nhạt bo tròn nhẹ ở 4 góc để thu hút sự chú ý.
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="jumbotron">
-    <h1 class="display-3">Feature title</h1>
-    <p class="lead">This is a basic jumbotron call to action</p>
-    <hr class="m-y-2">
-    <p>This is some further description text for your main feature</p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </p>
-  </div>
-  ```
-
----
-
-#### 8.3.2. Fluid Jumbotron (Jumbotron tràn viền)
-- **Đặc trưng:** Khi bạn muốn Jumbotron kéo dài tràn viền sang hai bên mép màn hình trình duyệt trình duyệt mà không có góc bo tròn, bạn sử dụng lớp kết hợp `.jumbotron-fluid` và nhúng thẻ `.container` (hoặc `.container-fluid`) vào bên trong để căn giữa nội dung văn bản.
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-3">Feature title</h1>
-      <p class="lead">This is a basic jumbotron call to action</p>
-    </div>
-  </div>
-  ```
-
----
-
-### 8.4. Using Cards for layout (Sử dụng thẻ thông tin Card)
-Thành phần **Card** (Thẻ thông tin) là một trong những sự bổ sung chất lượng nhất trên Bootstrap 4 (lấy cảm hứng từ phong cách Google Material Design). Card hoạt động rất tốt trên giao diện điện thoại di động, máy tính bảng và máy tính để bàn.
-
-#### 8.4.1. Basic Card Structure (Cấu trúc Card cơ bản)
-- **Đặc trưng:** Một thẻ Card chuẩn bao gồm một đường viền bo quanh mỏng, phần hình ảnh đỉnh thẻ (`.card-img-top`) và phần nội dung thân thẻ bọc trong lớp `.card-block` (trong phiên bản chính thức được đổi tên thành `.card-body`).
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="card">
-    <!-- Hình ảnh đại diện cho Card -->
-    <img class="card-img-top img-fluid" src="path/to/your/image.jpg" alt="Card image cap">
-    <!-- Thân thẻ chứa nội dung chính -->
-    <div class="card-block">
-      <h4 class="card-title">Card title</h4>
-      <p class="card-text">Some basic description text for your card should appear in this section.</p>
-      <a href="#" class="btn btn-primary">Button</a>
-    </div>
-  </div>
-  ```
-
----
-
-#### 8.4.2. Moving the Card title (Thay đổi vị trí của tiêu đề Card)
-- **Giải pháp:** Bạn hoàn toàn có thể di chuyển khối tiêu đề `.card-title` hiển thị lên phía trên hình ảnh thay vì nằm dưới hình ảnh bằng cách tách và mở một khối `.card-block` độc lập ở ngay đầu Card.
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="card">
-    <!-- Tiêu đề hiển thị ở đầu thẻ Card -->
-    <div class="card-block">
-      <h4 class="card-title">Card title</h4>
-    </div>
-    <img class="card-img-top img-fluid" src="path/to/your/image.jpg" alt="Card image cap">
-    <!-- Nội dung mô tả phía dưới ảnh -->
-    <div class="card-block">
-      <p class="card-text">Some basic description text for your card should appear in this section.</p>
-      <a href="#" class="btn btn-primary">Button</a>
-    </div>
-  </div>
-  ```
-
----
-
-#### 8.4.3. Changing text alignment in cards (Căn lề văn bản trong Card)
-- **Giải pháp:** Bạn có thể căn lề trái, phải hoặc căn giữa cho toàn bộ nội dung văn bản bên trong Card cực kỳ nhanh chóng bằng cách bổ sung thêm các lớp căn lề như `.text-xs-center` (hoặc `.text-center`), `.text-xs-right` (hoặc `.text-right`) trực tiếp trên thẻ `.card-block`.
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="card">
-    <!-- Căn giữa toàn bộ nội dung bên trong Card -->
-    <div class="card-block text-xs-center">
-      <h4 class="card-title">Card title</h4>
-      <p class="card-text">Some basic description text for your card should appear in this section.</p>
-      <a href="#" class="btn btn-primary">Button</a>
-    </div>
-  </div>
-  ```
-
----
-
-#### 8.4.4. Adding a header, a footer to a Card (Thêm đầu thẻ và chân thẻ cho Card)
-Để phân chia bố cục Card rõ ràng hơn nữa, bạn có thể bổ sung thêm các phần tiêu đề trên cùng `.card-header` và phần chân đế dưới cùng `.card-footer`.
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="card">
-    <!-- Đầu thẻ Card -->
-    <div class="card-header">
-      Header
-    </div>
-    <!-- Thân thẻ Card -->
-    <div class="card-block">
-      <h4 class="card-title">Card title</h4>
-      <p class="card-text">Some basic description text for your card should appear in this section.</p>
-      <a href="#" class="btn btn-primary">Button</a>
-    </div>
-    <!-- Chân thẻ Card -->
-    <div class="card-footer">
-      footer
-    </div>
-  </div>
-  ```
-
----
-
-### 8.5. How to use the Navs component (Thành phần điều hướng Navs)
-Thành phần Navs trong Bootstrap cung cấp các cách hiển thị danh sách liên kết điều hướng khác nhau, từ danh sách phẳng cơ bản đến dạng tab hay viên thuốc thích ứng.
-
-#### 8.5.1. Default Nav component (Thành phần Nav cơ bản)
-- **Đặc trưng:** Phiên bản mặc định của Nav chỉ hiển thị một danh sách liên kết phẳng hàng ngang đơn giản, không chứa phong cách cầu kỳ. Sử dụng lớp `.nav` ở thẻ cha `<ul>`, `.nav-item` trên thẻ `<li>`, và `.nav-link` trên các liên kết `<a>`.
-- **Mã nguồn mẫu:**
-  ```html
-  <ul class="nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link1</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link2</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link3</a>
-    </li>
-    <li class="nav-item">
-      <!-- Liên kết bị vô hiệu hóa -->
-      <a class="nav-link disabled" href="#">Disabled</a>
-    </li>
-  </ul>
-  ```
-
----
-
-#### 8.5.2. Creating tabs with the Nav component (Tạo thanh điều hướng dạng Tab)
-- **Đặc trưng:** Chuyển đổi menu điều hướng phẳng mặc định thành các tab điều hướng trực quan bằng việc bổ sung lớp `.nav-tabs` ở thẻ `<ul>`. Kết hợp lớp `.active` trên thẻ liên kết đang được hiển thị.
-- **Mã nguồn mẫu:**
-  ```html
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#">Disabled</a>
-    </li>
-  </ul>
-  ```
-
----
-
-#### 8.5.3. Creating a pill navigation (Tạo thanh điều hướng dạng Viên thuốc - Pills)
-- **Đặc trưng:** Định dạng các liên kết điều hướng có dạng khối bo tròn viền xung quanh như hình viên thuốc (pills) bằng cách bổ sung thêm lớp `.nav-pills` ở thẻ `<ul>`.
-- **Mã nguồn mẫu:**
-  ```html
-  <ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link active" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#">Disabled</a>
-    </li>
-  </ul>
-  ```
-
----
-
-#### 8.5.4. Making the Navbar responsive (Thanh điều hướng chính hỗ trợ responsive)
-Navbar là thanh điều hướng lớn mặc định đầu trang. Bootstrap 4 hỗ trợ dựng Navbar tự động thu gọn thành một nút bấm menu hamburger (`.navbar-toggler`) trên các màn hình di động nhỏ dưới breakpoint chỉ định (ví dụ màn hình MD bằng cách gán `.navbar-expand-md`).
-- **Mã nguồn mẫu:**
-  ```html
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <!-- Tên thương hiệu/Logo -->
-    <a class="navbar-brand" href="#">Navbar</a>
-    
-    <!-- Nút bấm Toggle (Hamburger Menu) hiển thị trên màn hình nhỏ -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <!-- Danh sách liên kết điều hướng tự động thu gọn -->
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  ```
-
----
-
-#### 8.5.5. Responsive menu with multiple tier (Menu đa cấp trong Navbar)
-Để chèn một trình đơn thả xuống (dropdown) nhiều cấp vào thanh Navbar, bạn lồng một phần tử danh sách chứa lớp `.dropdown` bên trong `.navbar-nav`, sử dụng `.dropdown-toggle` để làm nút bấm kích hoạt và định dạng menu con bằng `.dropdown-menu`.
-- **Mã nguồn mẫu:**
-  ```html
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <!-- Thêm Dropdown vào Navbar -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Dropdown link
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Link 1</a>
-        <a class="dropdown-item" href="#">Link 2</a>
-        <a class="dropdown-item" href="#">Link 3</a>
       </div>
-    </li>
-  </ul>
-  ```
 
----
-
-## 9. Extending Bootstrap with JavaScript Plugins
-
-Chương này hướng dẫn sử dụng các thành phần JavaScript Plugins tích hợp sẵn trong Bootstrap 4 để tạo các hiệu ứng tương tác động nâng cao như hộp thoại Modal, Tooltips, Popovers và Carousel.
-
-### 9.1. Coding a Modal dialog (Hộp thoại Modal)
-Modal (còn gọi là dialog, pop-up, overlay hay alert) là một hộp thoại nổi lên trên cùng của trang web, buộc người dùng tương tác trước khi quay lại nội dung chính. Một Modal cơ bản yêu cầu hai thành phần chính: **Nút bấm kích hoạt** và **Khung nội dung Modal**.
-
-- **Nút bấm kích hoạt Modal:** Sử dụng thuộc tính `data-toggle="modal"` và trỏ thuộc tính `data-target` tới ID của khung Modal tương ứng.
-- **Mã nguồn mẫu nút bấm:**
-  ```html
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#firstModal">
-    Open Modal
-  </button>
-  ```
-
----
-
-### 9.2. Coding Tooltips (Chú thích Tooltips)
-Tooltip là một bong bóng chú thích nhỏ xuất hiện khi người dùng di chuột qua một liên kết hoặc một nút bấm.
-
-> [!IMPORTANT]
-> Trong các phiên bản thử nghiệm đầu tiên của Bootstrap 4, Tooltip yêu cầu tích hợp thư viện bổ trợ **Tether** (`tether.min.js`) để hỗ trợ định vị vị trí hiển thị. Trong phiên bản Bootstrap 4 chính thức phát hành sau đó, Tether đã được thay thế bằng thư viện **Popper.js** nhẹ và mạnh mẽ hơn.
-
-#### 9.2.1. Thiết lập thư viện Tether (Theo slide gốc)
-1. Truy cập và tải thư viện Tether từ địa chỉ: [http://github.hubspot.com/tether/](http://github.hubspot.com/tether/).
-2. Giải nén thư mục tải về để tìm file `tether.min.js`.
-3. Sao chép file `tether.min.js` vào thư mục lưu trữ mã nguồn `/js` của dự án để nhúng vào trang web.
-
----
-
-#### 9.2.2. Định vị vị trí hiển thị Tooltips (Positioning Tooltips)
-Sử dụng thuộc tính `data-placement` để thiết lập vị trí xuất hiện của bong bóng chú thích ở trên, dưới, trái, hoặc phải so với văn bản gốc:
-- **Mã nguồn mẫu:**
-  ```html
-  <p><a href="#" data-toggle="tooltip" data-placement="top" title="Chú thích trên">Tooltip ở trên</a></p>
-  <p><a href="#" data-toggle="tooltip" data-placement="bottom" title="Chú thích dưới">Tooltip ở dưới</a></p>
-  <p><a href="#" data-toggle="tooltip" data-placement="right" title="Chú thích phải">Tooltip bên phải</a></p>
-  <p><a href="#" data-toggle="tooltip" data-placement="left" title="Chú thích trái">Tooltip bên trái</a></p>
-  ```
-
----
-
-#### 9.2.3. Adding Tooltips to buttons (Thêm Tooltips vào nút bấm và Khởi tạo bằng jQuery)
-Để Tooltip hoạt động trên trang web, bạn bắt buộc phải viết một đoạn script jQuery ngắn để kích hoạt hiệu ứng hiển thị này.
-- **Mã nguồn mẫu HTML & Script:**
-  ```html
-  <!-- Khai báo Tooltip trên nút bấm -->
-  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="This is a button tooltip!">
-    This is a button tooltip!
-  </button>
-
-  <!-- Script khởi chạy hiệu ứng bằng jQuery -->
-  <script>
-    $(document).ready(function(){
-      // Kích hoạt Tooltip trên tất cả các thẻ liên kết và nút bấm
-      $("a").tooltip();
-      $("button").tooltip();
-    });
-  </script>
-  ```
-
----
-
-### 9.3. Using Popover components (Thành phần hiển thị thông tin Popover)
-Popover tương tự như Tooltip nhưng cho phép chứa khối nội dung mô tả dài hơn và nhiều cấu trúc HTML phong phú hơn. Popover xuất hiện khi người dùng click chọn vào liên kết/nút bấm.
-
-#### 9.3.1. Popover basic (Popover cơ bản)
-Để tạo một Popover cơ bản trên thẻ liên kết, bạn sử dụng thuộc tính `data-toggle="popover"` và cung cấp nội dung hiển thị trong thuộc tính `data-content`.
-- **Mã nguồn mẫu HTML & Script kích hoạt:**
-  ```html
-  <p>
-    <a id="popover-link" data-toggle="popover" title="My Popover" data-content="This is the content of my popover which can be longer than a tooltip">
-      This is a popover
-    </a>.
-  </p>
-
-  <!-- Script khởi chạy hiệu ứng bằng jQuery -->
-  <script>
-    $(document).ready(function(){
-      // Kích hoạt cụ thể cho ID của popover
-      $("#popover-link").popover();
-    });
-  </script>
-  ```
-
----
-
-#### 9.3.2. Positioning Popover (Định vị vị trí hiển thị Popovers)
-Tương tự Tooltip, bạn kiểm soát hướng hiển thị của khung nội dung Popover thông qua thuộc tính `data-placement` (`top`, `bottom`, `right`, `left`):
-- **Mã nguồn mẫu:**
-  ```html
-  <p><a id="popover-link" data-placement="top" data-toggle="popover" data-content="Nội dung Popover trên">Popover trên</a></p>
-  <p><a id="popover-link" data-placement="bottom" data-toggle="popover" data-content="Nội dung Popover dưới">Popover dưới</a></p>
-  <p><a id="popover-link" data-placement="right" data-toggle="popover" data-content="Nội dung Popover phải">Popover phải</a></p>
-  <p><a id="popover-link" data-placement="left" data-toggle="popover" data-content="Nội dung Popover trái">Popover trái</a></p>
-  ```
-
----
-
-#### 9.3.3. Adding Popover to a button (Thêm Popover vào nút bấm)
-- **Giải pháp:** Bạn có thể tích hợp Popover trực tiếp lên thẻ nút bấm `<button>` bằng cách gán ID tương ứng, thêm `data-toggle="popover"`, `data-content` và thuộc tính tiêu đề `title`.
-- **Mã nguồn mẫu HTML & Script kích hoạt:**
-  ```html
-  <p>
-    <button type="button" id="popover-button" class="btn btn-primary" data-toggle="popover" title="Popover Title" data-content="This is a button popover example">
-      Popover Button
-    </button>
-  </p>
-
-  <!-- Script kích hoạt đồng thời -->
-  <script>
-    $(document).ready(function(){
-      $("#popover-button").popover();
-    });
-  </script>
-  ```
-
----
-
-### 9.4. Using the Collapse component (Thành phần thu gọn/mở rộng nội dung)
-Collapse giúp ẩn/hiển thị nhanh chóng các khối nội dung lớn bằng cách nhấn nút bấm hoặc thẻ liên kết, rất thích hợp khi xây dựng các trang hỏi đáp (FAQs) hoặc menu xếp chồng (Accordion).
-
-#### 9.4.1. Collapse Overview (Tổng quan về Collapse)
-Để tạo hiệu ứng đóng/mở nội dung, bạn cần:
-- Thêm thuộc tính `data-toggle="collapse"` vào nút bấm hoặc thẻ liên kết.
-- Trỏ liên kết điều khiển (qua thuộc tính `href` hoặc `data-target`) tới ID của khối nội dung cần thu gọn.
-- Gán lớp `.collapse` cho khối nội dung để ẩn nó theo mặc định.
-
----
-
-#### 9.4.2. Using Link/Button to Collapse (Sử dụng liên kết hoặc nút bấm để ẩn/hiển thị nội dung)
-Bạn có thể sử dụng thẻ liên kết `<a>` (định vị qua thuộc tính `href`) hoặc thẻ nút bấm `<button>` (định vị qua thuộc tính `data-target`) để thực hiện thao tác đóng/mở khối nội dung.
-- **Mã nguồn mẫu sử dụng liên kết `<a>`:**
-  ```html
-  <p>
-    <a data-toggle="collapse" href="#footwear" aria-expanded="false" aria-controls="footwear">
-      Footwear (Dùng Link)
-    </a>
-  </p>
-  <div class="collapse" id="footwear">
-    <p>
-      Footwear refers to garments worn on the feet, which originally serves to purpose of protection against adversities of the environment, usually regarding ground textures and temperature.
-    </p>
-  </div>
-  ```
-- **Mã nguồn mẫu sử dụng nút bấm `<button>`:**
-  ```html
-  <p>
-    <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#footwear" aria-expanded="false" aria-controls="footwear">
-      Footwear (Dùng Button)
-    </button>
-  </p>
-  <div class="collapse" id="footwear">
-    <p>
-      Footwear refers to garments worn on the feet, which originally serves to purpose of protection against adversities of the environment, usually regarding ground textures and temperature.
-    </p>
-  </div>
-  ```
-
----
-
-### 9.5. Coding a Bootstrap Carousel (Trình chiếu ảnh Carousel)
-Carousel là một cấu phần phổ biến giúp trình chiếu slide hình ảnh/nội dung tự động chạy hoặc chuyển động khi click chọn.
-
-#### 9.5.1. Khởi tạo cấu trúc Carousel cơ bản
-Mỗi Carousel bắt đầu bằng một thẻ `<div>` bao ngoài cùng với các thuộc tính bắt buộc sau:
-- Khai báo ID duy nhất cho mỗi Carousel (ví dụ: `id="carouselOne"`).
-- Khai báo các lớp phong cách: `.carousel` và `.slide`.
-- Thêm thuộc tính kích hoạt tự động chạy: `data-ride="carousel"`.
-
----
-
-#### 9.5.2. Adding the Carousel bullet navigation (Thêm thanh chấm chỉ số trang)
-Thanh chấm chỉ số trang (indicators) hiển thị dạng danh sách có thứ tự dưới cùng slide cho biết số lượng slide và slide nào đang kích hoạt.
-- **Mã nguồn mẫu:**
-  ```html
-  <ol class="carousel-indicators">
-    <!-- Thuộc tính data-slide-to trỏ đến vị trí trang chỉ mục bắt đầu từ số 0 -->
-    <li data-target="#carouselOne" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselOne" data-slide-to="1"></li>
-    <li data-target="#carouselOne" data-slide-to="2"></li>
-  </ol>
-  ```
-
----
-
-#### 9.5.3. Including Carousel slides (Thêm các slide hình ảnh)
-Các slide ảnh đơn lẻ được bọc trong một container lớn chứa lớp `.carousel-inner` với thuộc tính `role="listbox"`. Mỗi trang slide là một thẻ `<div>` chứa lớp `.carousel-item` (đặt thêm lớp `.active` cho slide đầu tiên hiển thị).
-- **Mã nguồn mẫu:**
-  ```html
-  <div class="carousel-inner" role="listbox">
-    <!-- Slide thứ nhất (Hiển thị đầu tiên) -->
-    <div class="carousel-item active">
-      <img src="slide1.jpg" alt="First slide">
     </div>
-    <!-- Slide thứ hai -->
-    <div class="carousel-item">
-      <img src="slide2.jpg" alt="Second slide">
-    </div>
-    <!-- Slide thứ ba -->
-    <div class="carousel-item">
-      <img src="slide3.jpg" alt="Third slide">
-    </div>
-  </div>
-  ```
 
----
-
-#### 9.5.4. Adding Carousel arrow navigation (Thêm nút điều hướng mũi tên)
-Mũi tên điều hướng trái/phải đặt ở hai bên viền Carousel giúp người dùng chuyển đổi thủ công slide ảnh trước đó (`prev`) hoặc tiếp theo (`next`).
-
-> [!NOTE]
-> Trong các phiên bản thử nghiệm Alpha/Beta của Bootstrap 4, lớp điều khiển mũi tên là `.left.carousel-control` / `.right.carousel-control` đi kèm các icon lớp `.icon-prev` / `.icon-next`. 
-> Ở phiên bản Bootstrap 4 ổn định chính thức, các lớp này đã được chuẩn hóa thành `.carousel-control-prev` / `.carousel-control-next` đi kèm icon `.carousel-control-prev-icon` / `.carousel-control-next-icon`.
-
-- **Mã nguồn mẫu:**
-  ```html
-  <!-- Mũi tên quay lại slide trước (Previous) -->
-  <a class="left carousel-control" href="#carouselOne" role="button" data-slide="prev">
-    <span class="icon-prev" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  
-  <!-- Mũi tên chuyển slide tiếp theo (Next) -->
-  <a class="right carousel-control" href="#carouselOne" role="button" data-slide="next">
-    <span class="icon-next" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-  ```
-
-
-
-
-
-
-
-
+    <!-- BẮT BUỘC: File JS Bundle để các thành phần Modal, Carousel chạy mượt mà -->
+    <script src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js)"></script>
+    
+    <!-- Script khởi tạo Tooltip (Nếu dự án có dùng Tooltip) -->
+    <script>
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    </script>
+  </body>
+</html>
