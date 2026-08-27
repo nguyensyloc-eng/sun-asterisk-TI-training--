@@ -1,1022 +1,1110 @@
+## 01. Tổng quan Next.js
 
-## 1. Giới thiệu về Next.js
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Next.js là một React Framework được phát triển bởi Vercel, cung cấp cấu trúc, tính năng và các tối ưu hóa mà một thư viện thuần như React không có sẵn.
 
-### 1.1. What is Next.js? (Next.js là gì?)
-- **Định nghĩa:** Next.js là một React Framework mạnh mẽ dùng để xây dựng các ứng dụng web full-stack (Full-web applications).
-- **Khác biệt cốt lõi với React.js:**
-  - **React.js** thuần túy hoạt động theo cơ chế **CSR (Client-Side Rendering)**: Trình duyệt tải về một file HTML rỗng cùng với các file JavaScript, sau đó mới thực thi JavaScript để dựng giao diện.
-  - **Next.js** hỗ trợ **SSR (Server-Side Rendering)** và nhiều cơ chế render linh hoạt khác.
+1.  **Next.js là gì?**
+    *   Là một full-stack React framework cho phép xây dựng ứng dụng web từ phía client cho đến server.
+    *   Hỗ trợ mạnh mẽ các chiến lược rendering như SSR (Server-Side Rendering), SSG (Static Site Generation), và ISR (Incremental Static Regeneration).
+    *   Tích hợp sẵn hệ thống định tuyến file-system (App Router), tối ưu hình ảnh, phông chữ và SEO.
 
-### 1.2. Server-side Rendering (SSR) trong Next.js
-Với Server-side Rendering (SSR):
-- **Server generates full HTML:** Máy chủ nhận yêu cầu, xử lý dữ liệu và tạo sẵn toàn bộ mã HTML hoàn chỉnh trước khi gửi về cho trình duyệt.
-- **Browser displays content immediately:** Trình duyệt hiển thị nội dung cho người dùng ngay lập tức mà không cần chờ tải và chạy xong mã JavaScript phức tạp.
-- **Pros (Ưu điểm):**
-  - **Great SEO:** Bot của các máy tìm kiếm (Google, Bing...) dễ dàng cào nội dung và đánh chỉ mục (index) do HTML đã có sẵn nội dung đầy đủ.
-  - **Faster First Contentful Paint (FCP):** Giúp nâng cao trải nghiệm người dùng vì trang hiển thị khung hình/nội dung đầu tiên cực kỳ nhanh chóng.
+2.  **React vs Next.js:**
+    *   **React (Library):** Chỉ là một UI library. Bạn cần tự chọn thư viện định tuyến (React Router), tự cấu hình Webpack/Vite, tự xây dựng cơ chế SSR hoặc cấu hình fetch dữ liệu.
+    *   **Next.js (Framework):** Đã đóng gói sẵn mọi thứ ("batteries-included"). Có sẵn routing, code-splitting tự động, tối ưu hiệu suất và hỗ trợ backend trực tiếp trong project.
 
-### 1.3. Why Next.js? (Tại sao nên sử dụng Next.js?)
-1. **Hybrid Rendering (Cơ chế render linh hoạt):**
-   - Hỗ trợ đa dạng các phương thức render trong cùng một dự án: **SSR** (Server-Side Rendering), **SSG** (Static Site Generation), và **CSR** (Client-Side Rendering).
-2. **File-system Routing (Điều hướng dựa trên hệ thống tệp):**
-   - Các thư mục và tệp tin tự động định nghĩa đường dẫn (routes) cho ứng dụng. Không cần thiết lập thủ công các thư viện điều hướng phức tạp như `react-router-dom`.
-3. **API Routes:**
-   - Cho phép xây dựng các điểm cuối Backend (Backend endpoints / API) trực tiếp ngay bên trong cùng dự án Next.js mà không cần khởi tạo server Node.js riêng.
-4. **Automatic Optimization (Tự động tối ưu hóa):**
-   - Tự động tối ưu hóa tài nguyên hệ thống bao gồm: **Images** (Hình ảnh), **Fonts** (Phông chữ), và **Scripts** (Mã kịch bản) nhằm đạt hiệu năng tải trang tối đa.
+3.  **Kiến trúc tổng quan:**
+    *   Mặc định các component trong Next.js (App Router) là **Server Components**.
+    *   Cho phép thực thi logic phía server (kết nối database trực tiếp, bảo mật API keys) trước khi trả về HTML tinh gọn cho client.
 
 ---
 
-## 2. Setting Up Your First Next.js Project (Khởi tạo dự án Next.js đầu tiên)
+## 02. Khởi tạo Project
 
-Để bắt đầu một dự án Next.js mới, chúng ta sử dụng công cụ dòng lệnh `create-next-app`. Công cụ này tự động thiết lập toàn bộ cấu trúc và môi trường cần thiết, bao gồm cả cấu trúc thư mục App Router mặc định.
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Để bắt đầu một dự án Next.js hiện đại, công cụ chính thức được khuyến nghị là `create-next-app`.
 
-### 2.1. Prerequisites (Yêu cầu tiên quyết)
-- **Node.js:** Phiên bản **18.17** hoặc mới hơn.
+1.  **Lệnh khởi tạo (`create-next-app`):**
+    Mở terminal và chạy lệnh tương tác để tạo project mới:
+    ```bash
+    npx create-next-app@latest my-next-app
+    ```
+    *Trong quá trình cài đặt, bạn sẽ được hỏi các tùy chọn cấu hình:*
+    *   TypeScript? (Nên chọn **Yes**)
+    *   Tailwind CSS? (Nên chọn **Yes**)
+    *   App Router? (Bắt buộc chọn **Yes** để dùng kiến trúc mới nhất)
+    *   Import alias (`@/*`)? (Chọn **Yes** để viết đường dẫn tương đối sạch sẽ)
 
-### 2.2. Khởi tạo dự án
-Mở Terminal/Command Prompt và chạy lệnh sau:
+2.  **Cấu trúc thư mục cốt lõi (App Router):**
+    *   `app/`: Chứa các trang, layout và route (file-system routing).
+    *   `public/`: Chứa các file tĩnh như hình ảnh, fonts, icons.
+    *   `.env.local`: Chứa các biến môi trường bảo mật.
+    *   `next.config.js`: File cấu hình nâng cao cho Next.js.
 
-```bash
-npx create-next-app@latest
-```
+3.  **Các lệnh vận hành cơ bản:**
+    *   `npm run dev`: Chạy môi trường phát triển (Development Server) tại `http://localhost:3000`.
+    *   `npm run build`: Tạo bản build tối ưu cho môi trường Production.
+    *   `npm run start`: Chạy thử nghiệm bản build production trên máy local.
 
-Công cụ `create-next-app` sẽ hỏi bạn một chuỗi câu hỏi thiết lập cấu hình ban đầu (ví dụ: dùng TypeScript, Tailwind CSS, ESLint...). Bạn có thể nhấn **Enter** để chấp nhận cấu hình mặc định hoặc tùy chỉnh theo mong muốn:
+**🎯 Best Practices:**
+*   Luôn sử dụng cấu trúc **App Router** (`app/ directory`) cho các dự án mới thay vì cấu trúc cũ `pages/ directory` để tận dụng Server Components và các tính năng caching hiện đại.
+## 03. App Router & Routing
 
-```bash
-✔ What is your project named? ... my-next-app
-✔ Would you like to use TypeScript? ... Yes
-✔ Would you like to use ESLint? ... Yes
-✔ Would you like to use Tailwind CSS? ... Yes
-✔ Would you like to use the `src/` directory? ... No
-✔ Would you like to use App Router? (recommended) ... Yes
-✔ Would you like to customize the default import alias? ... No
-```
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Trong Next.js App Router, các thư mục và file bên trong thư mục `app/` đóng vai trò trực tiếp định hình nên cấu trúc URL của trang web (File-system Routing). Bạn không cần cài đặt thêm thư viện định tuyến bên ngoài như React Router.
 
-### 2.3. Khởi chạy môi trường phát triển (Development Server)
-Sau khi quá trình cài đặt hoàn tất, di chuyển vào thư mục dự án và khởi chạy máy chủ phát triển:
+Các khái niệm và quy ước cốt lõi trong Routing bao gồm:
 
-```bash
-cd my-next-app
-npm run dev
-```
+1.  **`page.tsx` (Trang giao diện):**
+    *   File đặc biệt có nhiệm vụ hiển thị UI cho một route cụ thể. Mặc định các file `page.tsx` là Server Components.
+    *   *Ví dụ:* `app/about/page.tsx` sẽ tương ứng với đường dẫn công khai `yoursite.com/about`.
 
-Bây giờ, mở trình duyệt web và truy cập vào đường dẫn `http://localhost:3000` để xem trang chủ vừa được tạo.
+2.  **`layout.tsx` (Bố cục chung):**
+    *   UI chung được chia sẻ giữa nhiều trang. Layout bao bọc các `page.tsx` hoặc các layout con bên trong nó. Khi chuyển trang, layout được giữ nguyên trạng thái và không bị re-render lại.
 
----
+3.  **Nested Routes (Đường dẫn lồng nhau):**
+    *   Bằng cách lồng các thư mục vào nhau, URL sẽ tự động lồng theo. 
+    *   *Ví dụ:* Thư mục `app/dashboard/settings/page.tsx` $\rightarrow$ Đường dẫn: `/dashboard/settings`.
 
-## 3. Understanding the `app/` Directory Structure (Tìm hiểu cấu trúc thư mục `app/`)
+4.  **Dynamic Routes (Đường dẫn động):**
+    *   Khi bạn không biết trước tên đoạn đường dẫn (ví dụ: ID của bài viết), hãy bọc tên thư mục trong dấu ngoặc vuông `[param]`.
+    *   *Ví dụ:* `app/posts/[id]/page.tsx` $\rightarrow$ Khớp với `/posts/1`, `/posts/abc`. Bạn có thể đọc giá trị `id` thông qua tham số `params`.
 
-**App Router** giới thiệu mô hình điều hướng dựa trên hệ thống tệp (file-system-based routing) nằm bên trong thư mục `app/`. Mỗi thư mục con bên trong `app` đại diện cho một phân đoạn URL (URL segment). Giao diện (UI) cho từng route được định nghĩa bằng các tệp đặc biệt như `page.tsx` và `layout.tsx`.
+5.  **Catch-all Routes & Optional Catch-all:**
+    *   *Catch-all (`[...slug]`):* Bắt tất cả các đường dẫn phía sau (ví dụ: `app/shop/[...slug]/page.tsx` khớp với `/shop/clothes/tops/1`).
+    *   *Optional Catch-all (`[[...slug]]`):* Giống catch-all nhưng khớp cả trường hợp không có tham số nào phía sau (ví dụ: khớp cả `/shop`).
 
-### 3.1. Cấu trúc thư mục minh họa
+6.  **Route Groups (Nhóm đường dẫn - `(folder)`):**
+    *   Bọc tên thư mục trong dấu ngoặc tròn để tổ chức mã nguồn gọn gàng mà **không làm thay đổi URL**. 
+    *   *Ví dụ:* `app/(marketing)/about/page.tsx` vẫn có URL là `/about` (bỏ qua từ `(marketing)`). Giúp tách biệt layout giữa trang quản trị (`(dashboard)`) và trang khách hàng (`(marketing)`).
 
-```text
-my-next-app/
-└── app/
-    ├── layout.tsx      # Root layout, áp dụng cho toàn bộ ứng dụng
-    ├── page.tsx        # UI cho trang chủ (route '/')
-    ├── globals.css     # CSS dùng chung cho toàn ứng dụng
-    │
-    └── dashboard/      # Định nghĩa route '/dashboard'
-        ├── layout.tsx  # Layout riêng cho route /dashboard và các route con của nó
-        ├── page.tsx    # UI cho route '/dashboard'
-        │
-        └── settings/   # Định nghĩa route '/dashboard/settings'
-            └── page.tsx # UI cho route '/dashboard/settings'
-```
+7.  **Parallel Routes (Đường dẫn song song - `@folder`):**
+    *   Cho phép hiển thị đồng thời nhiều trang độc lập trong cùng một layout thông qua các "slots" (thư mục bắt đầu bằng dấu `@`). Thường dùng cho các phần giao diện phức tạp như dashboard chia nhiều ô độc lập.
 
-### 3.2. Special File Conventions (Các quy ước tệp tin đặc biệt)
-Next.js App Router cung cấp các quy ước đặt tên tệp đặc biệt để xử lý các hành vi UI cụ thể:
+8.  **Intercepting Routes (`(.folder)`):**
+    *   Cho phép "bắt" (intercept) một route từ ngữ cảnh của route hiện tại (ví dụ: hiển thị một bức ảnh dưới dạng Modal popup khi click vào từ trang feed, nhưng khi người dùng copy link paste vào tab mới thì nó lại hiển thị dạng trang độc lập).
 
-- **`layout.tsx`:** Định nghĩa giao diện dùng chung (shared UI) bọc quanh nhiều trang con.
-- **`page.tsx`:** Giao diện chính, duy nhất đại diện cho một đường dẫn (route) cụ thể.
-- **`loading.tsx`:** Giao diện hiển thị trạng thái chờ trong khi dữ liệu của trang đang được tải (sử dụng React Suspense bên dưới).
-- **`error.tsx`:** Giao diện hiển thị khi có lỗi phát sinh bên trong một route.
-- **`route.ts`:** Dùng để tạo các điểm cuối API (API endpoints).
-- **`not-found.tsx`:** Định nghĩa giao diện hiển thị khi một đường dẫn không được tìm thấy (Lỗi 404).
-- **`metadata.ts`:** Dùng để quản lý các thông tin thẻ meta của trang phục vụ SEO (tiêu đề, mô tả, hình ảnh xem trước...).
-- **`template.tsx`:** Một component tương tự `layout.tsx` nhưng sẽ tạo một instance mới (re-mount) mỗi khi người dùng chuyển trang.
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Tổ chức Route Groups hợp lý:** Hãy dùng `(auth)` để gom nhóm các trang Login/Register dùng chung một layout tối giản, và dùng `(dashboard)` cho các trang quản trị cần sidebar.
+*   **Tránh lồng thư mục quá sâu:** Mặc dù Next.js hỗ trợ lồng nhau vô hạn, nhưng việc lồng quá 4-5 cấp thư mục sẽ khiến việc quản lý đường dẫn trở nên khó khăn.
 
----
-
-## 4. Layouts and Nested Routing (Layout và Điều hướng lồng nhau)
-
-### 4.1. Khái niệm Layout
-Layouts là các components nhận prop `children` và render nó. Layout cho phép bạn tạo các phần tử giao diện dùng chung (như headers, footers, và sidebars) mà **không bị re-render** khi người dùng chuyển đổi qua lại giữa các trang con.
-
-Khi bạn tạo một tệp `layout.tsx` bên trong một thư mục, nó sẽ tự động bọc (wrap) tất cả các tệp `page.tsx` và các layout con nằm bên trong thư mục đó. Các Layout có tính chất **lồng nhau (nested)**, tạo thành một hệ thống phân cấp component (component hierarchy).
-
-### 4.2. Cấu trúc lồng nhau (Nested Structure)
-
-```text
-+-----------------------------------------------------------------------+
-| Root Layout (app/layout.tsx)                                         |
-| <html>, <body>, <Header>, <Footer>                                    |
-|                                                                       |
-|   +---------------------------------------------------------------+   |
-|   | Dashboard Layout (app/dashboard/layout.tsx)                   |   |
-|   | <Sidebar>                                                     |   |
-|   |                                                               |   |
-|   |   +-------------------------------------------------------+   |   |
-|   |   | Page Content (app/dashboard/settings/page.tsx)       |   |   |
-|   |   | {children}                                            |   |   |
-|   |   +-------------------------------------------------------+   |   |
-|   +---------------------------------------------------------------+   |
-+-----------------------------------------------------------------------+
-```
-
-### 4.3. Ví dụ mã nguồn minh họa
-
-#### A. Root Layout (`app/layout.tsx`)
-Đây là layout cấp cao nhất (top-level layout). Nó là **bắt buộc** và phải chứa các thẻ `<html>` và `<body>`.
+**💻 Code minh họa chuyên sâu:**
 
 ```tsx
-// app/layout.tsx
-import './globals.css';
+// 1. Dynamic Route: app/posts/[id]/page.tsx
+// Cách nhận tham số động [id] từ URL trong Server Component
+interface PageProps {
+  params: Promise<{ id: string }>; // Từ Next.js 15+, params là một Promise
+}
 
-export default function RootLayout({
+export default async function PostDetailPage({ params }: PageProps) {
+  const { id } = await params;
+
+  return (
+    <main className="p-6">
+      <h1 className="text-2xl font-bold">Chi tiết bài viết ID: {id}</h1>
+      <p>Đang hiển thị nội dung cho bài viết số {id}...</p>
+    </main>
+  );
+}
+// 2. Sử dụng Route Groups để phân tách Layout:
+// app/(marketing)/layout.tsx -> Chỉ áp dụng layout này cho nhóm trang marketing
+export default function MarketingLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <header style={{ padding: '1rem', background: '#eee' }}>
-          My Awesome Website
-        </header>
-        <main>{children}</main>
-        <footer style={{ padding: '1rem', background: '#eee', marginTop: '2rem' }}>
-          Copyright 2025
-        </footer>
-      </body>
-    </html>
+    <div className="marketing-wrapper">
+      <header className="py-4 border-b">Header chung cho Marketing</header>
+      <main>{children}</main>
+      <footer className="py-4 border-t">Footer chung cho Marketing</footer>
+    </div>
   );
 }
 ```
+## 04. Layout & Navigation
 
-#### B. Dashboard Layout (`app/dashboard/layout.tsx`)
-Layout này chỉ áp dụng cho các trang nằm bên trong đường dẫn `/dashboard`.
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Next.js cung cấp hệ thống quản lý bố cục giao diện và điều hướng tối ưu, giúp người dùng chuyển trang cực kỳ mượt mà thông qua cơ chế tải trước (Prefetching) mà không cần tải lại toàn bộ trang (Full page reload).
+
+Các khái niệm cốt lõi bao gồm:
+
+1.  **Layout (`layout.tsx`):**
+    *   Bố cục chung bao bọc các trang con hoặc các layout cấp dưới. 
+    *   *Đặc điểm quan trọng:* Layout có tính **bền vững (persistent)**. Khi người dùng chuyển qua lại giữa các trang dùng chung layout, layout **không bị re-render** và vẫn giữ nguyên trạng thái (state) của nó (ví dụ: trạng thái mở/đóng của một thanh Sidebar được bảo lưu nguyên vẹn).
+
+2.  **Template (`template.tsx`):**
+    *   Tương tự như Layout ở chỗ nó bao bọc các trang con, nhưng điểm khác biệt chí mạng là **mỗi khi người dùng điều hướng sang trang mới, một instance (bản sao) hoàn toàn mới của Template sẽ được tạo ra**.
+    *   *Ứng dụng:* Dùng khi bạn muốn chạy lại hiệu ứng chuyển động (animation) mỗi khi đổi trang, hoặc reset trạng thái của `useEffect` / `useState`.
+
+3.  **Link Component (`next/link`):**
+    *   Thẻ điều hướng chuẩn trong Next.js (thay thế cho thẻ `<a>` thuần).
+    *   *Cơ chế tự động:* Next.js sẽ tự động **prefetch** (tải trước) trang đích ngầm ngay khi thẻ `Link` xuất hiện trong khung nhìn (viewport) của người dùng. Nhờ đó, khi người dùng click vào, trang mới hiện lên ngay lập tức gần như không có độ trễ.
+
+4.  **`useRouter` Hook (`next/navigation`):**
+    *   Hook chuyên dùng để điều hướng chương trình (Programmatic Navigation) từ phía Client Component (ví dụ: chuyển trang sau khi người dùng bấm nút đăng nhập thành công).
+    *   *Lưu ý:* Trong App Router, `useRouter` phải được import từ `next/navigation` (chứ không phải `next/router` của Pages Router cũ).
+
+5.  **URL Hooks khác (`next/navigation`):**
+    *   `usePathname()`: Lấy về đường dẫn hiện tại của URL (ví dụ: `/dashboard/settings`). Thường dùng để làm tính năng active menu.
+    *   `useSearchParams()`: Lấy về các query parameters trên URL (ví dụ: `?search=react&page=2`).
+
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Luôn ưu tiên dùng `<Link>` thay vì thẻ `<a>` thuần:** Trừ khi bạn muốn chuyển hướng ra một tên miền bên ngoài (external link), còn lại mọi điều hướng nội bộ đều phải dùng `<Link>` để tận dụng cơ chế prefetch tăng tốc độ.
+*   **Phân biệt rõ Layout và Template:** 95% trường hợp bạn chỉ cần dùng `layout.tsx`. Chỉ dùng `template.tsx` khi thực sự cần reset state hoặc chạy lại animation mỗi lần chuyển trang.
+
+**💻 Code minh họa chuyên sâu:**
 
 ```tsx
-// app/dashboard/layout.tsx
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+// 1. Sử dụng Link component và usePathname để làm Active Menu
+'import client'; // Nếu dùng hook phải đánh dấu client component
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+export default function NavigationMenu() {
+  const pathname = usePathname();
+
   return (
-    <section style={{ display: 'flex' }}>
-      <nav style={{ width: '200px', padding: '1rem', background: '#f0f0f0' }}>
-        <p>Dashboard Sidebar</p>
-        <ul>
-          <li>Analytics</li>
-          <li>Settings</li>
-        </ul>
-      </nav>
-      <div style={{ flex: 1, padding: '1rem' }}>
-        {children}
-      </div>
-    </section>
+    <nav className="flex gap-4 p-4 bg-gray-100">
+      <Link '/' 'text-blue-600 'text-gray-600'} : ? className="{pathname" font-bold' href="/">
+        Trang chủ
+      </Link>
+      
+      <Link '/dashboard' 'text-blue-600 'text-gray-600'} : ? className="{pathname" font-bold' href="/dashboard">
+        Dashboard
+      </Link>
+    </nav>
   );
 }
 ```
+## 05. Server & Client Components
 
----
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Một trong những điểm khác biệt lớn nhất của Next.js App Router so với các ứng dụng React truyền thống là mô hình **React Server Components (RSCs)**. Mặc định, mọi component trong thư mục `app/` đều là **Server Components**.
 
-## 5. Server and Client Components (Server Component và Client Component)
+1.  **Server Component (Mặc định):**
+    *   Được render hoàn toàn ở phía Server.
+    *   *Ưu điểm lớn:* Không gửi mã JavaScript của component này về phía trình duyệt (giảm kích thước bundle JS, tăng tốc độ tải trang). Có thể kết nối trực tiếp với Database, gọi API nội bộ hoặc đọc file hệ thống mà không sợ lộ thông tin nhạy cảm (như API keys, database passwords).
 
-App Router trong Next.js giới thiệu hai loại component chính: **Server Components** và **Client Components**.
+2.  **Client Component:**
+    *   Là các component React quen thuộc chạy trên trình duyệt (có hỗ trợ trạng thái, sự kiện và vòng đời).
+    *   Bắt buộc phải khai báo chỉ thị **`'use client'`** ở dòng đầu tiên của file.
+    *   *Đặc điểm:* Vẫn được render trước một lần trên server (để tạo HTML tĩnh ban đầu phục vụ SEO - SSR), sau đó được "hydrate" (kích hoạt tương tác) trên trình duyệt.
 
-### 5.1. Server Components (Mặc định)
-- **Run only on the server:** Chỉ chạy và xử lý mã trên máy chủ (server). Mã nguồn JavaScript của nó không bị gửi xuống trình duyệt.
-- **Không thể sử dụng Hooks:** Không thể dùng các React Hooks (`useState`, `useEffect`...) hoặc các API chỉ có trên trình duyệt (như `window`, `document`, `localStorage`).
-- **Tối ưu tài nguyên Backend:** Lý tưởng cho việc truy cập trực tiếp vào tài nguyên phía backend (cơ sở dữ liệu, API nội bộ) và giúp giảm thiểu dung lượng JavaScript gửi về client.
-- **Mặc định:** Tất cả các components nằm trong thư mục `app` đều là Server Components theo mặc định.
+3.  **Component Boundary (Ranh giới giữa Server và Client):**
+    *   Khi bạn thêm `'use client'` vào một file, tất cả các file được import bên trong nó (child components) sẽ tự động trở thành Client Components. 
+    *   *Quy tắc sáng suốt (Composition Pattern):* Bạn không thể import một Server Component trực tiếp *bên trong* một Client Component. Tuy nhiên, bạn hoàn toàn có thể **truyền Server Component vào Client Component thông qua prop `children`** hoặc props thông thường.
 
-### 5.2. Client Components
-- **Khai báo directive `"use client":`** Để biến một component thành Client Component, bạn phải thêm câu lệnh `"use client";` ở ngay dòng đầu tiên của tệp tin.
-- **Cơ chế hoạt động:** Được render trước trên server (SSR) để lấy HTML ban đầu và sau đó được **"hydrated"** (bơm tương tác) trên phía client để có thể tương tác đầy đủ.
-- **Hỗ trợ tương tác:** Có thể sử dụng React Hooks (`useState`, `useEffect`), quản lý state, và lắng nghe/xử lý các sự kiện của người dùng (`onClick`, `onChange`...).
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Giữ Server Component làm mặc định:** Hãy tối đa hóa số lượng Server Components trong dự án để tối ưu hiệu suất tải trang và SEO.
+*   **Đẩy Client Component xuống tận cùng (Push to the edges):** Chỉ đánh dấu `'use client'` cho những component thực sự cần tương tác (ví dụ: nút bấm có sự kiện `onClick`, form nhập liệu có `useState`, hoặc dùng các React hooks như `useEffect`). Đừng đặt `'use client'` ở file layout hoặc page lớn nếu không cần thiết.
 
-### 5.3. Ví dụ mã nguồn minh họa (Code Examples)
-
-#### A. Data-fetching Server Component (`app/posts/page.tsx`)
-Component này sử dụng `async/await` để thực hiện lấy dữ liệu (fetch data) trực tiếp ngay trên máy chủ (Server).
+**💻 Code minh họa chuyên sâu:**
 
 ```tsx
-// app/posts/page.tsx
+// 1. Server Component (Mặc định) - Gọi DB trực tiếp và hiển thị dữ liệu tĩnh
+// app/products/page.tsx
+import ProductList from '@/components/ProductList';
+import { db } from '@/lib/db'; // Giả lập kết nối database trực tiếp
 
-// Function này chỉ chạy hoàn toàn trên server
-async function getPosts() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5');
-  if (!res.ok) {
-    throw new Error('Failed to fetch posts');
-  }
-  return res.json();
+export default async function ProductsPage() {
+  // Thực thi trực tiếp trên server, không lộ thông tin bảo mật
+  const products = await db.product.findMany();
+
+  return (
+    <main className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Danh sách sản phẩm</h1>
+      {/* Truyền dữ liệu xuống Client Component để xử lý phần giao diện tương tác */}
+      <ProductList initialProducts="{products}"/>
+    </main>
+  );
+}
+// 2. Client Component - Xử lý sự kiện tương tác người dùng
+// components/ProductList.tsx
+'use client';
+
+import { useState } from 'react';
+
+interface Product {
+  id: string;
+  name: string;
+  price: number;
 }
 
-// Đây là một Server Component
-export default async function PostsPage() {
-  const posts = await getPosts();
+export default function ProductList({ initialProducts }: { initialProducts: Product[] }) {
+  const [search, setSearch] = useState('');
+
+  // Lọc sản phẩm phía client dựa trên từ khóa tìm kiếm
+  const filteredProducts = initialProducts.filter(p => 
+    p.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div>
-      <h1>All Posts</h1>
-      <ul>
-        {posts.map((post: any) => (
-          <li key={post.id}>{post.title}</li>
+      <input 
+        type="text" 
+        placeholder="Tìm kiếm sản phẩm..." 
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="border p-2 rounded mb-4 w-full max-w-md"
+      />
+      
+      <ul className="space-y-2">
+        {filteredProducts.map(product => (
+          <li key={product.id} className="p-3 border rounded shadow-sm">
+            {product.name} - ${product.price}
+          </li>
         ))}
       </ul>
     </div>
   );
 }
 ```
+## 06. Rendering Strategies (CSR, SSR, SSG, ISR, Streaming)
 
-#### B. Interactive Client Component (`components/Counter.tsx`)
-Component này sử dụng `useState` và sự kiện `onClick`, vì vậy nó **bắt buộc** phải là một Client Component (khai báo `"use client"` ở dòng đầu tiên).
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Next.js nổi tiếng nhờ khả năng hỗ trợ đa dạng các chiến lược render (Rendering Strategies). Tùy thuộc vào yêu cầu bài toán (tốc độ, tính thời gian thực của dữ liệu, hay SEO), bạn có thể lựa chọn mô hình render phù hợp nhất cho từng trang hoặc từng component.
+
+Các chiến lược render cốt lõi bao gồm:
+
+1.  **CSR (Client-Side Rendering - Render phía Client):**
+    *   *Cách hoạt động:* Trình duyệt tải một file HTML trống, sau đó tải file JavaScript, thực thi và gọi API để lấy dữ liệu rồi mới dựng giao diện.
+    *   *Ứng dụng:* Dùng cho các trang quản trị cá nhân (Dashboard nội bộ), trang cá nhân hóa (User Profile) nơi không cần SEO và dữ liệu thay đổi liên tục theo hành động người dùng.
+
+2.  **SSR (Server-Side Rendering / Dynamic Rendering - Render phía Server mỗi request):**
+    *   *Cách hoạt động:* Mỗi khi có một người dùng gửi yêu cầu (request) truy cập trang web, server sẽ tính toán, gọi database, render ra file HTML hoàn chỉnh và trả về cho trình duyệt.
+    *   *Ưu điểm:* Dữ liệu luôn mới 100% tại thời điểm truy cập, cực kỳ tốt cho SEO.
+    *   *Ứng dụng:* Các trang thương mại điện tử cập nhật giá liên tục, trang tin tức nóng hổi, trang giỏ hàng.
+
+3.  **SSG (Static Site Generation - Tạo trang tĩnh tại thời điểm Build):**
+    *   *Cách hoạt động:* Trang web được render sẵn thành các file HTML tĩnh một lần duy nhất tại thời điểm chạy lệnh `npm run build`. Các lần truy cập sau, server chỉ việc trả về file HTML đã có sẵn này mà không cần tính toán lại.
+    *   *Ưu điểm:* Tốc độ tải trang nhanh khủng khiếp (có thể đưa lên CDN toàn cầu như Vercel Edge).
+    *   *Ứng dụng:* Trang giới thiệu công ty (About us), trang blog cá nhân, tài liệu hướng dẫn (Documentation).
+
+4.  **ISR (Incremental Static Regeneration - Tái tạo tĩnh tăng dần):**
+    *   *Cách hoạt động:* Kết hợp ưu điểm của SSG và SSR. Cho phép bạn cập nhật các trang tĩnh *ngầm* ở phía server sau một khoảng thời gian định sẵn mà không cần phải build lại toàn bộ ứng dụng từ đầu.
+    *   *Ứng dụng:* Các trang sản phẩm có hàng nghìn mặt hàng, trang tin tức ít thay đổi từng giây nhưng cần tự động cập nhật định kỳ.
+
+5.  **Streaming (Truyền tải luồng dữ liệu tiến trình):**
+    *   *Cách hoạt động:* Cho phép chia nhỏ trang web thành nhiều phần độc lập. Server sẽ gửi trước phần giao diện tĩnh (như Layout, Header, Sidebar) ngay lập tức, sau đó tiếp tục "stream" các phần nội dung dữ liệu nặng (như danh sách sản phẩm, bảng biểu) xuống trình duyệt ngay khi chúng sẵn sàng.
+    *   *Công cụ:* Được thực hiện thông qua **React Suspense** kết hợp với file `loading.tsx`.
+
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Mặc định Static, chuyển Dynamic khi cần:** Trong Next.js App Router, nếu một fetch request không có cấu hình cache hoặc có sử dụng các hàm như `cookies()`, `headers()`, Next.js sẽ tự động chuyển trang đó sang dạng **Dynamic Rendering (SSR)**.
+*   **Tận dụng Streaming để cải thiện UX:** Thay vì bắt người dùng nhìn màn hình trắng xóa chờ tải xong toàn bộ dữ liệu, hãy dùng `Suspense` để hiển thị khung xương giao diện (Skeleton loading) ngay lập tức.
+
+**💻 Code minh họa chuyên sâu:**
 
 ```tsx
-// components/Counter.tsx
-"use client"; // Đánh dấu đây là một Client Component
-
-import { useState } from 'react';
-
-export default function Counter() {
-  const [count, setCount] = useState(0);
+// 1. Cấu hình ISR (Incremental Static Regeneration) với fetch trong Server Component
+// Trang này sẽ được tạo tĩnh, nhưng cứ sau mỗi 60 giây, nếu có request mới, 
+// Next.js sẽ ngầm làm mới dữ liệu ở background.
+export default async function BlogPage() {
+  const res = await fetch('[https://api.example.com/posts](https://api.example.com/posts)', {
+    next: { revalidate: 60 }, // Tái tạo lại sau mỗi 60 giây
+  });
+  const posts = await res.json();
 
   return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
+    <main className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Danh sách bài viết (ISR - 60s)</h1>
+      <ul>
+        {posts.map((post: any) => (
+          <li key={post.id} className="py-2 border-b">{post.title}</li>
+        ))}
+      </ul>
+    </main>
+  );
+}
+// 2. Sử dụng Streaming với React Suspense
+// app/dashboard/page.tsx
+import { Suspense } from 'react';
+import SlowAnalyticsComponent from '@/components/SlowAnalyticsComponent';
+import AnalyticsSkeleton from '@/components/AnalyticsSkeleton';
+
+export default function DashboardPage() {
+  return (
+    <main className="p-6">
+      <h1 className="text-2xl font-bold mb-6">Bảng điều khiển quản trị</h1>
+      
+      {/* Phần giao diện tĩnh hiển thị ngay lập tức */}
+      <div className="p-4 bg-gray-100 rounded mb-6">
+        <p>Chào mừng bạn quay trở lại hệ thống!</p>
+      </div>
+
+      {/* Phần dữ liệu nặng được bọc trong Suspense để Streaming */}
+      <Suspense fallback="{<AnalyticsSkeleton"/>}>
+        <SlowAnalyticsComponent/>
+      </Suspense>
+    </main>
   );
 }
 ```
+## 07. Data Fetching
 
----
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Trong Next.js App Router, việc lấy dữ liệu (Data Fetching) đã được tái định nghĩa hoàn toàn. Bạn có thể fetch dữ liệu trực tiếp bên trong các Server Components bằng hàm `fetch` nguyên bản của JavaScript đã được Next.js mở rộng nâng cấp.
 
-## 6. Creating Dynamic Routes (Tạo các đường dẫn động)
+Các hình thức và chiến lược lấy dữ liệu cốt lõi bao gồm:
 
-Thay vì tạo hàng loạt file riêng biệt cho từng bài viết blog hoặc sản phẩm, bạn chỉ cần tạo một mẫu (template) duy nhất với **Dynamic Routes**. 
-Trong App Router của Next.js, điều này cực kỳ đơn giản: bạn chỉ cần bọc tên thư mục trong cặp dấu ngoặc vuông, ví dụ `[folderName]`. Bất kỳ giá trị nào người dùng nhập trên URL tại vị trí đó sẽ được truyền vào component dưới dạng prop `params`.
+1.  **Server Fetching (Lấy dữ liệu phía Server):**
+    *   Được thực hiện trực tiếp bên trong Server Components thông qua hàm `fetch()`.
+    *   *Tự động Deduplication (Khử trùng lặp):* Nếu bạn gọi cùng một URL `fetch` nhiều lần trong một cây component render, Next.js sẽ tự động gộp lại chỉ gọi 1 lần duy nhất trong suốt quá trình render request đó.
+    *   *Điều khiển Cache trực tiếp trong fetch:*
+        *   `cache: 'force-cache'` (Mặc định): Lưu cache vĩnh viễn (SSG).
+        *   `cache: 'no-store'`: Luôn gọi lấy dữ liệu mới ở mọi request (SSR).
+        *   `next: { revalidate: 3600 }`: Cập nhật dữ liệu sau mỗi khoảng thời gian định sẵn (ISR).
 
-### 6.1. Cấu trúc thư mục (Structure Diagram)
-Cấu trúc thư mục để tạo các trang bài viết blog động:
+2.  **Client Fetching (Lấy dữ liệu phía Client):**
+    *   Được dùng trong các Client Components (`'use client'`) khi bạn cần lấy dữ liệu dựa trên hành động tương tác của người dùng (ví dụ: gõ tìm kiếm, phân trang thủ công, bấm nút tải thêm).
+    *   Thường sử dụng kết hợp với các thư viện quản lý state/cache phía client như SWR hoặc TanStack React Query.
 
-```text
-app/
-└── blog/
-    └── [slug]/          <-- Thư mục động (Dynamic folder)
-        └── page.tsx     <-- Mẫu (Template) cho mỗi bài viết
-```
+3.  **SWR / React Query:**
+    *   Các thư viện chuyên dụng cho client-side fetching. Cung cấp các tính năng cực kỳ mạnh mẽ như: tự động fetch lại khi focus vào tab trình duyệt, quản lý trạng thái loading/error, cache dữ liệu và tái xác thực ngầm (background revalidation).
 
-### 6.2. Ví dụ mã nguồn (Example)
-Component trang sẽ nhận được prop `params` chứa giá trị `slug` từ URL.
+4.  **Parallel Fetching (Lấy dữ liệu song song) vs. Waterfall (Nước chảy):**
+    *   *Waterfall (Anti-pattern - Nên tránh):* Xảy ra khi bạn thực hiện các lệnh `await fetch` tuần tự nối tiếp nhau. Lệnh sau phải chờ lệnh trước hoàn thành xong mới được chạy, gây lãng phí thời gian tổng thể.
+    *   *Parallel Fetching (Khuyên dùng):* Khởi chạy đồng thời nhiều lệnh fetch cùng lúc bằng **`Promise.all()`** để tận dụng tối đa thời gian chờ mạng.
 
-```tsx
-// app/blog/[slug]/page.tsx
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Luôn fetch dữ liệu ở Server Components trước:** Giúp bảo mật thông tin API, giữ kín token xác thực và giảm thiểu lượng JavaScript phải tải về trên trình duyệt.
+*   **Dùng `Promise.all` cho các dữ liệu độc lập:** Nếu trang của bạn cần lấy danh sách sản phẩm và danh sách danh mục (không phụ thuộc vào nhau), hãy dùng `Promise.all` để chúng chạy song song thay vì viết hai dòng `await` tách biệt.
 
-// Component này sẽ render cho các URL như /blog/hello-world, /blog/another-post
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  // params sẽ có dạng { slug: 'hello-world' } đối với URL /blog/hello-world
-
-  // Bạn có thể dùng params.slug để fetch dữ liệu cho bài viết cụ thể:
-  // const postData = await getPostBySlug(params.slug);
-
-  return (
-    <div>
-      <h1>Post: {params.slug}</h1>
-      {/* Hiển thị nội dung bài viết tại đây */}
-    </div>
-  );
-}
-```
-
----
-
-## 7. Nested Routes and Layouts (Route và Layout lồng nhau)
-
-Khi cấu trúc trang trở nên phức tạp (ví dụ: trang trang cá nhân người dùng với nhiều tiểu mục khác nhau), bạn có thể lồng các route động lại với nhau. Đặt một file `layout.tsx` bên trong thư mục động (ví dụ `[userId]`), bạn sẽ tạo ra một giao diện dùng chung (như Sidebar) hiển thị xuyên suốt trên tất cả các trang con của người dùng đó.
-
-### 7.1. Cấu trúc thư mục (Structure Diagram)
-Cấu trúc thư mục cho trang dashboard người dùng kèm các trang con:
-
-```text
-app/
-└── users/
-    └── [userId]/        <-- Route động cho người dùng
-        ├── layout.tsx   <-- Layout dùng chung cho người dùng cụ thể
-        ├── page.tsx     <-- Trang tổng quan (overview) của người dùng
-        └── settings/
-            └── page.tsx <-- Trang cài đặt của người dùng
-```
-
-### 7.2. Ví dụ mã nguồn (Example)
-
-#### A. User Layout (`app/users/[userId]/layout.tsx`)
-Layout này sẽ áp dụng cho `/users/123`, `/users/123/settings`, v.v.
+**💻 Code minh họa chuyên sâu:**
 
 ```tsx
-// app/users/[userId]/layout.tsx
-
-export default function UserProfileLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { userId: string };
-}) {
-  return (
-    <section>
-      <aside>
-        <h2>User Profile {params.userId}</h2>
-        {/* Các liên kết điều hướng cho người dùng */}
-      </aside>
-      <main>{children}</main>
-    </section>
-  );
-}
-```
-
-#### B. Settings Page (`app/users/[userId]/settings/page.tsx`)
-Component này sẽ render tại URL `/users/123/settings`.
-
-```tsx
-// app/users/[userId]/settings/page.tsx
-
-export default function UserSettingsPage({ params }: { params: { userId: string } }) {
-  return (
-    <div>
-      <h3>Settings for user {params.userId}</h3>
-      {/* Form cài đặt */}
-    </div>
-  );
-}
-```
-
----
-
-## 8. Catch-all and Optional Catch-all Routes (Route gom tất cả và Route gom tất cả tùy chọn)
-
-### 8.1. Catch-all Routes (`[...folderName]`)
-Khi bạn cần bắt (scoop up) toàn bộ các đường dẫn sâu bất kỳ trên URL (ví dụ: các trang tài liệu kỹ thuật - documentation site), bạn sử dụng **Catch-all Routes**. Thêm 3 dấu chấm vào bên trong cặp dấu ngoặc vuông `[...folderName]`.
-
-- **Cấu trúc:** `app/docs/[...slug]/page.tsx`
-- **Các URL khớp (Matching URLs):**
-  - `/docs/getting-started` $\rightarrow$ `params` sẽ là `{ slug: ['getting-started'] }`
-  - `/docs/routing/dynamic-routes` $\rightarrow$ `params` sẽ là `{ slug: ['routing', 'dynamic-routes'] }`
-
-### 8.2. Optional Catch-all Routes (`[[...folderName]]`)
-Nếu bạn muốn đường dẫn gom tất cả đó hoạt động cho **cả trang gốc** mà không cần bất kỳ đường dẫn con nào bổ sung (giao diện tìm kiếm/bộ lọc sản phẩm), sử dụng **Optional Catch-all Routes** với cặp dấu ngoặc vuông kép `[[...folderName]]`.
-
-- **Cấu trúc:** `app/shop/[[...filters]]/page.tsx`
-- **Các URL khớp (Matching URLs):**
-  - `/shop` $\rightarrow$ `params` sẽ là `{}` (rỗng)
-  - `/shop/shoes` $\rightarrow$ `params` sẽ là `{ filters: ['shoes'] }`
-  - `/shop/shoes/red` $\rightarrow$ `params` sẽ là `{ filters: ['shoes', 'red'] }`
-
----
-
-## 9. Using the `<Link>` Component for Navigation (Sử dụng Component `<Link>` để điều hướng)
-
-Để di chuyển giữa các trang, cách chính là sử dụng Component `<Link>` của Next.js (`import Link from 'next/link'`).
-
-### 9.1. Cơ chế hoạt động (How it works)
-`<Link>` giúp trang web hoạt động mượt mà như một ứng dụng đơn trang (SPA):
-- Khi người dùng click vào link, trang được chuyển đổi mà **không bị tải lại toàn bộ trang** (no full-page reload).
-- Next.js tự động **tải trước (pre-loads)** trang tiếp theo ở nền (background), giúp thao tác chuyển trang diễn ra gần như tức thì.
-
-```text
-User Clicks <Link href="/about">
-  └─► Next.js (Prevents default browser behavior)
-        └─► JavaScript (Renders the new page's component)
-              └─► Browser (Updates the URL & displays new UI without page reload)
-```
-
-### 9.2. Ví dụ mã nguồn (Example)
-Sử dụng `<Link>` trong một component Header để điều hướng đến cả trang tĩnh và trang động.
-
-```tsx
-// components/Header.tsx
-import Link from 'next/link';
-
-export default function Header() {
-  const blogPostSlug = 'my-first-post';
-
-  return (
-    <nav style={{ display: 'flex', gap: '1rem' }}>
-      <Link href="/">Home</Link>
-      <Link href="/about">About</Link>
-
-      {/* Link tới một dynamic route */}
-      <Link href={`/blog/${blogPostSlug}`}>
-        First Post
-      </Link>
-    </nav>
-  );
-}
-```
-
----
-
-## 10. Programmatic Navigation (Điều hướng bằng mã lệnh)
-
-Khi bạn muốn chuyển hướng người dùng tới một trang khác **sau khi** họ thực hiện một hành động (như gửi form hoặc đăng nhập thành công), bạn không thể dùng `<Link>` mà phải sử dụng **Programmatic Navigation**.
-
-### 10.1. Hook `useRouter()` & `usePathname()`
-- **`useRouter()`:** Cung cấp hàm `router.push('/your-path')` để thực hiện chuyển hướng. 
-  - *Lưu ý:* Vì đây là thao tác tương tác người dùng, component phải là **Client Component** (khai báo `"use client";`).
-- **`usePathname()`:** Hook giúp lấy đường dẫn URL hiện tại của trang.
-
-### 10.2. Luồng xử lý (Execution Flow)
-
-```text
-[User Action (e.g. Clicks Login Button)] ──► [Event Handler (e.g. handleLogin)] ──► [Call router.push('/dashboard')] ──► [User is redirected to Dashboard page]
-```
-
-### 10.3. Ví dụ mã nguồn minh họa (Example)
-Ví dụ về một Nút đăng nhập (`LoginButton`) sẽ tự động chuyển hướng người dùng sang trang `/dashboard` sau khi click.
-
-```tsx
-// components/LoginButton.tsx
-'use client'; // Bắt buộc phải là a Client Component
-
-import { useRouter } from 'next/navigation';
-
-export default function LoginButton() {
-  const router = useRouter();
-
-  function handleLogin() {
-    // ... (Xử lý logic đăng nhập tại đây)
-
-    // Chuyển hướng người dùng sang trang dashboard
-    router.push('/dashboard');
-  }
-
-  return (
-    <button onClick={handleLogin}>
-      Login
-    </button>
-  );
-}
-```
-
----
-
-## 11. Data Fetching Strategies (Các chiến lược lấy dữ liệu)
-
-### 11.1. Từ Client-Side Fetching sang Server Components
-- **Trước đây (React thuần):** Phụ thuộc vào việc lấy dữ liệu ở phía Client thông qua `useEffect`, thường dẫn đến hiện tượng dịch chuyển giao diện (layout shifts) và hiệu ứng giật lag mạng nối tiếp (network waterfalls).
-- **Hiện tại (Next.js Server Components):** Cho phép bạn lấy dữ liệu trực tiếp ngay trên máy chủ (Server) trước khi render giao diện.
-- **Lợi ích:**
-  - Loại bỏ hoàn toàn việc xử lý tính toán phía Client.
-  - Ẩn an toàn các API keys nhạy cảm (không bị lộ ra trình duyệt).
-  - Trả về mã HTML đầy đủ nội dung cho trình duyệt giúp hiển thị tức thì và tối ưu SEO vượt trội.
-
-```tsx
-// ✅ Cách làm của Next.js (Server Component)
-async function Profile() {
-  // Trực tiếp gọi DB hoặc Fetch dữ liệu trên Server
-  const data = await db.user.findFirst();
-  return <div>{data.name}</div>;
-}
-
-// ❌ Cách làm cũ (Client-Side trong React)
-function Profile() {
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    fetch('/api/user')
-      .then(res => res.json())
-      .then(setData);
-  }, []);
-
-  if (!data) return <Spinner />;
-  return <div>{data.name}</div>;
-}
-```
-
-### 11.2. Static Data vs Dynamic Data (Dữ liệu tĩnh & Dữ liệu động)
-
-Để lấy dữ liệu hiệu quả, cần phân biệt giữa tính đồng nhất (consistency) và độ tươi mới (freshness) của dữ liệu:
-
-1. **Static Data (Dữ liệu tĩnh - Mặc định):**
-   - Được lấy một lần duy nhất tại thời điểm build (`build time`) và được cache toàn cục (giống như một tờ báo in).
-   - Mang lại tốc độ tối đa cho các nội dung hiếm khi thay đổi (Blogs, trang tài liệu).
-   ```tsx
-   // 1. Static Data (Default)
-   fetch('https://api.example.com/posts', { cache: 'force-cache' });
-   ```
-
-2. **Dynamic Data (Dữ liệu động):**
-   - Được lấy mới trên mỗi yêu cầu (request) từ người dùng (giống như bảng điểm trận đấu trực tiếp).
-   - Đảm bảo người dùng luôn nhận được thông tin cập nhật theo thời gian thực (real-time).
-   ```tsx
-   // 2. Dynamic Data
-   fetch('https://api.example.com/stocks', { cache: 'no-store' });
-   ```
-
----
-
-## 12. Fetching Data with Server Components (`async/await`)
-
-Trong App Router, tất cả các component mặc định đều là **Server Components**. Điều này cho phép bạn lấy dữ liệu một cách đơn giản và trực tiếp bằng cách sử dụng cú pháp `async/await` ngay bên trong component.
-
-### 12.1. Luồng hoạt động (Execution Flow)
-
-```text
-Client Sends Request
-  │
-  ▼
-Next.js Server Receives Request
-  │
-  ▼
-Server Component Executes
-  │
-  ▼
-`await fetch(...)` Waits for Data to Return
-  │
-  ▼
-Server Renders HTML with Data
-  │
-  ▼
-Complete HTML is Sent to Client
-```
-
-### 12.2. Ví dụ mã nguồn minh họa (Example)
-Lấy danh sách bài viết từ một API và hiển thị ra giao diện.
-
-```tsx
-// app/posts/page.tsx
-
-// Hàm fetch dữ liệu có thể định nghĩa bên trong hoặc bên ngoài component.
-// Next.js tự động mở rộng hàm fetch() gốc và thực hiện cache dữ liệu theo mặc định.
-async function getPosts() {
-  const res = await fetch('https://api.example.com/posts');
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-
+// 1. Server Fetching với các tùy chọn Cache khác nhau
+// app/products/page.tsx
+async function getProducts() {
+  const res = await fetch('[https://api.example.com/products](https://api.example.com/products)', {
+    cache: 'no-store', // Luôn lấy dữ liệu mới nhất (SSR)
+  });
+  if (!res.ok) throw new Error('Không thể tải dữ liệu sản phẩm');
   return res.json();
 }
 
-// Đây là một Server Component
-export default async function PostsPage() {
-  const posts = await getPosts();
+export default async function ProductsPage() {
+  const products = await getProducts();
 
   return (
-    <ul>
-      {posts.map((post: any) => (
-        <li key={post.id}>{post.title}</li>
-      ))}
-    </ul>
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Danh sách sản phẩm mới</h1>
+      <ul>
+        {products.map((p: any) => (
+          <li key={p.id}>{p.name}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
-```
-
----
-
-## 13. Static Generation with `generateStaticParams` (Tạo trang tĩnh với `generateStaticParams`)
-
-**Static Site Generation (SSG)** cho phép bạn pre-render (dựng sẵn) các trang HTML ngay tại thời điểm build. Với các đường dẫn động (ví dụ: `[slug]`), bạn cần khai báo cho Next.js biết những tham số nào cần được pre-render trước.
-
-Hàm `generateStaticParams` trả về một mảng chứa các đối tượng `params`. Next.js sẽ duyệt qua mảng này và tạo sẵn file HTML tĩnh cho từng đường dẫn, giúp tăng tốc độ tải trang tối đa và giảm tải cho máy chủ.
-
-### 13.1. Luồng xử lý trong quá trình Build (Build Flow)
-
-```text
-Build Process Starts
-  │
-  ▼
-Next.js Runs `generateStaticParams`
-  │
-  ▼
-Receives Array of Params (e.g., [{ slug: 'post-1' }, { slug: 'post-2' }])
-  │
-  ▼
-Loop Through Each Param:
-  - Fetch data for the page
-  - Render the page to static HTML
-  │
-  ▼
-Static HTML files are saved and ready to be served
-```
-
-### 13.2. Ví dụ mã nguồn minh họa (Example)
-Tạo sẵn các trang tĩnh cho một vài bài viết blog tại thời điểm build.
-
-```tsx
-// app/blog/[slug]/page.tsx
-
-// 1. Cho Next.js biết các slug nào cần build sẵn
-export async function generateStaticParams() {
-  const posts = await fetch('https://api.example.com/posts?_limit=3').then((res) => res.json());
-
-  // Trả về một mảng chứa các đối tượng params
-  return posts.map((post: any) => ({
-    slug: post.slug,
-  }));
-}
-
-// 2. Component trang sẽ sử dụng params để fetch dữ liệu
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  // Lấy dữ liệu cho bài viết cụ thể dựa trên slug
-  const post = await fetch(`https://api.example.com/posts/${params.slug}`).then((res) => res.json());
-
-  return <h1>{post.title}</h1>;
-}
-```
-
----
-
-## 14. Server-side Rendering and Streaming UI (Server-side Rendering và Streaming UI)
-
-**Server-side Rendering (SSR)** là hành vi mặc định cho các trang động (dynamic pages) không được tạo tĩnh. Với SSR, mã HTML của trang được tạo ra trên server cho mỗi request gửi tới.
-
-**Streaming UI** là một cải tiến mạnh mẽ trong App Router. Thay vì bắt người dùng phải chờ toàn bộ trang render xong hoàn toàn, Next.js sẽ ngay lập tức gửi về phần vỏ giao diện tĩnh (static UI shell như layout) kèm trạng thái chờ (loading state). Sau đó, khi dữ liệu được lấy xong trên server, nội dung động sẽ được **"streamed"** (truyền dòng) về để thay thế trạng thái loading. Kỹ thuật này đạt được nhờ tệp `loading.tsx` và `React Suspense`.
-
-### 14.1. Luồng hoạt động của Streaming UI (Execution Flow)
-
-```text
-Client Sends Request
-  │
-  ▼
-Server Immediately Sends:
-  - The page shell (Layout)
-  - The fallback UI from `loading.tsx`
-  │
-  ▼
-(Meanwhile on the server)
-  - Server Component is `await`ing data...
-  │
-  ▼
-Data is available, Server Renders Content
-  │
-  ▼
-Server "Streams" the Complete Content HTML to the Client
-  │
-  ▼
-Client Replaces the Fallback UI with the Complete Content
-```
-
-### 14.2. Ví dụ mã nguồn minh họa (Example)
-Tạo trạng thái loading cho một trang Dashboard.
-
-```tsx
-// app/dashboard/loading.tsx
-
-// Component này sẽ tự động hiển thị trong khi page.tsx đang fetch data
-export default function Loading() {
-  return <p>Loading dashboard data...</p>;
-}
-```
-
-```tsx
+// 2. Parallel Fetching sử dụng Promise.all để tối ưu hiệu suất (Tránh Waterfall)
 // app/dashboard/page.tsx
+async function getUserData() {
+  const res = await fetch('[https://api.example.com/user](https://api.example.com/user)');
+  return res.json();
+}
 
-async function getDashboardData() {
-  // Giả lập một network request chậm 2 giây
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-  return { revenue: 12345 };
+async function getNotifications() {
+  const res = await fetch('[https://api.example.com/notifications](https://api.example.com/notifications)');
+  return res.json();
 }
 
 export default async function DashboardPage() {
-  const data = await getDashboardData();
-  return <h1>Revenue: {data.revenue}</h1>;
-}
-```
+  // Chạy song song cả 2 request cùng một lúc thay vì chờ tuần tự
+  const [user, notifications] = await Promise.all([
+    getUserData(),
+    getNotifications(),
+  ]);
 
----
-
-## 15. Client-side Data Fetching (Hooks & SWR) (Lấy dữ liệu phía Client với Hooks & SWR)
-
-Đôi khi bạn cần lấy dữ liệu trực tiếp từ phía client, đặc biệt cho các dữ liệu thay đổi thường xuyên hoặc phụ thuộc vào tương tác người dùng (ví dụ: dashboard cá nhân).
-
-Bạn có thể sử dụng các React hooks thuần như `useEffect` và `useState`, hoặc sử dụng các thư viện mạnh mẽ hơn như **SWR** hoặc **React Query** để xử lý việc lấy dữ liệu, caching, và làm mới dữ liệu (revalidation) một cách hiệu quả.
-Các Components sử dụng phương pháp này **bắt buộc phải là Client Component** (`"use client";`).
-
-### 5.1. Luồng hoạt động của SWR (Execution Flow)
-
-```text
-Component Renders
-  │
-  ▼
-SWR Hook is Called
-  │
-  ▼
-SWR Returns Cached Data (if available) -> Displays immediately
-  │
-  ▼
-(In the background) SWR Sends Fetch Request to API
-  │
-  ▼
-API Returns New Data
-  │
-  ▼
-SWR Updates Cache and Re-renders Component with New Data
-```
-
-### 5.2. Ví dụ mã nguồn minh họa với SWR (Example)
-Lấy thông tin trang cá nhân của người dùng bằng thư viện `swr`.
-
-```tsx
-// components/UserProfile.tsx
-'use client';
-
-import useSWR from 'swr';
-
-// Hàm fetcher sẽ được SWR sử dụng để lấy dữ liệu
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
-export default function UserProfile() {
-  const { data, error, isLoading } = useSWR('/api/user', fetcher);
-
-  if (error) return <div>Failed to load</div>;
-  if (isLoading) return <div>Loading...</div>;
-
-  return <h1>Hello, {data.name}!</h1>;
-}
----
-
-## 6. Creating and Using API Routes (Tạo và sử dụng API Routes)
-
-App Router cung cấp một phương pháp đơn giản để tạo ra các điểm cuối API (API endpoints) bằng cách tạo tệp `route.ts` (hoặc `.js`) bên trong thư mục route tương ứng.
-
-Bạn có thể export các hàm bất đồng bộ (`async functions`) được đặt tên theo các phương thức HTTP tiêu chuẩn (ví dụ: `GET`, `POST`, `PUT`, `DELETE`). Điều này cho phép bạn xây dựng một backend hoàn chỉnh trực tiếp ngay bên trong ứng dụng Next.js, rất tiện lợi cho việc xử lý các yêu cầu phía Client hoặc giao tiếp an toàn với các dịch vụ bên ngoài.
-
-### 6.1. Cấu trúc thư mục & Luồng yêu cầu (Folder Structure & Request Flow)
-
-```text
-Folder Structure:
-app/
-└── api/
-    └── users/
-        └── route.ts
-
-Request from Client:
-Client Component ─── GET /api/users ───► Your Endpoint
-                                             │
-                                             ▼
-                                 GET function in `route.ts` is executed
-                                             │
-                                             ▼
-                                      Returns JSON Data
-```
-
-### 6.2. Ví dụ mã nguồn minh họa (Example)
-Tạo một điểm cuối API đơn giản trả về danh sách người dùng.
-
-```tsx
-// app/api/users/route.ts
-
-import { NextResponse } from 'next/server';
-
-// Xử lý các request GET
-export async function GET(request: Request) {
-  // Trong ứng dụng thực tế, bạn sẽ lấy dữ liệu này từ cơ sở dữ liệu (Database)
-  const users = [
-    { id: 1, name: 'Alice' },
-    { id: 2, name: 'Bob' },
-  ];
-
-  // Trả về phản hồi dạng JSON
-  return NextResponse.json({ users });
-}
-
-// Bạn cũng có thể định nghĩa các hàm POST, PUT, DELETE tại đây:
-// export async function POST(request: Request) { ... }
-```
-
----
-
-## 17. Image Optimization with the `<Image>` Component (Tối ưu hóa hình ảnh với Component `<Image>`)
-
-Component `<Image>` trong Next.js (`next/image`) là một bản mở rộng của thẻ HTML `<img>`, được thiết kế đặc biệt nhằm tối ưu hóa hiệu năng hiển thị hình ảnh. Nó tự động thực hiện các tác vụ sau:
-
-- **Resizing (Thay đổi kích thước):** Tạo ra các phiên bản ảnh nhỏ hơn phù hợp với từng kích thước màn hình thiết bị khác nhau, tránh việc gửi file ảnh dung lượng quá lớn tới thiết bị người dùng.
-- **Format Optimization (Tối ưu định dạng):** Tự động chuyển đổi ảnh sang các định dạng hiện đại hơn như **WebP** hoặc **AVIF** (nếu trình duyệt hỗ trợ), giúp giảm dung lượng file nhưng vẫn giữ nguyên chất lượng hiển thị.
-- **Lazy Loading (Tải chậm):** Mặc định, hình ảnh chỉ được tải về khi người dùng cuộn tới vùng hiển thị (viewport), giúp tăng tốc độ tải trang ban đầu.
-- **Prevents Cumulative Layout Shift (CLS):** Tự động thiết lập kích thước (kích thước khung giữ chỗ) cho hình ảnh để trình duyệt dành sẵn khoảng trống trước khi ảnh tải xong, ngăn chặn hiện tượng giao diện bị "nhảy" đột ngột.
-
-### 17.1. Bảng so sánh (Comparison Table)
-
-| Thẻ `<img` chuẩn (Standard HTML) | Next.js `<Image>` Component |
-| :--- | :--- |
-| Tải file ảnh gốc với dung lượng lớn | Tải file ảnh đã tối ưu hóa, đúng kích thước màn hình |
-| Không tự động chuyển đổi định dạng ảnh | Tự động chuyển đổi sang định dạng WebP/AVIF |
-| Tải ngay lập tức (trừ khi tự cấu hình) | Mặc định áp dụng Lazy loading |
-| Dễ gây ra lỗi dịch chuyển giao diện (Layout Shift) | Tự động chống lại Layout Shift (Prevent CLS) |
-
-### 17.2. Ví dụ mã nguồn minh họa (Example)
-Sử dụng component `<Image>` cho cả ảnh nội bộ (local) và ảnh từ máy chủ từ xa (remote).
-
-```tsx
-import Image from 'next/image';
-import profilePic from '../public/me.png'; // Import ảnh nội bộ
-
-export default function MyPage() {
   return (
-    <div>
-      {/* Sử dụng ảnh nội bộ */}
-      <Image
-        src={profilePic}
-        alt="Picture of the author"
-        width={500} // Bắt buộc
-        height={500} // Bắt buộc
-        placeholder="blur" // Hiệu ứng mờ blur-up tùy chọn trong khi tải
-      />
-
-      {/* Sử dụng ảnh từ server từ xa */}
-      <Image
-        src="https://images.unsplash.com/photo-12345"
-        alt="An image from Unsplash"
-        width={800} // Bắt buộc
-        height={600} // Bắt buộc
-      />
+    <div className="p-6">
+      <h1 className="text-xl font-bold">Xin chào, {user.name}</h1>
+      <p>Bạn có {notifications.length} thông báo mới.</p>
     </div>
   );
 }
 ```
+## 08. Caching & Revalidation
 
----
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Next.js App Router tích hợp sẵn một hệ thống caching (lưu trữ tạm thời) cực kỳ mạnh mẽ nhằm tối ưu hóa tốc độ tải trang và giảm tải cho Server/Database. Tuy nhiên, nếu không hiểu rõ cơ chế này, bạn rất dễ gặp tình trạng dữ liệu mới cập nhật trong database nhưng giao diện ngoài trang web vẫn hiển thị dữ liệu cũ (stale data).
 
-## 18. Code Splitting & Parallel Loading (Chia nhỏ mã nguồn & Tải song song)
+Hệ thống cache của Next.js bao gồm 4 tầng cốt lõi:
 
-### 18.1. Automatic Code Splitting (Chia nhỏ mã tự động)
-Next.js tự động thực hiện chia nhỏ mã nguồn (code splitting) mà không cần cấu hình thêm. Mỗi tệp `page.tsx` trong App Router được biên dịch thành một "gói" JavaScript (bundle) riêng biệt. Điều này có nghĩa là khi người dùng truy cập một trang cụ thể, họ chỉ cần tải về phần mã mã nguồn cần thiết cho trang đó thay vì phải tải toàn bộ ứng dụng.
+1.  **Data Cache (Cache dữ liệu):**
+    *   Lưu trữ kết quả trả về từ các hàm `fetch` trên server. Nó được duy trì xuyên suốt qua các vòng đời request và thậm chí qua các lần redeploy lên server.
+    *   *Mặc định:* Các lệnh `fetch` đều được cache vĩnh viễn (`force-cache`) trừ khi có cấu hình `no-store` hoặc được tái xác thực (revalidate).
 
-### 18.2. Parallel Route Loading (Tải đường dẫn song song)
-Khi một URL được yêu cầu, Next.js sẽ tải **tất cả các tệp `layout.tsx` và `page.tsx` cần thiết** cho route đó theo dạng **song song (in parallel)**.
+2.  **Full Route Cache (Cache toàn bộ route phía Server):**
+    *   Next.js tự động render và cache toàn bộ HTML và dữ liệu JSON của một trang tĩnh tại thời điểm build hoặc khi request đầu tiên được thực hiện. Giúp việc phục vụ các request tiếp theo diễn ra gần như tức thời.
 
-*Ví dụ:* Khi truy cập đường dẫn `/dashboard/settings`, Root Layout (`app/layout.tsx`), Dashboard Layout (`app/dashboard/layout.tsx`) và Settings Page (`app/dashboard/settings/page.tsx`) sẽ đều được fetch và render đồng thời trên server, giúp giảm thiểu tối đa thời gian chờ đợi của người dùng.
+3.  **Router Cache (Cache phía Client):**
+    *   Một bộ nhớ đệm tạm thời nằm ngay trên trình duyệt (client-side memory cache). Khi người dùng bấm chuyển trang bằng thẻ `<Link>`, Next.js sẽ lưu kết quả các phần đã tải vào cache bộ nhớ tạm để khi người dùng bấm nút Quay lại (Back/Forward), trang hiển thị ngay lập tức mà không cần gọi lại server.
 
-```text
-                           ┌──► app/layout.tsx (Root Layout)
-                           │
-(Parallel Load) ───────────┼──► app/dashboard/layout.tsx (Dashboard Layout)
-                           │
-                           └──► app/dashboard/settings/page.tsx (Settings Page)
-```
+4.  **Các phương pháp Revalidation (Làm mới cache):**
+    Khi dữ liệu thay đổi (ví dụ: người dùng tạo bài viết mới), bạn cần ra lệnh cho Next.js xóa cache cũ và lấy dữ liệu mới bằng 3 cách chính:
+    *   *Time-based Revalidation (Theo thời gian):* Tự động làm mới cache sau một khoảng thời gian định sẵn (ví dụ: `next: { revalidate: 3600 }`).
+    *   *On-demand Revalidation bằng Path (`revalidatePath`):* Xóa cache của một đường dẫn URL cụ thể ngay lập tức khi có hành động xảy ra (ví dụ: sau khi submit form tạo sản phẩm, gọi `revalidatePath('/products')`).
+    *   *On-demand Revalidation bằng Tag (`revalidateTag`):* Gắn thẻ (tag) cho các lệnh fetch, sau đó gọi hàm `revalidateTag('products-list')` để xóa cache của tất cả các fetch có chung thẻ đó ở bất kỳ đâu trên ứng dụng.
 
-Đây là một hành vi hoàn toàn tự động trong Next.js; bạn không cần phải thêm bất kỳ cấu hình bổ sung nào. Chỉ cần tổ chức ứng dụng theo đúng quy ước thư mục của App Router là tính năng này sẽ tự động được kích hoạt.
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Ưu tiên dùng `revalidateTag` cho các hệ thống lớn:** Việc gắn tag cho các fetch request (ví dụ: `next: { tags: ['posts'] }`) giúp bạn dễ dàng làm mới dữ liệu cực kỳ chính xác ở nhiều trang khác nhau chỉ với một dòng lệnh khi có thay đổi dữ liệu.
+*   **Lưu ý với Router Cache:** Nếu bạn vừa cập nhật dữ liệu xong mà F5 lại trang vẫn thấy cũ, đôi khi đó là do Client-side Router Cache. Hãy dùng `revalidatePath` kết hợp với Server Actions để đồng bộ hóa dữ liệu lập tức.
 
----
-
-## 19. React Suspense and Lazy Loading with Loading UI (React Suspense và Tải chậm với Loading UI)
-
-**React Suspense** là một tính năng của React cho phép các component "chờ" (wait) một điều gì đó (như tải dữ liệu) trước khi chúng render. Next.js tích hợp sâu với Suspense để tạo ra trải nghiệm người dùng tốt hơn thông qua cơ chế **Streaming**.
-
-Bằng cách tạo tệp `loading.tsx`, bạn đang bảo Next.js: *"Trong khi tệp component trang chính (`page.tsx`) đang bận fetch dữ liệu, hãy hiển thị giao diện từ tệp `loading.tsx` này như một khung giữ chỗ (temporary placeholder)."* Điều này giúp người dùng nhìn thấy ngay một phần giao diện trang và biết rằng nội dung đang trên đường tải về, thay vì phải nhìn vào một màn hình rỗng.
-
-### 19.1. Luồng hoạt động (Execution Flow)
-
-```text
-Client Sends Request
-  │
-  ▼
-Server Immediately Sends Back:
-  - Static UI (Layout)
-  - UI from `loading.tsx` (Fallback)
-  │
-  ▼
-(Meanwhile on the server...)
-  - `page.tsx` is `await`ing data...
-  │
-  ▼
-Data is available, Server Renders Page Content
-  │
-  ▼
-Server "Streams" the Content's HTML to the Client to replace the Fallback
-```
-
-### 19.2. Ví dụ mã nguồn minh họa (Example)
-Tạo giao diện tải tức thì cho một trang mất thời gian fetch data.
+**💻 Code minh họa chuyên sâu:**
 
 ```tsx
-// app/analytics/loading.tsx
-
-// Component này sẽ tự động hiển thị trong khi tệp page.tsx cùng cấp đang tải dữ liệu
-export default function Loading() {
-  return <p>Loading analytics data, please wait...</p>;
-}
-```
-
-```tsx
-// app/analytics/page.tsx
-
-async function getAnalyticsData() {
-  // Giả lập một network request chậm kéo dài 3 giây
-  await new Promise((resolve) => setTimeout(resolve, 3000));
-  return { visitors: 9876 };
-}
-
-export default async function AnalyticsPage() {
-  const data = await getAnalyticsData();
-  return <h1>Visitors: {data.visitors}</h1>;
-}
-```
-
----
-
-## 20. Caching Strategies and ISR (Chiến lược Caching và ISR)
-
-Next.js mở rộng hàm `fetch` mặc định của JavaScript với hệ thống cache phía server rất mạnh mẽ.
-
-- **Static Fetch (Mặc định):** `fetch('...')` tự động cache kết quả vô thời hạn (tương tự `getStaticProps` trong Pages Router). Dữ liệu được lấy tại thời điểm build và tái sử dụng cho mọi request.
-- **No-cache Fetch:** `fetch('...', { cache: 'no-store' })` luôn luôn lấy dữ liệu mới cho mỗi request (tương tự `getServerSideProps`).
-- **Incremental Static Regeneration (ISR):** `fetch('...', { next: { revalidate: 60 } })` là sự kết hợp hoàn hảo của cả hai phương pháp. Nó cache dữ liệu trong một khoảng thời gian chỉ định (ví dụ: 60 giây). Request đầu tiên trong khoảng thời gian đó nhận dữ liệu đã cache, đồng thời Next.js tự động kích hoạt một quá trình "revalidation" ngầm ở nền để lấy dữ liệu mới. Các request tiếp theo sau đó sẽ nhận được dữ liệu đã cập nhật.
-
-### 20.1. Luồng tái tạo lại dữ liệu ngầm của ISR (ISR Revalidation Flow)
-
-```text
-User A Requests (at 0s) ──► Receives Cached Data (Stale)
-  │
-  ▼
-(Server begins revalidating in the background...)
-  │
-  ▼
-User B Requests (at 10s) ──► Receives Cached Data (Still stale)
-  │
-  ▼
-(Revalidation completes, cache is updated)
-  │
-  ▼
-User C Requests (at 65s) ──► Receives Cached Data (Fresh)
-```
-
-### 20.2. Ví dụ mã nguồn minh họa (Example)
-Lấy giá cổ phiếu và làm mới lại dữ liệu sau mỗi phút (60 giây).
-
-```tsx
-// app/stock-price/page.tsx
-
-async function getStockPrice() {
-  const res = await fetch('https://api.example.com/stock/XYZ', {
-    next: { revalidate: 60 }, // Revalidate sau mỗi 60 giây
+// 1. Sử dụng Fetch kèm Tag để quản lý Cache linh hoạt
+// app/posts/page.tsx
+async function getPosts() {
+  const res = await fetch('[https://api.example.com/posts](https://api.example.com/posts)', {
+    next: { tags: ['collection-posts'] }, // Gắn thẻ cho fetch request này
   });
   return res.json();
 }
 
-export default async function StockPricePage() {
-  const stock = await getStockPrice();
-  return <h1>XYZ Stock Price: ${stock.price}</h1>;
+export default async function PostsPage() {
+  const posts = await getPosts();
+  // Hiển thị danh sách...
+}
+// 2. Sử dụng revalidatePath và revalidateTag bên trong Server Actions để làm mới cache
+// app/posts/actions.ts
+'use server';
+
+import { revalidatePath, revalidateTag } from 'next/cache';
+
+export async function createPost(formData: FormData) {
+  const title = formData.get('title');
+
+  // 1. Gọi API hoặc Database để lưu bài viết mới...
+  await db.post.create({ data: { title: String(title) } });
+
+  // 2. Cách A: Làm mới cache theo đường dẫn URL cụ thể
+  revalidatePath('/posts');
+
+  // 3. Cách B: Làm mới cache theo Tag đã gắn ở các fetch request (Khuyên dùng)
+  revalidateTag('collection-posts');
 }
 ```
+## 09. Loading & Error Handling
 
----
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Trong một ứng dụng web thực tế, độ trễ mạng (loading) và sự cố phát sinh (errors) là điều không thể tránh khỏi. Next.js App Router cung cấp hệ thống xử lý giao diện chờ và bắt lỗi theo cơ chế quy ước tên file (file-system conventions) cực kỳ trực quan.
 
-## 21. Monitoring and Improving Core Web Vitals (Theo dõi và cải thiện Core Web Vitals)
+Các tệp tin và cơ chế cốt lõi bao gồm:
 
-**Core Web Vitals (CWV)** là bộ ba chỉ số đo lường của Google dùng để đánh giá trải nghiệm thực tế của người dùng trên trang web, tập trung vào tốc độ tải, độ tương tác và tính ổn định về mặt thị giác.
+1.  **`loading.tsx` (Giao diện chờ):**
+    *   Tự động bọc file `page.tsx` và các component con bên trong một **React Suspense Boundary**.
+    *   Ngay khi người dùng chuyển trang, Next.js sẽ lập tức hiển thị file `loading.tsx` (thường làm các khung xương giao diện - skeleton loaders) trong lúc dữ liệu của trang đang được tải ở phía server.
 
-1. **Largest Contentful Paint (LCP):** Đo thời gian cần thiết để phần tử nội dung lớn nhất (thường là ảnh bìa hoặc khối văn bản chính) hiển thị rõ ràng. Next.js giúp cải thiện LCP với component `<Image>`.
-2. **Interaction to Next Paint (INP):** Đo độ trễ từ khi người dùng tương tác (click, tap, nhấn phím) cho tới khi giao diện cung cấp phản hồi. Next.js giúp cải thiện INP bằng cơ chế chia nhỏ mã (code splitting), chỉ tải JavaScript cần thiết (INP đã thay thế cho chỉ số cũ First Input Delay - FID).
-3. **Cumulative Layout Shift (CLS):** Đo mức độ giao diện bị "nhảy" bất ngờ trong quá trình tải. Next.js giúp giảm CLS bằng cách tự động đặt kích thước khung giữ chỗ cho hình ảnh và phông chữ.
+2.  **`Suspense` (`react`):**
+    *   Thành phần cho phép bạn kiểm soát độ chi tiết của việc tải dữ liệu (Streaming). Thay vì chờ toàn bộ trang tải xong, bạn có thể bọc riêng một phần giao diện nặng bằng `<Suspense fallback={<Skeleton />}>` để các phần còn lại hiển thị trước.
 
-Bạn có thể theo dõi các chỉ số này bằng các công cụ như **Google PageSpeed Insights** hoặc tích hợp **Vercel Analytics** vào dự án.
+3.  **`error.tsx` (Trang xử lý lỗi):**
+    *   Tự động bắt các lỗi bất ngờ xảy ra trong `page.tsx` hoặc các layout con bên trong cùng phân cấp thư mục.
+    *   *Quy tắc bắt buộc:* File `error.tsx` **phải là một Client Component** (`'use client'`) vì nó cần xử lý sự kiện tương tác (ví dụ: nút bấm "Thử lại" - Try again để reset lại trạng thái lỗi).
 
-### 21.1. Sơ đồ các chỉ số (Metrics Diagram)
+4.  **`not-found.tsx` (Trang 404):**
+    *   Hiển thị giao diện khi người dùng truy cập một đường dẫn không tồn tại hoặc khi bạn chủ động kích hoạt hàm `notFound()` trong code (ví dụ: không tìm thấy bài viết có ID tương ứng trong database).
 
-- **LCP (Loading):** *"Trang web có tải nhanh không?"* $\rightarrow$ Tối ưu hóa bằng `<Image>`, Font Optimization.
-- **INP (Interactivity):** *"Trang web có phản hồi nhanh không?"* $\rightarrow$ Tối ưu hóa bằng Code Splitting.
-- **CLS (Stability):** *"Giao diện có ổn định không?"* $\rightarrow$ Tối ưu hóa bằng `<Image>`, Font Optimization.
+5.  **`redirect()` (Điều hướng tự động):**
+    *   Hàm dùng để chuyển hướng người dùng sang một đường dẫn khác (ví dụ: chuyển hướng người dùng chưa đăng nhập từ trang `/dashboard` về trang `/login`). Có thể gọi trực tiếp trong Server Components, Server Actions hoặc Route Handlers.
 
-### 21.2. Ví dụ mã nguồn minh họa (Example)
-Tích hợp Vercel Analytics để dễ dàng theo dõi các chỉ số Core Web Vitals (CWV).
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Thiết kế Skeleton mượt mà:** Thay vì dùng spinner quay tròn thô kệch, hãy thiết kế `loading.tsx` thành các khối khung xám nhạt (Skeleton screens) phỏng theo hình dáng của trang web thật để nâng cao trải nghiệm người dùng.
+*   **Đặt `error.tsx` đúng vị trí:** Bạn có thể đặt file `error.tsx` ở từng thư mục con để cô lập lỗi (nếu trang quản lý sản phẩm bị lỗi, chỉ phần đó hiện thông báo lỗi, phần header và sidebar chung vẫn hoạt động bình thường).
 
-1. **Cài đặt thư viện (Install package):**
-   ```bash
-   npm i @vercel/analytics
-   ```
+**💻 Code minh họa chuyên sâu:**
 
-2. **Thêm component `<Analytics />` vào Root Layout (`app/layout.tsx`):**
-   ```tsx
-   // app/layout.tsx
+```tsx
+// 1. Tạo file giao diện chờ: app/dashboard/loading.tsx
+export default function DashboardLoading() {
+  return (
+    <div className="p-6 animate-pulse">
+      <div className="h-8 bg-gray-200 rounded w-1/4 mb-6"></div>
+      <div className="grid grid-cols-3 gap-4">
+        <div className="h-32 bg-gray-200 rounded"></div>
+        <div className="h-32 bg-gray-200 rounded"></div>
+        <div className="h-32 bg-gray-200 rounded"></div>
+      </div>
+    </div>
+  );
+}
+// 2. Tạo file xử lý lỗi: app/dashboard/error.tsx
+// BẮT BUỘC PHẢI CÓ 'use client'
+'use client'; 
 
-   import { Analytics } from '@vercel/analytics/react';
+import { useEffect } from 'react';
 
-   export default function RootLayout({ children }: { children: React.ReactNode }) {
-     return (
-       <html lang="en">
-         <body>
-           {children}
-           <Analytics /> {/* Thêm component Analytics tại đây */}
-         </body>
-       </html>
-     );
-   }
-   ```
+export default function DashboardError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  useEffect(() => {
+    // Ghi log lỗi lên hệ thống theo dõi (ví dụ: Sentry)
+    console.error(error);
+  }, [error]);
 
+  return (
+    <div className="p-8 text-center">
+      <h2 className="text-xl font-bold text-red-600 mb-2">Đã có lỗi xảy ra!</h2>
+      <p className="text-gray-600 mb-4">{error.message || 'Không thể tải dữ liệu bảng điều khiển.'}</p>
+      
+      {/* Nút reset cố gắng khôi phục lại trang mà không cần F5 trình duyệt */}
+      <button
+        onClick={() => reset()}
+        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      >
+        Thử lại ngay
+      </button>
+    </div>
+  );
+}
+// 3. Sử dụng hàm notFound() khi không tìm thấy dữ liệu trong Database
+// app/posts/[id]/page.tsx
+import { notFound } from 'next/navigation';
 
+export default async function PostDetail({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const res = await fetch(`[https://api.example.com/posts/$](https://api.example.com/posts/$){id}`);
+  
+  if (!res.ok) {
+    notFound(); // Tự động chuyển hướng hiển thị giao diện not-found.tsx gần nhất
+  }
 
+  const post = await res.json();
 
+  return <main className="p-6"><h1>{post.title}</h1></main>;
+}
+```
+## 10. Backend (Route Handlers & Server Actions)
 
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Next.js không chỉ xử lý giao diện mà còn là một Full-stack framework mạnh mẽ. Bạn có thể xây dựng toàn bộ phần backend (xử lý API, kết nối database bảo mật, xác thực người dùng) ngay bên trong project mà không cần dựng một server Node.js/Express riêng biệt.
 
+Có 2 cách chính để làm backend trong Next.js App Router:
 
+1.  **Route Handlers (`route.ts`):**
+    *   Dùng để tạo ra các RESTful API endpoints công khai (tương tự như cấu trúc `pages/api` cũ nhưng mạnh mẽ hơn).
+    *   Được định nghĩa bằng cách tạo file tên `route.ts` bên trong thư mục `app/api/...`.
+    *   Hỗ trợ đầy đủ các HTTP Methods tiêu chuẩn: **GET, POST, PUT, PATCH, DELETE**.
+    *   Sử dụng các đối tượng chuẩn Web API là **`Request`** và **`Response`** (hoặc `NextResponse`).
 
+2.  **Server Actions (Hành động phía Server):**
+    *   Là một tính năng cách mạng trong Next.js, cho phép bạn viết các hàm chạy trực tiếp trên Server nhưng được **gọi trực tiếp từ phía Client** (ví dụ: từ sự kiện `onSubmit` của form hoặc `onClick` của button).
+    *   Giúp loại bỏ hoàn toàn việc phải tự tay tạo ra các API endpoint trung gian (`fetch('/api/...')`), viết mã JSON boilerplate, hay quản lý state loading thủ công.
+    *   Được đánh dấu bằng chỉ thị **`'use server'`** (có thể đặt ở đầu file hoặc ngay đầu hàm).
 
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Khi nào dùng Route Handlers?** Dùng khi bạn cần xây dựng Public API để cho các ứng dụng bên thứ ba (như Mobile App, Web khác) gọi đến, hoặc dùng để tạo các Webhooks lắng nghe sự kiện từ bên ngoài (như cổng thanh toán Stripe, GitHub webhooks).
+*   **Khi nào dùng Server Actions?** Dùng cho các thao tác nội bộ của ứng dụng như xử lý form đăng ký, gửi bình luận, thêm sản phẩm vào giỏ hàng. Nó ngắn gọn, bảo mật và cực kỳ tối ưu tốc độ.
 
+**💻 Code minh họa chuyên sâu:**
+
+```ts
+// 1. Route Handler: Tạo API lấy danh sách và thêm bài viết mới
+// app/api/posts/route.ts
+import { NextResponse } from 'next/server';
+
+// Xử lý phương thức GET: /api/posts
+export async function GET(request: Request) {
+  // Lấy query parameters từ URL (ví dụ: /api/posts?limit=10)
+  const { searchParams } = new URL(request.url);
+  const limit = searchParams.get('limit') || '10';
+
+  // Giả lập dữ liệu từ Database
+  const posts = [
+    { id: 1, title: 'Học Next.js cơ bản' },
+    { id: 2, title: 'Tìm hiểu Server Actions' },
+  ];
+
+  return NextResponse.json({ success: true, limit, data: posts });
+}
+
+// Xử lý phương thức POST: /api/posts
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    const { title, content } = body;
+
+    if (!title) {
+      return NextResponse.json({ success: false, message: 'Tiêu đề là bắt buộc' }, { status: 400 });
+    }
+
+    // Lưu vào database ở đây...
+    const newPost = { id: Date.now(), title, content };
+
+    return NextResponse.json({ success: true, data: newPost }, { status: 201 });
+  } catch (error) {
+    return NextResponse.json({ success: false, message: 'Lỗi server nội bộ' }, { status: 500 });
+  }
+}
+// 2. Server Actions: Xử lý form gửi dữ liệu trực tiếp không cần fetch thủ công
+// app/posts/create/page.tsx
+import { redirect } from 'next/navigation';
+import { db } from '@/lib/db'; // Giả lập kết nối database
+
+// Định nghĩa Server Action
+async function createPostAction(formData: FormData) {
+  'use server'; // Đánh dấu hàm chạy độc quyền trên Server
+
+  const title = formData.get('title') as string;
+  const content = formData.get('content') as string;
+
+  // Thực hiện lưu trực tiếp vào Database trên server an toàn tuyệt đối
+  await db.post.create({
+    data: { title, content },
+  });
+
+  // Chuyển hướng người dùng về trang danh sách sau khi tạo thành công
+  redirect('/posts');
+}
+
+export default function CreatePostPage() {
+  return (
+    <div className="p-6 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-4">Tạo bài viết mới</h1>
+      
+      {/* Gắn Server Action trực tiếp vào thuộc tính action của form */}
+      <form action={createPostAction} className="space-y-4">
+        <div>
+          <label className="block mb-1 font-medium">Tiêu đề</label>
+          <input type="text" name="title" required className="w-full border p-2 rounded" />
+        </div>
+        <div>
+          <label className="block mb-1 font-medium">Nội dung</label>
+          <textarea name="content" required className="w-full border p-2 rounded" rows={4}></textarea>
+        </div>
+        <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
+          Đăng bài viết
+        </button>
+      </form>
+    </div>
+  );
+}
+```
+## 11. Forms & Authentication
+
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Xử lý biểu mẫu và xác thực người dùng là những phần xương sống của mọi ứng dụng web hiện đại. Next.js kết hợp với React Server Actions mang đến một mô hình xử lý form cực kỳ tinh gọn, đồng thời bảo mật tuyệt đối thông qua hệ thống Cookie và Middleware.
+
+Các khái niệm cốt lõi bao gồm:
+
+1.  **Forms kết hợp Server Actions & React Hooks:**
+    *   Khi dùng Server Actions với form, để nâng cao trải nghiệm người dùng (UX), bạn cần hiển thị trạng thái đang gửi (loading) hoặc thông báo lỗi từ server trả về.
+    *   *`useFormStatus` (`react-dom`):* Cho phép component con bên trong form biết trạng thái form có đang ở tiến trình pending (đang gửi) hay không để tự động khóa nút bấm (disable button).
+    *   *`useActionState` (`react` - trước đây là `useFormState`):* Quản lý trạng thái trả về từ Server Action (như thông báo lỗi, dữ liệu thành công) để hiển thị trực tiếp lên giao diện client.
+
+2.  **Validation (Kiểm tra tính hợp lệ với Zod):**
+    *   Tuyệt đối không bao giờ tin tưởng dữ liệu gửi lên từ phía client. Sử dụng thư viện **Zod** để định nghĩa schema kiểm tra dữ liệu đầu vào (định dạng email, độ dài mật khẩu) ngay tại phía Server trước khi lưu vào Database.
+
+3.  **Authentication & Authorization (Xác thực & Phân quyền):**
+    *   *Authentication (Xác thực):* Xác định danh tính người dùng là ai (Đăng nhập bằng Email/Password, Google, GitHub). Thường sử dụng thư viện **Auth.js (NextAuth)**.
+    *   *Authorization (Phân quyền):* Kiểm tra xem người dùng có quyền truy cập vào một trang cụ thể hay không (ví dụ: chỉ Admin mới được vào trang `/admin`).
+
+4.  **Session & Cookie Management:**
+    *   Sau khi đăng nhập thành công, phiên làm việc (Session) hoặc mã thông báo (JWT) sẽ được lưu trữ an toàn bên trong **HTTP-only Cookies** để ngăn chặn các cuộc tấn công XSS lấy cắp token.
+
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Luôn validate dữ liệu ở cả 2 phía:** Dù client đã validate bằng JavaScript, bạn **bắt buộc** phải validate lại một lần nữa ở Server Actions bằng Zod để đảm bảo an toàn tuyệt đối.
+*   **Bảo vệ Route bằng Middleware:** Sử dụng file `middleware.ts` ở cấp độ gốc của project để kiểm tra cookie xác thực, tự động chặn và chuyển hướng người dùng chưa đăng nhập trước khi họ kịp tải trang dashboard.
+
+**💻 Code minh họa chuyên sâu:**
+
+```tsx
+// 1. Validation với Zod kết hợp Server Action và useActionState
+// app/login/actions.ts
+'use server';
+
+import { z } from 'zod';
+
+// Định nghĩa schema kiểm tra dữ liệu bằng Zod
+const loginSchema = z.object({
+  email: z.string().email('Email không đúng định dạng'),
+  password: z.string().min(6, 'Mật khẩu phải có ít nhất 6 ký tự'),
+});
+
+// Kiểu dữ liệu trạng thái trả về cho form
+export async function loginAction(prevState: any, formData: FormData) {
+  const validatedFields = loginSchema.safeParse({
+    email: formData.get('email'),
+    password: formData.get('password'),
+  });
+
+  // Nếu dữ liệu không hợp lệ, trả về lỗi ngay lập tức
+  if (!validatedFields.success) {
+    return {
+      success: false,
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Vui lòng kiểm tra lại thông tin đầu vào.',
+    };
+  }
+
+  const { email, password } = validatedFields.data;
+
+  // Thực hiện logic kiểm tra database hoặc gọi auth service ở đây...
+  if (email !== 'admin@example.com' || password !== '123456') {
+    return { success: false, message: 'Email hoặc mật khẩu không chính xác.' };
+  }
+
+  return { success: true, message: 'Đăng nhập thành công!' };
+}
+// 2. Sử dụng useActionState và useFormStatus trên Client Component
+// app/login/LoginForm.tsx
+'use client';
+
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
+import { loginAction } from './actions';
+
+// Nút submit tự động nhận trạng thái pending từ form cha
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button 
+      type="submit" 
+      disabled={pending}
+      className="w-full bg-blue-600 text-white p-2 rounded disabled:bg-gray-400"
+    >
+      {pending ? 'Đang xử lý...' : 'Đăng nhập'}
+    </button>
+  );
+}
+
+export default function LoginForm() {
+  const [state, formAction] = useActionState(loginAction, null);
+
+  return (
+    <form action={formAction} className="max-w-sm mx-auto p-6 space-y-4 border rounded shadow">
+      <h2 className="text-xl font-bold">Đăng nhập hệ thống</h2>
+
+      {state?.message && (
+        <div className={`p-3 rounded ${state.success ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+          {state.message}
+        </div>
+      )}
+
+      <div>
+        <label className="block mb-1 text-sm font-medium">Email</label>
+        <input type="email" name="email" className="w-full border p-2 rounded" />
+        {state?.errors?.email && <p className="text-red-500 text-xs mt-1">{state.errors.email[0]}</p>}
+      </div>
+
+      <div>
+        <label className="block mb-1 text-sm font-medium">Mật khẩu</label>
+        <input type="password" name="password" className="w-full border p-2 rounded" />
+        {state?.errors?.password && <p className="text-red-500 text-xs mt-1">{state.errors.password[0]}</p>}
+      </div>
+
+      <SubmitButton/>
+    </form>
+  );
+}
+// 3. Bảo vệ Route bằng Middleware (middleware.ts tại thư mục gốc)
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
+export function middleware(request: NextRequest) {
+  const token = request.cookies.get('auth_token')?.value;
+  const isDashboardRoute = request.nextUrl.pathname.startsWith('/dashboard');
+
+  // Nếu truy cập vào /dashboard mà chưa có token đăng nhập -> Chuyển hướng về /login
+  if (isDashboardRoute && !token) {
+    return NextResponse.redirect(new URL('/login', request.url));
+  }
+
+  return NextResponse.next();
+}
+
+// Cấu hình các đường dẫn áp dụng middleware
+export const config = {
+  matcher: '/dashboard/:path*',
+};
+```
+## 12. SEO (Search Engine Optimization)
+
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Một trong những lý do lớn nhất khiến Next.js được ưa chuộng là khả năng tối ưu SEO vượt trội so với các ứng dụng Single Page Application (SPA) truyền thống. Nhờ cơ chế render phía server, các công cụ tìm kiếm (như Googlebot) có thể đọc được nội dung HTML hoàn chỉnh ngay từ lần request đầu tiên mà không cần chờ chạy JavaScript.
+
+Next.js cung cấp hệ thống quản lý SEO tích hợp sẵn cực kỳ tiện lợi thông qua các file conventions và Metadata API:
+
+1.  **Metadata (Static Metadata):**
+    *   Cho phép khai báo tiêu đề (`title`), mô tả (`description`), từ khóa và các thông tin thẻ meta tĩnh bằng cách export một object `metadata` chuẩn trực tiếp trong file `layout.tsx` hoặc `page.tsx`.
+
+2.  **`generateMetadata` (Dynamic Metadata):**
+    *   Khi tiêu đề hoặc mô tả trang phụ thuộc vào dữ liệu động (ví dụ: tên của một bài viết blog hoặc sản phẩm được lấy từ database), bạn dùng hàm bất đồng bộ `generateMetadata` để trả về metadata tùy chỉnh theo từng tham số URL.
+
+3.  **Open Graph (OG Images):**
+    *   Cấu hình các thẻ Open Graph (`openGraph`, `twitter`) để khi người dùng chia sẻ đường dẫn trang web lên các mạng xã hội như Facebook, LinkedIn, Twitter, bài đăng sẽ hiển thị đầy đủ hình ảnh thu nhỏ, tiêu đề và mô tả bắt mắt.
+
+4.  **Sitemap (`sitemap.ts`):**
+    *   File quy ước đặc biệt giúp Next.js tự động tạo ra tệp `sitemap.xml` ở dạng chuẩn. Giúp bot của Google quét và lập chỉ mục toàn bộ các đường dẫn trong website của bạn một cách nhanh chóng.
+
+5.  **Robots (`robots.ts`):**
+    *   Tạo file `robots.txt` để chỉ định cho các công cụ tìm kiếm biết trang nào được phép quét dữ liệu (Allow) và trang nào bị cấm (Disallow - như các trang quản trị `/dashboard`).
+
+6.  **Structured Data (JSON-LD):**
+    *   Chèn dữ liệu có cấu trúc dưới dạng JSON-LD vào thẻ `<script>` để giúp website hiển thị các kết quả tìm kiếm nâng cao (Rich Snippets) trên Google (ví dụ: hiển thị đánh giá sao, giá sản phẩm trực tiếp ngoài trang kết quả tìm kiếm).
+
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Luôn tối ưu `title` và `description` độc lập cho từng trang:** Tránh để tất cả các trang dùng chung một tiêu đề cố định. Sử dụng `generateMetadata` cho các trang động (Dynamic Routes) để nâng cao điểm chất lượng SEO.
+*   **Tạo file `sitemap.ts` động cho các dự án lớn:** Nếu website có hàng nghìn sản phẩm, hãy viết code trong `sitemap.ts` để tự động kéo danh sách ID sản phẩm từ database và đưa vào sitemap.
+
+**💻 Code minh họa chuyên sâu:**
+
+```tsx
+// 1. Sử dụng Static Metadata và Dynamic Metadata (`generateMetadata`)
+// app/posts/[id]/page.tsx
+import { Metadata } from 'next/types';
+
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+// Hàm generateMetadata tự động chạy trước để lấy tiêu đề động cho SEO
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  
+  // Giả lập gọi API lấy thông tin bài viết theo ID
+  const res = await fetch(`[https://api.example.com/posts/$](https://api.example.com/posts/$){id}`);
+  const post = await res.json();
+
+  return {
+    title: `${post.title} | Tên Website Của Bạn`,
+    description: post.excerpt || 'Đọc bài viết chi tiết tại đây...',
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: [post.imageUrl || '[https://example.com/default-og.jpg](https://example.com/default-og.jpg)'],
+    },
+  };
+}
+
+export default async function PostDetailPage({ params }: PageProps) {
+  const { id } = await params;
+  return <main className="p-6"><h1>Chi tiết bài viết số {id}</h1></main>;
+}
+// 2. Tạo file Sitemap tự động: app/sitemap.ts
+import { MetadataRoute } from 'next';
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = '[https://mywebsite.com](https://mywebsite.com)';
+
+  // Giả lập lấy danh sách các bài viết từ database để đưa vào sitemap
+  const res = await fetch('[https://api.example.com/posts](https://api.example.com/posts)');
+  const posts = await res.json();
+
+  const postEntries = posts.map((post: any) => ({
+    url: `${baseUrl}/posts/${post.id}`,
+    lastModified: new Date(post.updatedAt),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }));
+
+  return [
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    ...postEntries,
+  ];
+}
+// 3. Tạo file Robots cấu hình trình cào bot: app/robots.ts
+import { MetadataRoute } from 'next';
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: ['/dashboard/', '/api/'], // Cấm bot quét vào các trang quản trị và api nội bộ
+    },
+    sitemap: '[https://mywebsite.com/sitemap.xml](https://mywebsite.com/sitemap.xml)',
+  };
+}
+```
+## 12. SEO (Search Engine Optimization)
+
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Một trong những lý do lớn nhất khiến Next.js được ưa chuộng là khả năng tối ưu SEO vượt trội so với các ứng dụng Single Page Application (SPA) truyền thống. Nhờ cơ chế render phía server, các công cụ tìm kiếm (như Googlebot) có thể đọc được nội dung HTML hoàn chỉnh ngay từ lần request đầu tiên mà không cần chờ chạy JavaScript.
+
+Next.js cung cấp hệ thống quản lý SEO tích hợp sẵn cực kỳ tiện lợi thông qua các file conventions và Metadata API:
+
+1.  **Metadata (Static Metadata):**
+    *   Cho phép khai báo tiêu đề (`title`), mô tả (`description`), từ khóa và các thông tin thẻ meta tĩnh bằng cách export một object `metadata` chuẩn trực tiếp trong file `layout.tsx` hoặc `page.tsx`.
+
+2.  **`generateMetadata` (Dynamic Metadata):**
+    *   Khi tiêu đề hoặc mô tả trang phụ thuộc vào dữ liệu động (ví dụ: tên của một bài viết blog hoặc sản phẩm được lấy từ database), bạn dùng hàm bất đồng bộ `generateMetadata` để trả về metadata tùy chỉnh theo từng tham số URL.
+
+3.  **Open Graph (OG Images):**
+    *   Cấu hình các thẻ Open Graph (`openGraph`, `twitter`) để khi người dùng chia sẻ đường dẫn trang web lên các mạng xã hội như Facebook, LinkedIn, Twitter, bài đăng sẽ hiển thị đầy đủ hình ảnh thu nhỏ, tiêu đề và mô tả bắt mắt.
+
+4.  **Sitemap (`sitemap.ts`):**
+    *   File quy ước đặc biệt giúp Next.js tự động tạo ra tệp `sitemap.xml` ở dạng chuẩn. Giúp bot của Google quét và lập chỉ mục toàn bộ các đường dẫn trong website của bạn một cách nhanh chóng.
+
+5.  **Robots (`robots.ts`):**
+    *   Tạo file `robots.txt` để chỉ định cho các công cụ tìm kiếm biết trang nào được phép quét dữ liệu (Allow) và trang nào bị cấm (Disallow - như các trang quản trị `/dashboard`).
+
+6.  **Structured Data (JSON-LD):**
+    *   Chèn dữ liệu có cấu trúc dưới dạng JSON-LD vào thẻ `<script>` để giúp website hiển thị các kết quả tìm kiếm nâng cao (Rich Snippets) trên Google (ví dụ: hiển thị đánh giá sao, giá sản phẩm trực tiếp ngoài trang kết quả tìm kiếm).
+
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Luôn tối ưu `title` và `description` độc lập cho từng trang:** Tránh để tất cả các trang dùng chung một tiêu đề cố định. Sử dụng `generateMetadata` cho các trang động (Dynamic Routes) để nâng cao điểm chất lượng SEO.
+*   **Tạo file `sitemap.ts` động cho các dự án lớn:** Nếu website có hàng nghìn sản phẩm, hãy viết code trong `sitemap.ts` để tự động kéo danh sách ID sản phẩm từ database và đưa vào sitemap.
+
+**💻 Code minh họa chuyên sâu:**
+
+```tsx
+// 1. Sử dụng Static Metadata và Dynamic Metadata (`generateMetadata`)
+// app/posts/[id]/page.tsx
+import { Metadata } from 'next/types';
+
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+// Hàm generateMetadata tự động chạy trước để lấy tiêu đề động cho SEO
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  
+  // Giả lập gọi API lấy thông tin bài viết theo ID
+  const res = await fetch(`[https://api.example.com/posts/$](https://api.example.com/posts/$){id}`);
+  const post = await res.json();
+
+  return {
+    title: `${post.title} | Tên Website Của Bạn`,
+    description: post.excerpt || 'Đọc bài viết chi tiết tại đây...',
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: [post.imageUrl || '[https://example.com/default-og.jpg](https://example.com/default-og.jpg)'],
+    },
+  };
+}
+
+export default async function PostDetailPage({ params }: PageProps) {
+  const { id } = await params;
+  return <main className="p-6"><h1>Chi tiết bài viết số {id}</h1></main>;
+}
+// 2. Tạo file Sitemap tự động: app/sitemap.ts
+import { MetadataRoute } from 'next';
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = '[https://mywebsite.com](https://mywebsite.com)';
+
+  // Giả lập lấy danh sách các bài viết từ database để đưa vào sitemap
+  const res = await fetch('[https://api.example.com/posts](https://api.example.com/posts)');
+  const posts = await res.json();
+
+  const postEntries = posts.map((post: any) => ({
+    url: `${baseUrl}/posts/${post.id}`,
+    lastModified: new Date(post.updatedAt),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }));
+
+  return [
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    ...postEntries,
+  ];
+}
+// 3. Tạo file Robots cấu hình trình cào bot: app/robots.ts
+import { MetadataRoute } from 'next';
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: ['/dashboard/', '/api/'], // Cấm bot quét vào các trang quản trị và api nội bộ
+    },
+    sitemap: '[https://mywebsite.com/sitemap.xml](https://mywebsite.com/sitemap.xml)',
+  };
+}
+```
+## 14. Production & Deployment
+
+**📝 Giới thiệu & Lý thuyết cơ bản:**
+Khi ứng dụng Next.js của bạn đã sẵn sàng ra mắt người dùng thực tế (Production), việc quản lý biến môi trường, tối ưu bản build và lựa chọn môi trường triển khai (Hosting) là những bước cực kỳ quan trọng để đảm bảo tính bảo mật và hiệu năng ổn định.
+
+Các khía cạnh cốt lõi trong vận hành và triển khai bao gồm:
+
+1.  **Environment Variables (Biến môi trường):**
+    *   Next.js hỗ trợ quản lý biến môi trường thông qua các tệp như `.env.local` (cho local development) và `.env.production` (cho production).
+    *   *Bảo mật quan trọng:* Mặc định, mọi biến môi trường được khai báo trong Next.js chỉ có hiệu lực ở phía **Server**. 
+    *   Nếu bạn muốn một biến môi trường có thể đọc được ở phía trình duyệt (Client Component), bạn **bắt buộc** phải đặt tiền tố **`NEXT_PUBLIC_`** cho tên biến đó (ví dụ: `NEXT_PUBLIC_API_URL`). Tuyệt đối không để lộ các mã khóa bí mật (như Database URL, Secret Keys) có tiền tố này.
+
+2.  **Build Process (`npm run build`):**
+    *   Lệnh biên dịch mã nguồn thành phiên bản tối ưu hóa cho production. Next.js sẽ kiểm tra lỗi TypeScript, tối ưu hóa các trang tĩnh (SSG), phân tích bundle code và tạo ra thư mục `.next/`.
+
+3.  **Deployment trên Vercel (Khuyên dùng tối đa):**
+    *   Vercel là công ty phát triển ra Next.js, do đó đây là nền tảng tối ưu nhất hành tinh để host Next.js. Hỗ trợ tự động kích hoạt CI/CD mỗi khi bạn push code lên GitHub, cung cấp Global Edge Network và Serverless Functions miễn phí hoặc giá rẻ.
+
+4.  **Deployment tự túc với Docker (Self-Hosting):**
+    *   Nếu công ty yêu cầu bảo mật dữ liệu và phải chạy trên máy chủ riêng (VPS, AWS EC2), bạn có thể đóng gói ứng dụng thành một container thông qua **Docker**.
+    *   Next.js hỗ trợ tính năng **Standalone Output** giúp tự động cắt giảm kích thước image Docker chỉ chứa các file tối thiểu cần thiết để chạy server.
+
+5.  **Monitoring & Logging (Giám sát hệ thống):**
+    *   Sử dụng các công cụ như **Vercel Analytics** để theo dõi hiệu suất người dùng thực tế, và **Sentry** để bắt và ghi log các lỗi phát sinh (exceptions) ở phía server/client theo thời gian thực.
+
+**🎯 Trường hợp sử dụng & Best Practices:**
+*   **Bật `output: 'standalone'` trong `next.config.js` khi dùng Docker:** Giúp dung lượng image Docker giảm đi hàng chục lần so với cách build thông thường.
+*   **Không lưu trữ file `.env` lên GitHub:** Luôn đưa các file `.env*` vào tệp `.gitignore` và cấu hình biến môi trường trực tiếp trên giao diện quản trị của Vercel hoặc Cloud Provider.
+
+**💻 Code minh họa chuyên sâu:**
+
+```js
+// 1. Cấu hình Standalone Output cho Docker trong file: next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'standalone', // Bật chế độ xuất bản tối ưu cho Docker
+};
+
+module.exports = nextConfig;
+# 2. Ví dụ mẫu Dockerfile chuẩn cho Next.js Standalone
+FROM node:18-alpine AS base
+
+# Bước 1: Build ứng dụng
+FROM base AS builder
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+# Bước 2: Chạy production server siêu nhẹ
+FROM base AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+
+EXPOSE 3000
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+CMD ["node", "server.js"]
